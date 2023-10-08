@@ -1,8 +1,8 @@
 import 'package:expense_manager/view/screens/sign_up_screen.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
-import 'package:expense_manager/viewModel/constants/methods/textStyle.dart';
+import 'package:expense_manager/viewModel/methods/textStyle.dart';
 import 'package:expense_manager/viewModel/controllers/textfieldController.dart';
-import 'package:expense_manager/viewModel/constants/methods/validators.dart';
+import 'package:expense_manager/viewModel/methods/validators.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:expense_manager/viewModel/widgets/size.dart';
 import 'package:expense_manager/viewModel/widgets/text_form_field.dart';

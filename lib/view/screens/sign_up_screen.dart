@@ -1,13 +1,12 @@
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
-import 'package:expense_manager/viewModel/constants/methods/textStyle.dart';
+import 'package:expense_manager/viewModel/methods/textStyle.dart';
 import 'package:expense_manager/viewModel/controllers/textfieldController.dart';
-import 'package:expense_manager/viewModel/constants/methods/validators.dart';
+import 'package:expense_manager/viewModel/methods/validators.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:expense_manager/viewModel/widgets/size.dart';
 import 'package:expense_manager/viewModel/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -70,7 +69,6 @@ class SignUpScreen extends StatelessWidget {
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         Get.snackbar('user created', 'done');
-                        
                       }
                     },
                     label: 'Sign Up',
