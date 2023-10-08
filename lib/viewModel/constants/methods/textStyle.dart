@@ -10,3 +10,9 @@ TextStyle haveAccountStyle() => const TextStyle(color: Pallete.grey);
     return const TextStyle(
                     color: Pallete.purple, fontWeight: FontWeight.bold);
   }
+
+
+  TextStyle forgotPasswordStyle() {
+    return const TextStyle(fontSize: 17,
+                    fontWeight: FontWeight.bold, color: Pallete.purple);
+  }

@@ -4,7 +4,6 @@ import 'package:expense_manager/viewModel/widgets/size.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/route_manager.dart';
 
 class StartUpScreen extends StatefulWidget {
@@ -47,6 +46,7 @@ class _StartUpScreenState extends State<StartUpScreen> {
               LoginSignUpButton(
                 onPressed: () {
                   Get.to(const LoginScreen());
+
                 },
                 label: 'Login',
                 buttonTextColor: Pallete.white,

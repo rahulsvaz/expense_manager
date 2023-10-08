@@ -8,16 +8,23 @@ class UserTextfield extends StatelessWidget {
   final String? label;
   final bool obscureText;
   final IconButton? surffix;
+  final String? Function(String?)? validator;
+
   const UserTextfield(
-      {super.key, this.label, required this.obscureText, this.surffix});
+      {super.key,
+      this.label,
+      required this.obscureText,
+      this.surffix,
+      required this.validator});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(),
       width: Get.width * 0.79,
-      height: Get.height * 0.07,
+      
       child: TextFormField(
+        validator: validator,
         style: const TextStyle(color: Pallete.textFieldColor),
         obscureText: obscureText,
         cursorColor: Colors.grey,
@@ -27,6 +34,7 @@ class UserTextfield extends StatelessWidget {
               label.toString(),
               style: const TextStyle(color: Pallete.hintTextColor),
             ),
+            focusedErrorBorder: borderDecoration(),
             errorBorder: borderDecoration(),
             enabledBorder: borderDecoration(),
             focusedBorder: borderDecoration()),
