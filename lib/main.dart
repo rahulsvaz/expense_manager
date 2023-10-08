@@ -1,4 +1,4 @@
-import 'package:expense_manager/view/start_up_screen.dart';
+import 'package:expense_manager/view/screens/start_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
