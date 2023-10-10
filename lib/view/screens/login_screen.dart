@@ -1,3 +1,4 @@
+import 'package:expense_manager/view/screens/home_screen.dart';
 import 'package:expense_manager/view/screens/sign_up_screen.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/methods/textStyle.dart';
@@ -63,6 +64,7 @@ class LoginScreen extends StatelessWidget {
                 const Height40(),
                 LoginSignUpButton(
                     onPressed: () {
+                      Get.to(HomeScreen());
                       if (formKey.currentState!.validate()) {
                         Get.back();
                       }
@@ -71,11 +73,11 @@ class LoginScreen extends StatelessWidget {
                     buttonTextColor: Pallete.white,
                     backgroundColor: Pallete.buttonColor),
                 const Height30(),
-                 Text(
+                Text(
                   'Forgot Password ?',
                   style: forgotPasswordStyle(),
                 ),
-              const   Height20(),
+                const Height20(),
                 GestureDetector(
                   onTap: () {
                     Get.to(const SignUpScreen());
@@ -101,5 +103,4 @@ class LoginScreen extends StatelessWidget {
           ),
         ));
   }
-
 }

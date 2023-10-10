@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.6
   carousel_slider: ^4.2.1
+  fan_floating_menu: ^0.0.1
+  floating_bottom_bar: ^0.0.2
+  flutter_dropdown: ^1.0.1+hotfix.1
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +71,8 @@ flutter:
     - assets/images/user.jpeg
     - assets/images/Logo_shopping.png
     - assets/images/food.png
+    - assets/images/ExpenseButton.png
+    - assets/images/IncomeButton.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

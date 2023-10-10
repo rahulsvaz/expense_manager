@@ -1,5 +1,4 @@
-import 'package:expense_manager/view/screens/home_screen.dart';
-import 'package:expense_manager/view/screens/start_up_screen.dart';
+import 'package:expense_manager/view/screens/add_income_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -13,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const GetMaterialApp(
-      home: HomeScreen(),
+      home: AddIncomePage(),
     );
   }
 }
+ 

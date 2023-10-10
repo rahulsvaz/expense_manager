@@ -1,10 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:expense_manager/viewModel/widgets/recent_transaction.dart';
+import 'package:floating_bottom_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/viewModel/widgets/income_expense_box.dart';
@@ -28,8 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             decoration: homeScreenContainerDecoration(),
             width: Get.size.width,
-            height: Get.size.height * 0.4,
-            child: Center(
+            height: Get.height * 0.4,
+            child: const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -85,9 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          Height30(),
-          // Recent Transaction
-          Row(
+          const Height30(),
+          // // Recent Transaction
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
@@ -98,50 +95,49 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
 
-          Height30(),
+          const Height30(),
           // Recent Transaction
-          RecentTransaction(
+
+
+          //need to add list view builder here
+          const RecentTransaction(
               categoryLogo: 'assets/images/Logo_shopping.png',
               category: 'Shopping',
               description: 'Buy some Groceries',
               amount: '100',
               time: '10:10 AM'),
-          RecentTransaction(
+          const RecentTransaction(
               categoryLogo: 'assets/images/food.png',
               category: 'Food',
               description: 'Launch from Nehdi',
               amount: '180',
               time: '1:10 PM'),
-          RecentTransaction(
-              categoryLogo: 'assets/images/Logo_shopping.png',
-              category: 'Shopping',
-              description: 'Buy some Groceries',
-              amount: '100',
-              time: '10:10 AM'),
         ],
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FloatingActionButton(
-          onPressed: () {
-            Get.dialog(Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(onPressed: () {}, child: Text('Add Income')),
-                  Width10(),
-                  ElevatedButton(onPressed: () {}, child: Text('Add Expense'))
-                ],
+      bottomNavigationBar: const AnimatedBottomNavigationBar(
+        bottomBar: [
+          BottomBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Pallete.purple,
               ),
-            ));
-          },
-          backgroundColor: Pallete.buttonColor,
-          child: Icon(Icons.add),
-        ),
+              iconSelected: Icon(Icons.home)),
+          BottomBarItem(
+              icon: Icon(
+                Icons.history,
+                color: Pallete.purple
+              ),
+              iconSelected: Icon(Icons.history))
+        ],
+        bottomBarCenterModel: BottomBarCenterModel(
+            centerIcon: FloatingCenterButton(
+              child: Icon(
+                Icons.add,
+                color: Pallete.white,
+              ),
+            ),
+            centerIconChild: []),
       ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
 }

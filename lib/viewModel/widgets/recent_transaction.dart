@@ -26,6 +26,7 @@ class RecentTransaction extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -53,9 +54,6 @@ class RecentTransaction extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              width: 80,
-            ),
             Column(
               children: [
                 Text(
@@ -76,5 +74,6 @@ class RecentTransaction extends StatelessWidget {
         ),
       ),
     );
+   
   }
 }
