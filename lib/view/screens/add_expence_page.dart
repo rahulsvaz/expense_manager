@@ -4,18 +4,18 @@ import 'package:expense_manager/viewModel/widgets/attachment_button.dart';
 import 'package:expense_manager/viewModel/widgets/howMuch.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
-class AddIncomePage extends StatelessWidget {
-  const AddIncomePage({super.key});
+class AddExpensePage extends StatelessWidget {
+  const AddExpensePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
     final height = Get.height;
-
     return Scaffold(
-      backgroundColor: Pallete.incomeBackGroundColor,
+      backgroundColor: Pallete.expenseBackGroundColor,
       body: Column(
         children: [
           SizedBox(

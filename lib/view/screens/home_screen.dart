@@ -1,12 +1,12 @@
-import 'package:expense_manager/viewModel/widgets/recent_transaction.dart';
-import 'package:floating_bottom_bar/animated_bottom_navigation_bar.dart';
+import 'package:expense_manager/view/screens/add_expence_page.dart';
+import 'package:expense_manager/view/screens/add_income_page.dart';
+import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/viewModel/widgets/income_expense_box.dart';
 import 'package:expense_manager/viewModel/widgets/see_all_button.dart';
-import 'package:expense_manager/viewModel/widgets/size.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,125 +18,142 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          // Top Container
-          Container(
-            decoration: homeScreenContainerDecoration(),
-            width: Get.size.width,
-            height: Get.height * 0.4,
-            child: const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //Top Row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/user.jpeg'),
-                      ),
-                      SizedBox(
-                        width: 180,
-                      ),
-                      Icon(
-                        Icons.notifications_active,
-                        size: 37,
-                        color: Pallete.purple,
-                      )
-                    ],
-                  ),
-                  //Second Row
-                  Text(
-                    'Account Balance',
-                    style: TextStyle(
-                      color: Color.fromRGBO(145, 145, 159, 1),
-                      fontSize: 16,
+          Positioned(
+            top: 0,
+            child: Container(
+              decoration: homeScreenContainerDecoration(),
+              width: Get.size.width,
+              height: Get.height * 0.4,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //Top Row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage(
+                            'assets/images/user.jpeg',
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.4,
+                        ),
+                        Icon(
+                          Icons.notifications_active,
+                          size: height * 0.04,
+                          color: Pallete.purple,
+                        )
+                      ],
                     ),
-                  ),
-                  Height20(),
-                  Text(
-                    '₹ 9400',
-                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.w700),
-                  ),
-                  Height20(),
-                  // Income Expense
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IncomeExpenseBox(
-                        logo: 'assets/images/income.png',
-                        backGroundColor: Pallete.incomeBackGroundColor,
-                        label: 'Income',
-                        amount: '9400',
+                    //Second Row
+                    Text(
+                      'Account Balance',
+                      style: TextStyle(
+                        color: Pallete.grey,
+                        fontSize: height * 0.02,
                       ),
-                      IncomeExpenseBox(
-                          logo: 'assets/images/expense.png',
-                          backGroundColor: Pallete.expenseBackGroundColor,
-                          label: 'Expense',
-                          amount: '3300')
-                    ],
-                  )
+                    ),
+                    SizedBox(
+                      height: height * 0.02,
+                    ),
+                    Text(
+                      '₹ 9400',
+                      style: TextStyle(
+                          fontSize: height * 0.05, fontWeight: FontWeight.w700),
+                    ),
+                    SizedBox(
+                      height: height * .04,
+                    ),
+                    // Income Expense
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IncomeExpenseBox(
+                          logo: 'assets/images/income.png',
+                          backGroundColor: Pallete.incomeBackGroundColor,
+                          label: 'Income',
+                          amount: '94079',
+                        ),
+                        IncomeExpenseBox(
+                            logo: 'assets/images/expense.png',
+                            backGroundColor: Pallete.expenseBackGroundColor,
+                            label: 'Expense',
+                            amount: '3300')
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: height * 0.44,
+            child: SizedBox(
+              width: width,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Recent Transactions',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  SeeAllButton()
                 ],
               ),
             ),
           ),
-          const Height30(),
-          // // Recent Transaction
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                'Recent Transactions',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SeeAllButton()
-            ],
-          ),
-
-          const Height30(),
-          // Recent Transaction
-
-
-          //need to add list view builder here
-          const RecentTransaction(
-              categoryLogo: 'assets/images/Logo_shopping.png',
-              category: 'Shopping',
-              description: 'Buy some Groceries',
-              amount: '100',
-              time: '10:10 AM'),
-          const RecentTransaction(
-              categoryLogo: 'assets/images/food.png',
-              category: 'Food',
-              description: 'Launch from Nehdi',
-              amount: '180',
-              time: '1:10 PM'),
+          Positioned(
+              top: height * 0.92,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                child: LoginSignUpButton(
+                    onPressed: () {
+                      Get.dialog(Center(
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          height: height * 0.2,
+                          width: width * 0.8,
+                          child: Column(
+                            children: [
+                              LoginSignUpButton(
+                                  onPressed: () {
+                                    Get.to(const AddIncomePage());
+                                  },
+                                  label: 'Add Income',
+                                  buttonTextColor: Pallete.white,
+                                  backgroundColor:
+                                      Pallete.incomeBackGroundColor),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              LoginSignUpButton(
+                                  onPressed: () {
+                                    Get.to(const AddExpensePage());
+                                  },
+                                  label: 'Add Expense',
+                                  buttonTextColor: Pallete.white,
+                                  backgroundColor:
+                                      Pallete.expenseBackGroundColor)
+                            ],
+                          ),
+                        ),
+                      ));
+                    },
+                    label: 'Add',
+                    buttonTextColor: Pallete.white,
+                    backgroundColor: Pallete.purple),
+              ))
         ],
-      ),
-      bottomNavigationBar: const AnimatedBottomNavigationBar(
-        bottomBar: [
-          BottomBarItem(
-              icon: Icon(
-                Icons.home,
-                color: Pallete.purple,
-              ),
-              iconSelected: Icon(Icons.home)),
-          BottomBarItem(
-              icon: Icon(
-                Icons.history,
-                color: Pallete.purple
-              ),
-              iconSelected: Icon(Icons.history))
-        ],
-        bottomBarCenterModel: BottomBarCenterModel(
-            centerIcon: FloatingCenterButton(
-              child: Icon(
-                Icons.add,
-                color: Pallete.white,
-              ),
-            ),
-            centerIconChild: []),
       ),
     );
   }
