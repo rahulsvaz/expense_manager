@@ -77,7 +77,11 @@ class AddExpensePage extends StatelessWidget {
                     AttachmentButton(width: width, height: height),
                     SizedBox(height: height * 0.1),
                     LoginSignUpButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.back();
+                        Get.snackbar('Expense Details Added', '',
+                         );
+                      },
                       label: 'Continue',
                       buttonTextColor: Pallete.white,
                       backgroundColor: Pallete.purple,

@@ -77,7 +77,14 @@ class AddIncomePage extends StatelessWidget {
                     AttachmentButton(width: width, height: height),
                     SizedBox(height: height * 0.1),
                     LoginSignUpButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.back();
+                        Get.snackbar('Income Details Added', '',
+                            icon: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Image.asset('assets/images/income.png'),
+                            ));
+                      },
                       label: 'Continue',
                       buttonTextColor: Pallete.white,
                       backgroundColor: Pallete.purple,

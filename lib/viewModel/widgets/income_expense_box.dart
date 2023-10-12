@@ -23,7 +23,7 @@ class IncomeExpenseBox extends StatelessWidget {
     final height =MediaQuery.of(context).size.height;
     final width =MediaQuery.of(context).size.width;
     return Container(
-      height:height*0.1 ,
+      height:height*0.09 ,
       width: width*0.42,
       decoration: BoxDecoration(
           color: backGroundColor, borderRadius: BorderRadius.circular(30)),

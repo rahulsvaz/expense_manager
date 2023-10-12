@@ -10,7 +10,6 @@ class SeeAllButton extends StatelessWidget {
     return Container(
       width: 78,
       height: 32,
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       decoration: ShapeDecoration(
         color: const Color(0xFFEEE5FF),
         shape: RoundedRectangleBorder(
