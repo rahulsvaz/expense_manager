@@ -200,39 +200,40 @@ class _HomeScreenState extends State<HomeScreen> {
           // ),
         ],
       ),
-      bottomNavigationBar: CurvedNavigationBar(
+      // bottomNavigationBar: CurvedNavigationBar(
         
-        color: const Color(0xF4BBBB8C),
-        backgroundColor: Colors.transparent,
         
-        items:  [
-          const CurvedNavigationBarItem(
+      //   color: const Color(0xF4BBBB8C),
+      //   backgroundColor: Colors.transparent,
+        
+      //   items:  [
+      //     const CurvedNavigationBarItem(
             
-            child: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          CurvedNavigationBarItem(
+      //       child: Icon(Icons.home_outlined),
+      //       label: 'Home',
+      //     ),
+      //     CurvedNavigationBarItem(
              
-            child: FloatingActionButton(
-              elevation: 0,
-              backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-              onPressed: (){},
-              child:  const Icon(Icons.add,color: Colors.black,size: 20,)),
-            label: 'Add',
-          ),
-          const CurvedNavigationBarItem(
-            child: Icon(Icons.history),
-            label: 'History',
-          ),
-          const CurvedNavigationBarItem(
-            child: Icon(Icons.perm_identity),
-            label: 'Personal',
-          ),
-        ],
-        onTap: (index) {
+      //       child: FloatingActionButton(
+      //         elevation: 0,
+      //         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+      //         onPressed: (){},
+      //         child:  const Icon(Icons.add,color: Colors.black,size: 20,)),
+      //       label: 'Add',
+      //     ),
+      //     const CurvedNavigationBarItem(
+      //       child: Icon(Icons.history),
+      //       label: 'History',
+      //     ),
+      //     const CurvedNavigationBarItem(
+      //       child: Icon(Icons.perm_identity),
+      //       label: 'Personal',
+      //     ),
+      //   ],
+      //   onTap: (index) {
         
-        },
-      ),
+      //   },
+      // ),
     );
   }
 }

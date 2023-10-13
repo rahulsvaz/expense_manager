@@ -1,13 +1,17 @@
-import 'package:expense_manager/view/screens/edit_transaction.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-class TransactionDetails extends StatelessWidget {
-  const TransactionDetails({super.key});
+class EditTransactionPage extends StatefulWidget {
+  const EditTransactionPage({super.key});
 
+  @override
+  State<EditTransactionPage> createState() => _EditTransactionPageState();
+}
+
+class _EditTransactionPageState extends State<EditTransactionPage> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -48,7 +52,7 @@ class TransactionDetails extends StatelessWidget {
                           color: Pallete.white,
                         )),
                     Text(
-                      'Detail Transaction',
+                      'Edit Transaction',
                       style: TextStyle(
                           color: Pallete.white,
                           fontSize: width * 0.05,
@@ -133,10 +137,10 @@ class TransactionDetails extends StatelessWidget {
                 activeThumbColor: Pallete.purple,
                 activeTrackColor: Colors.grey.shade300,
                 onSwipe: () {
-                  Get.to(EditTransactionPage());
+                  Get.back();
                 },
                 child: const Text(
-                  "Edit Transaction",
+                  "Save Changes",
                   style: TextStyle(
                     color: Colors.black,
                   ),

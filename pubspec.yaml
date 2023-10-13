@@ -40,9 +40,11 @@ dependencies:
   fan_floating_menu: ^0.0.1
   floating_bottom_bar: ^0.0.2
   flutter_dropdown: ^1.0.1+hotfix.1
-  dropdown_button2: 2.3.9 
+  dropdown_button2: 2.3.9
   flutter_swipe_button: ^2.1.1+1
   curved_labeled_navigation_bar: ^2.0.2
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -76,6 +78,9 @@ flutter:
     - assets/images/ExpenseButton.png
     - assets/images/IncomeButton.png
     - assets/images/arrow-down.png
+    - assets/images/menuIcon.png
+    - assets/images/trash.png
+    - assets/images/Rectangle 207.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

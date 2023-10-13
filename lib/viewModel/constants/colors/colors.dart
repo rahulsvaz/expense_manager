@@ -12,11 +12,12 @@ class Pallete {
   static const Color incomeBackGroundColor = Color.fromRGBO(0, 168, 92, 1);
   static const Color expenseBackGroundColor = Colors.red;
   static const Color lightGrey = Color.fromARGB(255, 226, 224, 224);
+  static const Color expenseDetails = Color.fromRGBO(253, 60, 74, 1);
   static const LinearGradient gradient1 = LinearGradient(colors: [
     Color.fromRGBO(245, 246, 229, 1),
     Color.fromRGBO(248, 237, 216, 0)
   ]);
-   static const LinearGradient dialogGradient = LinearGradient(colors: [
+  static const LinearGradient dialogGradient = LinearGradient(colors: [
     Color.fromRGBO(245, 246, 229, 1),
     Color.fromRGBO(161, 108, 11, 0.948)
   ]);
