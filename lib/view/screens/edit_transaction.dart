@@ -122,7 +122,8 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
             ),
             Positioned(
               top: height * .75,
-              child: Image.asset('assets/images/Rectangle 207.png'),
+              child: Image.asset('assets/images/Rectangle 207.png',
+                  height: height * 0.12),
             ),
             Positioned(
               top: height * .90,

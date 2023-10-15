@@ -1,11 +1,8 @@
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:expense_manager/view/screens/add_expense_page.dart';
 import 'package:expense_manager/view/screens/all_transactions_page.dart';
 import 'package:expense_manager/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 import 'package:get/get.dart';
-
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/viewModel/widgets/income_expense_box.dart';
@@ -133,107 +130,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }),
           ),
-
-          // SwipeButton.expand(
-          //   width: width * 0.7,
-          //   height: height * 0.07,
-          //   borderRadius: BorderRadius.circular(20),
-          //   thumb: const Icon(
-          //     Icons.double_arrow_rounded,
-          //     color: Colors.white,
-          //   ),
-          //   activeThumbColor: Pallete.purple,
-          //   activeTrackColor: Colors.grey.shade300,
-          //   onSwipe: () {
-
-          //   },
-          //   child: const Text(
-          //     "Add Transaction",
-          //     style: TextStyle(
-          //       color: Colors.black,
-          //     ),
-          //   ),
-          // )
-
-          // Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: width * 0.1),
-          //   child: LoginSignUpButton(
-          //       onPressed: () {
-          //         Get.dialog(
-          //           Center(
-          //             child: Container(
-          //               decoration: const BoxDecoration(
-          //                 borderRadius: BorderRadius.all(Radius.circular(20)),
-          //               ),
-          //               height: height * 0.2,
-          //               width: width * 0.8,
-          //               child: Column(
-          //                 children: [
-          //                   LoginSignUpButton(
-          //                       onPressed: () {
-          //                         Get.back();
-          //                         Get.to(const AddIncomePage());
-          //                       },
-          //                       label: 'Add Income',
-          //                       buttonTextColor: Pallete.white,
-          //                       backgroundColor: Pallete.incomeBackGroundColor),
-          //                   const SizedBox(
-          //                     height: 10,
-          //                   ),
-          //                   LoginSignUpButton(
-          //                       onPressed: () {
-          //                         Get.back();
-          //                         Get.to(const AddExpensePage());
-          //                       },
-          //                       label: 'Add Expense',
-          //                       buttonTextColor: Pallete.white,
-          //                       backgroundColor: Pallete.expenseBackGroundColor)
-          //                 ],
-          //               ),
-          //             ),
-          //           ),
-          //         );
-          //       },
-          //       label: 'Add',
-          //       buttonTextColor: Pallete.white,
-          //       backgroundColor: Pallete.purple),
-          // ),
+          FloatingActionButton(onPressed: () {
+            Get.to(const AddExpensePage());
+          })
+         
         ],
       ),
-      // bottomNavigationBar: CurvedNavigationBar(
-        
-        
-      //   color: const Color(0xF4BBBB8C),
-      //   backgroundColor: Colors.transparent,
-        
-      //   items:  [
-      //     const CurvedNavigationBarItem(
-            
-      //       child: Icon(Icons.home_outlined),
-      //       label: 'Home',
-      //     ),
-      //     CurvedNavigationBarItem(
-             
-      //       child: FloatingActionButton(
-      //         elevation: 0,
-      //         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-      //         onPressed: (){},
-      //         child:  const Icon(Icons.add,color: Colors.black,size: 20,)),
-      //       label: 'Add',
-      //     ),
-      //     const CurvedNavigationBarItem(
-      //       child: Icon(Icons.history),
-      //       label: 'History',
-      //     ),
-      //     const CurvedNavigationBarItem(
-      //       child: Icon(Icons.perm_identity),
-      //       label: 'Personal',
-      //     ),
-      //   ],
-      //   onTap: (index) {
-        
-      //   },
-      // ),
+     
     );
   }
 }
