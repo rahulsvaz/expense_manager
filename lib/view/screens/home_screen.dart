@@ -1,11 +1,13 @@
-import 'package:expense_manager/view/screens/add_expense_page.dart';
+import 'package:expense_manager/view/screens/add_income_page.dart';
 import 'package:expense_manager/view/screens/all_transactions_page.dart';
+import 'package:expense_manager/view/screens/settings_page.dart';
 import 'package:expense_manager/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/viewModel/widgets/income_expense_box.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,8 +19,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
+    
 
     return Scaffold(
       body: Column(
@@ -95,7 +99,6 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: height * 0.04,
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -115,11 +118,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ))
             ],
           ),
-
-          SizedBox(
-            height: height * 0.42,
+          Expanded(
             child: ListView.builder(
+                padding: EdgeInsets.only(
+                    top: height * 0.03,
+                    left: width * 0.03,
+                    right: width * 0.03),
                 itemCount: 3,
+                addRepaintBoundaries: false,
                 itemBuilder: (context, index) {
                   return const TransactionCard(
                     logo: 'assets/images/food.png',
@@ -130,13 +136,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }),
           ),
-          FloatingActionButton(onPressed: () {
-            Get.to(const AddExpensePage());
-          })
-         
         ],
       ),
      
+         
     );
   }
 }

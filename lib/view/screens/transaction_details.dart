@@ -118,7 +118,10 @@ class TransactionDetails extends StatelessWidget {
             ),
             Positioned(
               top: height * .75,
-              child: Image.asset('assets/images/Rectangle 207.png',height: height*0.12,),
+              child: Image.asset(
+                'assets/images/Rectangle 207.png',
+                height: height * 0.12,
+              ),
             ),
             Positioned(
               top: height * .90,
@@ -133,7 +136,7 @@ class TransactionDetails extends StatelessWidget {
                 activeThumbColor: Pallete.purple,
                 activeTrackColor: Colors.grey.shade300,
                 onSwipe: () {
-                  Get.to(EditTransactionPage());
+                  Get.to(const EditTransactionPage());
                 },
                 child: const Text(
                   "Edit Transaction",

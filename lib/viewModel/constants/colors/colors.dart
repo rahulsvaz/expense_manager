@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Pallete {
+  static const Color scaffoldBgColor = Color.fromRGBO(246, 246, 246, 1);
   static const Color buttonColor = Color(0xFF7E3DFF);
   static const Color white = Colors.white;
   static const Color purple = Color(0xFF7E3DFF);

@@ -75,7 +75,7 @@ class AddIncomePage extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.02),
                     AttachmentButton(width: width, height: height),
-                    SizedBox(height: height * 0.1),
+                    SizedBox(height: height * 0.07),
                     LoginSignUpButton(
                       onPressed: () {
                         Get.back();
@@ -99,3 +99,5 @@ class AddIncomePage extends StatelessWidget {
     );
   }
 }
+
+

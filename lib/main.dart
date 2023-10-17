@@ -1,4 +1,5 @@
-import 'package:expense_manager/view/screens/home_screen.dart';
+import 'package:expense_manager/view/screens/g_nav.dart';
+import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -11,9 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      home: HomeScreen()
-    );
+    return GetMaterialApp(
+        theme: ThemeData.light()
+            .copyWith(scaffoldBackgroundColor: Pallete.scaffoldBgColor),
+        home: const GnavNavigation());
   }
 }
- 

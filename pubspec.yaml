@@ -45,6 +45,9 @@ dependencies:
   curved_labeled_navigation_bar: ^2.0.2
   hive_flutter: ^1.1.0
   path_provider: ^2.1.1
+  google_nav_bar: ^5.0.6
+  slide_to_act: ^2.0.2
+  iconly: ^1.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -81,6 +84,10 @@ flutter:
     - assets/images/menuIcon.png
     - assets/images/trash.png
     - assets/images/Rectangle 207.png
+    - assets/images/Button_Icon.png
+    - assets/images/logout.png
+    - assets/images/settings.png
+    - assets/images/wallet.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
