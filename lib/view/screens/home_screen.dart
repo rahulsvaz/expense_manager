@@ -1,17 +1,14 @@
-import 'package:expense_manager/view/screens/add_income_page.dart';
+import 'package:expense_manager/view/screens/add_transaction.dart';
 import 'package:expense_manager/view/screens/all_transactions_page.dart';
-import 'package:expense_manager/view/screens/settings_page.dart';
 import 'package:expense_manager/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/viewModel/widgets/income_expense_box.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -19,10 +16,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
-    
 
     return Scaffold(
       body: Column(
@@ -40,10 +35,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CircleAvatar(
-                      radius: height * 0.02,
-                      backgroundImage: const AssetImage(
-                        'assets/images/user.jpeg',
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(AddTransaction());
+                      },
+                      child: CircleAvatar(
+                        radius: height * 0.02,
+                        backgroundImage: const AssetImage(
+                          'assets/images/user.jpeg',
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -138,8 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-     
-         
     );
   }
 }

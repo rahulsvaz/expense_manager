@@ -1,4 +1,4 @@
-import 'package:expense_manager/view/screens/add_expense_page.dart';
+import 'package:expense_manager/view/screens/add_transaction.dart';
 import 'package:expense_manager/view/screens/all_transactions_page.dart';
 import 'package:expense_manager/view/screens/home_screen.dart';
 import 'package:expense_manager/view/screens/settings_page.dart';
@@ -20,7 +20,7 @@ class GnavNavigationState extends State<GnavNavigation> {
   final gnav = Get.put(GnavController());
   final List<Widget> _screens = const [
     HomeScreen(),
-    AddExpensePage(),
+    AddTransaction(),
     AllTransactions(),
     Settings()
   ];
@@ -29,48 +29,40 @@ class GnavNavigationState extends State<GnavNavigation> {
   Widget build(BuildContext context) {
     //   final width = MediaQuery.sizeOf(context).width;
     //  final height = MediaQuery.sizeOf(context).height;
-    return SafeArea(
-      child: Scaffold(
-          bottomNavigationBar: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
+    return Scaffold(
+        bottomNavigationBar: GNav(
+          backgroundColor: Pallete.scaffoldBgColor,
+          activeColor: Pallete.purple,
+          gap: 5,
+          padding: const EdgeInsets.all(16),
+          tabs: const [
+            GButton(
+              icon: IconlyLight.home,
+              text: "Home",
             ),
-            child: GNav(
-              backgroundColor: Pallete.scaffoldBgColor,
-              activeColor: Pallete.purple,
-              gap: 7,
-              padding: const EdgeInsets.all(16),
-              tabs: const [
-                GButton(
-                  icon: IconlyLight.home,
-                  text: "Home",
-                ),
-                GButton(
-                  icon: IconlyLight.plus,
-                  text: "Add Transaction",
-                ),
-                GButton(
-                  icon: IconlyLight.time_circle,
-                  text: "History",
-                ),
-                GButton(
-                  icon: IconlyLight.setting,
-                  text: "Settings",
-                ),
-              ],
-              selectedIndex: gnav.currentIndex.value,
-              onTabChange: (index) {
-                gnav.changeIndex(index);
-                print(gnav.currentIndex.value);
-              },
+            GButton(
+              icon: IconlyLight.plus,
+              text: "Add Transaction",
             ),
+            GButton(
+              icon: IconlyLight.time_circle,
+              text: "History",
+            ),
+            GButton(
+              icon: IconlyLight.setting,
+              text: "Settings",
+            ),
+          ],
+          selectedIndex: gnav.currentIndex.value,
+          onTabChange: (index) {
+            gnav.changeIndex(index);
+          },
+        ),
+        body: Obx(
+          () => IndexedStack(
+            index: gnav.currentIndex.value,
+            children: _screens,
           ),
-          body: Obx(
-            () => IndexedStack(
-              index: gnav.currentIndex.value,
-              children: _screens,
-            ),
-          )),
-    );
+        ));
   }
 }

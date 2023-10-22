@@ -17,6 +17,7 @@ class _AllTransactionsState extends State<AllTransactions> {
     return Scaffold(
         body: ListView(
       children: [
+        SizedBox(height: height*0.05,),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

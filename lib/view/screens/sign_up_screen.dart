@@ -1,6 +1,6 @@
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/viewModel/controllers/text_field_controller.dart';
 import 'package:expense_manager/viewModel/methods/textStyle.dart';
-import 'package:expense_manager/viewModel/controllers/textfieldController.dart';
 import 'package:expense_manager/viewModel/methods/validators.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:expense_manager/viewModel/widgets/size.dart';
@@ -10,7 +10,6 @@ import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();

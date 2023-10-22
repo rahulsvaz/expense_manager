@@ -22,17 +22,13 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    //final width = MediaQuery.of(context).size.width;
 
     return Card(
-      
       elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: SizedBox(
         height: 80,
-        
-        
-       
         child: Center(
           child: ListTile(
             onTap: () {
@@ -47,19 +43,26 @@ class TransactionCard extends StatelessWidget {
               children: [
                 Text(
                   category,
-                  style:  TextStyle( fontSize: height*0.018, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: height * 0.018, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   '-₹ $amount',
-                  style:
-                       TextStyle(fontSize: height*0.018,
-                        color: Pallete.expenseBackGroundColor),
+                  style: TextStyle(
+                      fontSize: height * 0.018,
+                      color: Pallete.expenseBackGroundColor),
                 )
               ],
             ),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text(description ,style: TextStyle(fontSize: height*0.016), ), const Text('10,10 AM')],
+              children: [
+                Text(
+                  description,
+                  style: TextStyle(fontSize: height * 0.016),
+                ),
+                const Text('10,10 AM')
+              ],
             ),
           ),
         ),

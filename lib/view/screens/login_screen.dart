@@ -1,8 +1,8 @@
+import 'package:expense_manager/view/screens/g_nav.dart';
 import 'package:expense_manager/view/screens/home_screen.dart';
-import 'package:expense_manager/view/screens/sign_up_screen.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/viewModel/controllers/text_field_controller.dart';
 import 'package:expense_manager/viewModel/methods/textStyle.dart';
-import 'package:expense_manager/viewModel/controllers/textfieldController.dart';
 import 'package:expense_manager/viewModel/methods/validators.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:expense_manager/viewModel/widgets/size.dart';
@@ -12,7 +12,6 @@ import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final TextfieldController surffixController =
@@ -64,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                 const Height40(),
                 LoginSignUpButton(
                     onPressed: () {
-                      Get.to(HomeScreen());
+                      Get.to(const HomeScreen());
                       if (formKey.currentState!.validate()) {
                         Get.back();
                       }
@@ -80,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                 const Height20(),
                 GestureDetector(
                   onTap: () {
-                    Get.to(const SignUpScreen());
+                    Get.to(const GnavNavigation());
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

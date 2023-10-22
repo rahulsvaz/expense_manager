@@ -49,6 +49,10 @@ dependencies:
   slide_to_act: ^2.0.2
   iconly: ^1.0.1
   cool_dropdown: ^2.1.0
+  circular_menu: ^2.0.1
+  custom_floating_action_button: ^0.0.3
+  sliding_switch: ^1.1.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
