@@ -12,6 +12,7 @@ class AddExpensePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> items = [Container(),Container()];
     final width = Get.width;
     final height = Get.height;
     return Scaffold(
@@ -50,16 +51,12 @@ class AddExpensePage extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: height * 0.07,
+                      height: height * 0.03,
                     ),
-                    Container(
-                      width: width * 0.95,
-                      height: height * 0.07,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Pallete.lightGrey),
-                          borderRadius: BorderRadius.circular(17)),
+                   
+                    SizedBox(
+                      height: height * 0.02,
                     ),
-                    SizedBox(height: height * 0.02),
                     ConstrainedBox(
                       constraints: BoxConstraints(maxWidth: width * 0.95),
                       child: TextFormField(
@@ -75,12 +72,14 @@ class AddExpensePage extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.02),
                     AttachmentButton(width: width, height: height),
-                     SizedBox(height: height * 0.07),
+                    SizedBox(height: height * 0.07),
                     LoginSignUpButton(
                       onPressed: () {
                         Get.back();
-                        Get.snackbar('Expense Details Added', '',
-                         );
+                        Get.snackbar(
+                          'Expense Details Added',
+                          '',
+                        );
                       },
                       label: 'Continue',
                       buttonTextColor: Pallete.white,

@@ -1,5 +1,4 @@
 import 'package:expense_manager/view/screens/add_expense_page.dart';
-import 'package:expense_manager/view/screens/add_income_page.dart';
 import 'package:expense_manager/view/screens/all_transactions_page.dart';
 import 'package:expense_manager/view/screens/home_screen.dart';
 import 'package:expense_manager/view/screens/settings_page.dart';
@@ -12,16 +11,14 @@ class GnavNavigation extends StatefulWidget {
   const GnavNavigation({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
-  _GnavNavigationState createState() => _GnavNavigationState();
+  GnavNavigationState createState() => GnavNavigationState();
 }
 
-class _GnavNavigationState extends State<GnavNavigation> {
+class GnavNavigationState extends State<GnavNavigation> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = const [
     HomeScreen(),
-    AddIncomePage(),
     AddExpensePage(),
     AllTransactions(),
     Settings()
@@ -29,8 +26,8 @@ class _GnavNavigationState extends State<GnavNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
-    final height = MediaQuery.sizeOf(context).height;
+    //   final width = MediaQuery.sizeOf(context).width;
+    //  final height = MediaQuery.sizeOf(context).height;
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: Container(
@@ -50,12 +47,8 @@ class _GnavNavigationState extends State<GnavNavigation> {
                   text: "Home",
                 ),
                 GButton(
-                  icon: IconlyLight.arrow_down,
-                  text: "Add Income",
-                ),
-                GButton(
-                  icon: IconlyLight.arrow_up,
-                  text: "Add Expense",
+                  icon: IconlyLight.plus,
+                  text: "Add Transaction",
                 ),
                 GButton(
                   icon: IconlyLight.time_circle,
@@ -63,7 +56,7 @@ class _GnavNavigationState extends State<GnavNavigation> {
                 ),
                 GButton(
                   icon: IconlyLight.setting,
-                  text: "setting",
+                  text: "Settings",
                 ),
               ],
               selectedIndex: _currentIndex,
@@ -83,4 +76,3 @@ class _GnavNavigationState extends State<GnavNavigation> {
     );
   }
 }
- 

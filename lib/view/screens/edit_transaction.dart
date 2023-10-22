@@ -44,13 +44,14 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: Pallete.white,
-                        )),
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Pallete.white,
+                      ),
+                    ),
                     Text(
                       'Edit Transaction',
                       style: TextStyle(
@@ -58,7 +59,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
                           fontSize: width * 0.05,
                           fontWeight: FontWeight.bold),
                     ),
-                    Image.asset('assets/images/trash.png')
+                    Image.asset('assets/images/trash.png'),
                   ],
                 ),
               ),
