@@ -1,5 +1,5 @@
 import 'package:expense_manager/view/editTransaction/edit_transaction.dart';
-import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 import 'package:get/get_core/src/get_main.dart';

@@ -1,5 +1,5 @@
-import 'package:expense_manager/viewModel/constants/colors/colors.dart';
-import 'package:expense_manager/viewModel/controllers/transaction_screen_controller.dart';
+import 'package:expense_manager/view/constant/colors/colors.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/contoller/transaction_screen_controller.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/expense_widget.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/income_widget.dart';
 import 'package:flutter/material.dart';

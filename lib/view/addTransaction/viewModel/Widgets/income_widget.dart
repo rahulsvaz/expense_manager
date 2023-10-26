@@ -1,4 +1,4 @@
-import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/methods/border_decoration_addfielld.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/attachment_button.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/howMuch.dart';

@@ -1,5 +1,5 @@
 import 'package:expense_manager/view/login/login_screen.dart';
-import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 import 'package:get/get.dart';

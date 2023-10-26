@@ -1,4 +1,4 @@
-import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
   BoxDecoration homeScreenContainerDecoration() {
     return const BoxDecoration(

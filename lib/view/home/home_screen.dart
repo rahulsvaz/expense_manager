@@ -3,7 +3,7 @@ import 'package:expense_manager/view/allTransactions/all_transactions_page.dart'
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/income_expense_box.dart';
 

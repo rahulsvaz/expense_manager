@@ -1,5 +1,5 @@
 import 'package:expense_manager/view/StartScreen/start_screen.dart';
-import 'package:expense_manager/viewModel/constants/colors/colors.dart';
+import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/login/viewModel/validator/validators.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';
 import 'package:expense_manager/view/login/viewModel/widgets/text_form_field.dart';
