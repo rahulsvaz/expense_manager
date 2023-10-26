@@ -1,8 +1,8 @@
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
-import 'package:expense_manager/viewModel/methods/border_decoration_addfielld.dart';
-import 'package:expense_manager/viewModel/widgets/attachment_button.dart';
-import 'package:expense_manager/viewModel/widgets/howMuch.dart';
-import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
+import 'package:expense_manager/view/home/viewModel/methods/border_decoration_addfielld.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/Widgets/attachment_button.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/Widgets/howMuch.dart';
+import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,5 +1,5 @@
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
-import 'package:expense_manager/viewModel/widgets/transaction_card.dart';
+import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 
 class AllTransactions extends StatefulWidget {

@@ -1,7 +1,7 @@
-import 'package:expense_manager/view/screens/add_transaction.dart';
-import 'package:expense_manager/view/screens/all_transactions_page.dart';
-import 'package:expense_manager/view/screens/home_screen.dart';
-import 'package:expense_manager/view/screens/settings_page.dart';
+import 'package:expense_manager/view/addTransaction/add_transaction.dart';
+import 'package:expense_manager/view/allTransactions/all_transactions_page.dart';
+import 'package:expense_manager/view/home/home_screen.dart';
+import 'package:expense_manager/view/settings/settings_page.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/controllers/gnav_controller.dart';
 import 'package:flutter/material.dart';

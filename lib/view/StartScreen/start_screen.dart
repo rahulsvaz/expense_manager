@@ -1,4 +1,4 @@
-import 'package:expense_manager/view/screens/g_nav.dart';
+import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatefulWidget {

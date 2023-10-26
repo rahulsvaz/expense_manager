@@ -1,9 +1,8 @@
-import 'package:expense_manager/view/screens/home_screen.dart';
+import 'package:expense_manager/view/StartScreen/start_screen.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
-import 'package:expense_manager/viewModel/methods/validators.dart';
-import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
-import 'package:expense_manager/viewModel/widgets/size.dart';
-import 'package:expense_manager/viewModel/widgets/text_form_field.dart';
+import 'package:expense_manager/view/login/viewModel/validator/validators.dart';
+import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';
+import 'package:expense_manager/view/login/viewModel/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +10,7 @@ class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
+   // final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
 
     final formKey = GlobalKey<FormState>();
@@ -58,7 +57,7 @@ class LoginScreen extends StatelessWidget {
               ),
               LoginSignUpButton(
                   onPressed: () {
-                    Get.to(const HomeScreen());
+                    Get.to(const StartScreen());
                     if (formKey.currentState!.validate()) {
                       Get.back();
                     }
