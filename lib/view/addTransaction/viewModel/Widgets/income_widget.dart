@@ -1,3 +1,5 @@
+import 'package:expense_manager/view/addTransaction/viewModel/Widgets/date_button.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_button.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/methods/border_decoration_addfielld.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/attachment_button.dart';
@@ -47,12 +49,15 @@ class IncomeWidget extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-              const  Text('Drop Down for cat'),
+                  SizedBox(
+                    height: height * 0.05,
+                  ),
+                const DropDown(),
                   SizedBox(
                     height: height * 0.05,
                   ),
                   ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: width * 0.85),
+                    constraints: BoxConstraints(maxWidth: width * 0.80),
                     child: TextFormField(
                       maxLength: 50,
                       cursorColor: Pallete.grey,
@@ -65,9 +70,19 @@ class IncomeWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: height * 0.01),
-                  ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: width * 0.85),
-                      child: AttachmentButton(width: width, height: height)),
+                  Row(children: [
+                    SizedBox(
+                      width: width * 0.03,
+                    ),
+                    AttachmentButton(
+                      width: width * 0.55,
+                      height: height,
+                    ),
+                    SizedBox(
+                      width: width * 0.03,
+                    ),
+                    const DateButton()
+                  ]),
                   SizedBox(height: height * 0.03),
                   LoginSignUpButton(
                     onPressed: () {
