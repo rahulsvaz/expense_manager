@@ -1,5 +1,5 @@
 import 'package:expense_manager/view/screens/login_screen.dart';
-import 'package:expense_manager/view/screens/sign_up_screen.dart';
+import 'package:expense_manager/trash/sign_up_screen.dart';
 import 'package:expense_manager/viewModel/widgets/size.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';

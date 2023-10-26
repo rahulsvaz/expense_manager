@@ -52,6 +52,7 @@ dependencies:
   circular_menu: ^2.0.1
   custom_floating_action_button: ^0.0.3
   sliding_switch: ^1.1.0
+  flutter_onboarding_slider: ^1.0.11
   
 dev_dependencies:
   flutter_test:
@@ -93,6 +94,10 @@ flutter:
     - assets/images/logout.png
     - assets/images/settings.png
     - assets/images/wallet.png
+    - assets/images/onboarding/cash_hand.png
+    - assets/images/onboarding/control.png
+    - assets/images/onboarding/plan.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

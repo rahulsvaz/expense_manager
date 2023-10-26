@@ -28,6 +28,7 @@ class ExpenseWidget extends StatelessWidget {
             cursorColor: Pallete.white,
             decoration: InputDecoration(
               border: InputBorder.none,
+             // prefixText: '₹',
               hintText: '₹0',
               hintStyle:
                   TextStyle(fontSize: height * 0.11, color: Pallete.white),

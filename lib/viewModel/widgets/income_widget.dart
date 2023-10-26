@@ -1,6 +1,7 @@
 import 'package:expense_manager/viewModel/constants/colors/colors.dart';
 import 'package:expense_manager/viewModel/methods/border_decoration_addfielld.dart';
 import 'package:expense_manager/viewModel/widgets/attachment_button.dart';
+import 'package:expense_manager/viewModel/widgets/drop_down_button.dart';
 import 'package:expense_manager/viewModel/widgets/howMuch.dart';
 import 'package:expense_manager/viewModel/widgets/login_sign_up_button.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,7 @@ class IncomeWidget extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  const DropDown(),
                   SizedBox(
                     height: height * 0.05,
                   ),
