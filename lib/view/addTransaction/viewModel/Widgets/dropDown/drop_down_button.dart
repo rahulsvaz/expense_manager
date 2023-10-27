@@ -10,10 +10,10 @@ class DropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
-    final dropDownController = Get.put(DropDownController());
-
+    final dropDownController = Get.put(
+      DropDownController(),
+    );
     //Category selectedCategory = Category.bills;
-
     return Container(
       width: width * 0.80,
       height: height * 0.07,
@@ -23,24 +23,24 @@ class DropDown extends StatelessWidget {
       ),
       child: Center(
         child: DropdownButton(
-            underline: const Text(''),
-            value: dropDownController.selectedCategory,
-            items: Category.values
-                .map(
-                  (category) => DropdownMenuItem(
-                    value: category,
-                    child: Text(
-                      category.name.toUpperCase(),
-                      style: const TextStyle(color: Pallete.grey),
-                    ),
+          underline: const Text(''),
+          value: dropDownController.selectedCategory,
+          items: Category.values
+              .map(
+                (category) => DropdownMenuItem(
+                  value: category,
+                  child: Text(
+                    category.name.toUpperCase(),
+                    style: const TextStyle(color: Pallete.grey),
                   ),
-                )
-                .toList(),
-            onChanged: (value) {
-              if (value != null) {
-                dropDownController.selectedCategory = value;
-              }
-            }),
+                ),
+              ).toList(),
+          onChanged: (value) {
+            if (value != null) {
+              dropDownController.selectedCategory = value;
+            }
+          },
+        ),
       ),
     );
   }

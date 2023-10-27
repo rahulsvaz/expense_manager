@@ -6,14 +6,33 @@ import 'package:expense_manager/view/login/viewModel/widgets/text_form_field.dar
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _ageController.dispose();
+    _phoneController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-   // final width = MediaQuery.sizeOf(context).width;
+    // final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
-
     final formKey = GlobalKey<FormState>();
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Form(
@@ -31,7 +50,8 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.04,
               ),
-              const UserTextfield(
+              UserTextfield(
+                controller: _nameController,
                 validator: nameValidator,
                 obscureText: false,
                 label: 'Name',
@@ -39,7 +59,8 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.04,
               ),
-              const UserTextfield(
+              UserTextfield(
+                controller: _emailController,
                 validator: emailValidator,
                 obscureText: false,
                 label: 'Email',
@@ -47,10 +68,20 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.04,
               ),
-              const UserTextfield(
+              UserTextfield(
+                controller: _ageController,
                 obscureText: false,
                 validator: ageValidator,
                 label: 'Age',
+              ),
+              SizedBox(
+                height: height * 0.04,
+              ),
+              UserTextfield(
+                controller: _phoneController,
+                obscureText: false,
+                validator: phoneValidator,
+                label: 'Phone',
               ),
               SizedBox(
                 height: height * 0.04,
@@ -71,4 +102,6 @@ class LoginScreen extends StatelessWidget {
       ),
     ));
   }
+
+  vo() {}
 }

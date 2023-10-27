@@ -1,4 +1,3 @@
-
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -9,9 +8,11 @@ class UserTextfield extends StatelessWidget {
   final bool obscureText;
   final IconButton? surffix;
   final String? Function(String?)? validator;
+  final TextEditingController controller;
 
   const UserTextfield(
       {super.key,
+      required this.controller,
       this.label,
       required this.obscureText,
       this.surffix,
@@ -22,8 +23,8 @@ class UserTextfield extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(),
       width: Get.width * 0.79,
-      
       child: TextFormField(
+        controller: controller,
         validator: validator,
         style: const TextStyle(color: Pallete.textFieldColor),
         obscureText: obscureText,
