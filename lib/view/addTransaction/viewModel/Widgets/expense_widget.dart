@@ -52,12 +52,12 @@ class ExpenseWidget extends StatelessWidget {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                  DropDown(),
+                  const DropDown(),
                   SizedBox(
                     height: height * 0.02,
                   ),
                   ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: width * 0.85),
+                    constraints: BoxConstraints(maxWidth: width * 0.80),
                     child: TextFormField(
                       maxLength: 50,
                       cursorColor: Pallete.grey,
@@ -69,13 +69,13 @@ class ExpenseWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: height * 0.02),
+                  SizedBox(height: height * 0.01),
                   Row(children: [
                     SizedBox(
-                      width: width * 0.03,
+                      width: width * 0.05,
                     ),
                     AttachmentButton(
-                      width: width * 0.55,
+                      width: width * 0.50,
                       height: height,
                     ),
                     SizedBox(

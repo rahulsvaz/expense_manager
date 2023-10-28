@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:expense_manager/model/repository/userModel/contollers/user_controller.dart';
-import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';
@@ -10,7 +8,6 @@ import 'package:expense_manager/view/login/viewModel/widgets/text_form_field.dar
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
@@ -20,6 +17,7 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
@@ -33,16 +31,11 @@ class _CreateAccountState extends State<CreateAccount> {
     _emailController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
-    Box userBox = Hive.box<User>('UserBox');
     final userController = Get.put(UserController());
-
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -173,37 +166,39 @@ class _CreateAccountState extends State<CreateAccount> {
                         backgroundColor: Pallete.purple)),
               ),
               Positioned(
-                  left: 0,
-                  right: 0,
-                  top: height * 0.85,
-                  child: Obx(
-                    () => TextButton(
-                        onPressed: () {
-                          Get.defaultDialog(
-                              title: 'Select Image Source',
-                              middleText: '',
-                              textCancel: 'Camera',
-                              textConfirm: 'Gallery',
-                              onCancel: () {
-                                userController.pickUserImageWithCamera();
-                              },
-                              onConfirm: () {
-                                userController.pickUserImage();
-                                Get.back();
-                              });
-                        },
-                        child: userController.imagePath.isEmpty
-                            ? const Text(
-                                'add user image??',
-                                style: TextStyle(
-                                    color: Pallete.purple, fontSize: 14),
-                              )
-                            : const Text(
-                                'change user image??',
-                                style: TextStyle(
-                                    color: Pallete.purple, fontSize: 14),
-                              )),
-                  ))
+                left: 0,
+                right: 0,
+                top: height * 0.85,
+                child: Obx(
+                  () => TextButton(
+                    onPressed: () {
+                      Get.defaultDialog(
+                          title: 'Select Image Source',
+                          middleText: '',
+                          textCancel: 'Camera',
+                          textConfirm: 'Gallery',
+                          onCancel: () {
+                            userController.pickUserImageWithCamera();
+                          },
+                          onConfirm: () {
+                            userController.pickUserImage();
+                            Get.back();
+                          });
+                    },
+                    child: userController.imagePath.isEmpty
+                        ? const Text(
+                            'add user image??',
+                            style:
+                                TextStyle(color: Pallete.purple, fontSize: 14),
+                          )
+                        : const Text(
+                            'change user image??',
+                            style:
+                                TextStyle(color: Pallete.purple, fontSize: 14),
+                          ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

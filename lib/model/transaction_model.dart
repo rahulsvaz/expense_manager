@@ -1,7 +1,4 @@
-class Transaction {
-
-  
-}
+class Transaction {}
 
 enum Category {
   food,
@@ -31,3 +28,7 @@ enum Month {
   october,
   december
 }
+
+enum TransactionType { expense, income }
+
+

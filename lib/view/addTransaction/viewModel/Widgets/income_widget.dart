@@ -50,11 +50,11 @@ class IncomeWidget extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: height * 0.05,
+                    height: height * 0.03,
                   ),
                 const DropDown(),
                   SizedBox(
-                    height: height * 0.05,
+                    height: height * 0.02,
                   ),
                   ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: width * 0.80),
@@ -72,10 +72,10 @@ class IncomeWidget extends StatelessWidget {
                   SizedBox(height: height * 0.01),
                   Row(children: [
                     SizedBox(
-                      width: width * 0.03,
+                      width: width * 0.05,
                     ),
                     AttachmentButton(
-                      width: width * 0.55,
+                      width: width * 0.50,
                       height: height,
                     ),
                     SizedBox(
@@ -83,7 +83,7 @@ class IncomeWidget extends StatelessWidget {
                     ),
                     const DateButton()
                   ]),
-                  SizedBox(height: height * 0.03),
+                  SizedBox(height: height * 0.04),
                   LoginSignUpButton(
                     onPressed: () {
                       Get.back();

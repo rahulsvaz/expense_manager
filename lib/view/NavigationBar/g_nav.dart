@@ -1,9 +1,9 @@
 import 'package:expense_manager/view/addTransaction/add_transaction.dart';
 import 'package:expense_manager/view/allTransactions/all_transactions_page.dart';
 import 'package:expense_manager/view/home/home_screen.dart';
-import 'package:expense_manager/view/settings/settings_page.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/NavigationBar/controller/gnav_controller.dart';
+import 'package:expense_manager/view/settings/settings_page_.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -22,7 +22,7 @@ class GnavNavigationState extends State<GnavNavigation> {
     HomeScreen(),
     AddTransaction(),
     AllTransactions(),
-    Settings()
+    SettingsPage()
   ];
 
   @override
