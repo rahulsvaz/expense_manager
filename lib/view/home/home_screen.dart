@@ -1,11 +1,12 @@
-import 'package:expense_manager/view/addTransaction/add_transaction.dart';
-import 'package:expense_manager/view/allTransactions/all_transactions_page.dart';
+import 'dart:io';
+import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/income_expense_box.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    Box userBox = Hive.box<User>('UserBox');
+    User currentUser = userBox.getAt(0);
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
 
@@ -35,15 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(AddTransaction());
-                      },
-                      child: CircleAvatar(
-                        radius: height * 0.02,
-                        backgroundImage: const AssetImage(
-                          'assets/images/user.jpeg',
-                        ),
+                    CircleAvatar(
+                      radius: height * 0.02,
+                      backgroundImage: FileImage(
+                        File(currentUser.imageUrl),
                       ),
                     ),
                     SizedBox(
@@ -107,10 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                     fontSize: height * 0.02, fontWeight: FontWeight.bold),
               ),
-              GestureDetector(
-                  onTap: () {
-                    Get.to(const AllTransactions());
-                  },
+              TextButton(
+                  onPressed: () {},
                   child: Text(
                     'See All',
                     style: TextStyle(
