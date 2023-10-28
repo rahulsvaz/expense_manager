@@ -1,6 +1,8 @@
+import 'package:expense_manager/view/allTransactions/Widgets/dropDown/drop_down_month.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 
 class AllTransactions extends StatefulWidget {
   const AllTransactions({super.key});
@@ -17,7 +19,9 @@ class _AllTransactionsState extends State<AllTransactions> {
     return Scaffold(
         body: ListView(
       children: [
-        SizedBox(height: height*0.05,),
+        SizedBox(
+          height: height * 0.05,
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,19 +37,14 @@ class _AllTransactionsState extends State<AllTransactions> {
                 children: [
                   Container(
                     height: height * 0.05,
-                    width: width * 0.24,
+                    width: width * 0.29,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(height * 0.50),
                         border: Border.all(color: Pallete.lightGrey)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/arrow-down.png'),
-                        const Text('Month')
-                      ],
-                    ),
+                    child: const Center(child: DropDownMonth()),
                   ),
-                  Image.asset('assets/images/menuIcon.png')
+                  IconButton(
+                      onPressed: () {}, icon: const Icon(IconlyBold.filter_2))
                 ],
               ),
             ),
