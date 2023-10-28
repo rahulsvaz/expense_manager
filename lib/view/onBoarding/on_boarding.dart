@@ -1,4 +1,4 @@
-import 'package:expense_manager/view/login/login_screen.dart';
+import 'package:expense_manager/view/createAccountPage/create_account.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
@@ -11,7 +11,7 @@ class OnboardingScreen extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
     return OnBoardingSlider(
       onFinish: () {
-        Get.to(const LoginScreen());
+        Get.to(const CreateAccount());
       },
       headerBackgroundColor: Pallete.scaffoldBgColor,
       finishButtonText: 'Create User',

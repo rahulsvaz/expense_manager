@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/StartScreen/start_screen.dart';
+import 'package:expense_manager/view/createAccountPage/create_account.dart';
 import 'package:expense_manager/view/onBoarding/on_boarding.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
           useMaterial3: true, scaffoldBackgroundColor: Pallete.scaffoldBgColor),
-      home: Hive.box<User>('UserBox').isEmpty
+      home:
+      
+      
+      
+       Hive.box<User>('UserBox').isEmpty
           ? const OnboardingScreen()
           : const StartScreen(),
     );

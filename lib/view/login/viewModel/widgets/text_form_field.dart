@@ -6,7 +6,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 class UserTextfield extends StatelessWidget {
   final String? label;
   final bool obscureText;
-  final IconButton? surffix;
+  final Icon? prefix;
   final String? Function(String?)? validator;
   final TextEditingController controller;
 
@@ -15,7 +15,7 @@ class UserTextfield extends StatelessWidget {
       required this.controller,
       this.label,
       required this.obscureText,
-      this.surffix,
+      this.prefix,
       required this.validator});
 
   @override
@@ -30,7 +30,7 @@ class UserTextfield extends StatelessWidget {
         obscureText: obscureText,
         cursorColor: Colors.grey,
         decoration: InputDecoration(
-            suffixIcon: surffix,
+           prefixIcon: prefix,
             label: Text(
               label.toString(),
               style: const TextStyle(color: Pallete.hintTextColor),

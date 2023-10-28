@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/contollers/user_controller.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
+import 'package:expense_manager/view/createAccountPage/create_account.dart';
 import 'package:expense_manager/view/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -123,10 +124,11 @@ class Settings extends StatelessWidget {
                             middleText: 'Your all data  will be deleted',
                             confirm: TextButton(
                               onPressed: () {
-                                userBox.deleteAt(0);
-                                Get.replace(
-                                  const LoginScreen(),
+                              
+                                Get.offAll(
+                                  const CreateAccount(),
                                 );
+                                  userBox.delete(0);
                               },
                               child: const Text('Yes'),
                             ),
