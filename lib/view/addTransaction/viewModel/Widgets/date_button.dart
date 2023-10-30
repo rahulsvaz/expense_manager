@@ -1,4 +1,4 @@
-import 'package:expense_manager/view/addTransaction/viewModel/contoller/date_controller.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/controller/date_controller.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,11 +21,13 @@ class DateButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Obx(
-            () => Text(
-              dateController.formattedDate.value,
-              style: TextStyle(color: Pallete.grey, fontSize: width * 0.03),
-            ),
+          GetBuilder<DateController>(
+            builder: (controller) {
+              return Text(
+                controller.formattedDate,
+                style: TextStyle(fontSize: width * 0.03),
+              );
+            },
           ),
           IconButton(
             onPressed: () {
@@ -42,4 +44,3 @@ class DateButton extends StatelessWidget {
     );
   }
 }
-

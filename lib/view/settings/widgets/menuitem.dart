@@ -24,8 +24,7 @@ class SettingsMenuItems extends StatelessWidget {
           borderRadius: BorderRadius.circular(height * 0.04)),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius:
-                BorderRadius.all(Radius.circular(height * .2))),
+            borderRadius: BorderRadius.all(Radius.circular(height * .2))),
         width: width * 0.8,
         height: height * 0.28,
         child: ListView(
@@ -33,44 +32,35 @@ class SettingsMenuItems extends StatelessWidget {
             // MENU ITEMS
             ListTile(
               contentPadding: EdgeInsets.symmetric(
-                  horizontal: width * 0.08,
-                  vertical: height * 0.01),
+                  horizontal: width * 0.08, vertical: height * 0.01),
               leading: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(IconlyLight.edit)),
+                  onPressed: () {}, icon: const Icon(IconlyLight.edit)),
               trailing: Text(
                 'Edit Profile Information',
-                textAlign:TextAlign.end,
+                textAlign: TextAlign.end,
                 style: TextStyle(
-                    fontSize: width * 0.03,
-                    fontWeight: FontWeight.bold),
+                    fontSize: width * 0.03, fontWeight: FontWeight.bold),
               ),
             ),
             // NOTIFICATION
             ListTile(
               contentPadding: EdgeInsets.symmetric(
-                  horizontal: width * 0.08,
-                  vertical: height * 0.00),
+                  horizontal: width * 0.08, vertical: height * 0.00),
               leading: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(IconlyLight.notification)),
+                  onPressed: () {}, icon: const Icon(IconlyLight.notification)),
               trailing: Text(
                 'Change Notification Settings',
                 style: TextStyle(
-                    fontSize: width * 0.03,
-                    fontWeight: FontWeight.bold),
+                    fontSize: width * 0.03, fontWeight: FontWeight.bold),
               ),
             ),
             ListTile(
-            
               contentPadding: EdgeInsets.symmetric(
-                  horizontal: width * 0.08,
-                  vertical: height * 0.00),
+                  horizontal: width * 0.08, vertical: height * 0.00),
               leading: IconButton(
                   onPressed: () {
                     Get.defaultDialog(
-                      middleText:
-                          'Your all data  will be deleted',
+                      middleText: 'Your all data  will be deleted',
                       confirm: TextButton(
                         onPressed: () {
                           Get.offAll(
@@ -94,8 +84,7 @@ class SettingsMenuItems extends StatelessWidget {
               trailing: Text(
                 'Delete All Data And Logout',
                 style: TextStyle(
-                    fontSize: width * 0.03,
-                    fontWeight: FontWeight.bold),
+                    fontSize: width * 0.03, fontWeight: FontWeight.bold),
               ),
             ),
           ],

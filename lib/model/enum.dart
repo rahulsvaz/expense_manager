@@ -1,4 +1,3 @@
-class Transaction {}
 
 enum Category {
   food,

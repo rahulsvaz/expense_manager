@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/StartScreen/start_screen.dart';
 import 'package:expense_manager/view/onBoarding/on_boarding.dart';
@@ -16,7 +17,9 @@ void main() async {
   Directory directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
   Hive.registerAdapter<User>(UserAdapter());
+  Hive.registerAdapter(TransactionsAdapter());
   await Hive.openBox<User>('UserBox');
+  await Hive.openBox<Transactions>('TransactionBox');
   runApp(const MyApp());
 }
 

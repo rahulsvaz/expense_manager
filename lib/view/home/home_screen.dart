@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Box userBox = Hive.box<User>('UserBox');
+    Box transactionBox = Hive.box<Transactions>('TransactionBox');
     User currentUser = userBox.getAt(0);
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
@@ -114,24 +116,53 @@ class _HomeScreenState extends State<HomeScreen> {
                   ))
             ],
           ),
+
           Expanded(
-            child: ListView.builder(
-                padding: EdgeInsets.only(
-                    top: height * 0.03,
-                    left: width * 0.03,
-                    right: width * 0.03),
-                itemCount: 3,
-                addRepaintBoundaries: false,
-                itemBuilder: (context, index) {
-                  return const TransactionCard(
-                    logo: 'assets/images/food.png',
-                    category: 'Food',
-                    description: 'Dinner with family',
-                    amount: '500',
-                    time: '10:10 AM',
-                  );
+            child: ValueListenableBuilder(
+                valueListenable: transactionBox.listenable(),
+                builder: (context, transactionBox, child) {
+                  return ListView.builder(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: width * 0.03,
+                      ),
+                      itemCount:
+                          transactionBox.length < 4 ? transactionBox.length : 4,
+                      itemBuilder: (context, index) {
+                        Transactions transaction = transactionBox.getAt(index);
+
+                        if (transactionBox.isEmpty) {
+                          return const Center(
+                            child: Text('No Transaction Found'),
+                          );
+                        } else {
+                          return TransactionCard(
+                              logo: 'assets/images/food.png',
+                              category: transaction.category,
+                              description: transaction.description,
+                              amount: transaction.amount.toString(),
+                              time: transaction.dateAndTime.toString());
+                        }
+                      });
                 }),
-          ),
+          )
+          // Expanded(
+          //   child: ListView.builder(
+          //       padding: EdgeInsets.only(
+          //           top: height * 0.03,
+          //           left: width * 0.03,
+          //           right: width * 0.03),
+          //       itemCount:transactionBox.length ,
+          //       addRepaintBoundaries: false,
+          //       itemBuilder: (context, index) {
+          //         return const TransactionCard(
+          //           logo: 'assets/images/food.png',
+          //           category: 'Food',
+          //           description: 'Dinner with family',
+          //           amount: '500',
+          //           time: '10:10 AM',
+          //         );
+          //       }),
+          // ),
         ],
       ),
     );

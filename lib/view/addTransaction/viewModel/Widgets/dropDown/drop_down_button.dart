@@ -1,7 +1,7 @@
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_controller.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_manager/model/transaction_model.dart';
+import 'package:expense_manager/model/enum.dart';
 import 'package:get/get.dart';
 
 class DropDown extends StatelessWidget {

@@ -61,7 +61,7 @@ class TransactionCard extends StatelessWidget {
                   description,
                   style: TextStyle(fontSize: height * 0.016),
                 ),
-                const Text('10,10 AM')
+                 Text(time.toString())
               ],
             ),
           ),

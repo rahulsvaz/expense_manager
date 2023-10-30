@@ -17,7 +17,10 @@ class DateController extends GetxController {
     }
   }
 
-  RxString get formattedDate {
-    return formatter.format(selectedDate).obs;
+
+
+
+  String get formattedDate {    
+    return formatter.format(selectedDate);
   }
 }
