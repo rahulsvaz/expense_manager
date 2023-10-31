@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:expense_manager/model/enum.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
+import 'package:expense_manager/view/home/controllers/home_screen_controllers.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Box userBox = Hive.box<User>('UserBox');
     Box transactionBox = Hive.box<Transactions>('TransactionBox');
+    final homeScreenController = Get.put(HomeScreenControllers());
+    double income = homeScreenController.getTotalIncome();
+    double expense = homeScreenController.getTotalExpense();
+
     User currentUser = userBox.getAt(0);
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
@@ -75,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 Text(
-                  '₹ 9400',
+                  income.toString(),
                   style: TextStyle(
                       fontSize: height * 0.05, fontWeight: FontWeight.w700),
                 ),
@@ -83,20 +88,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: height * .04,
                 ),
                 // Income Expense
-                const Row(
+                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IncomeExpenseBox(
                       logo: 'assets/images/income.png',
                       backGroundColor: Pallete.incomeBackGroundColor,
                       label: 'Income',
-                      amount: '94079',
+                      amount: income.toString(),
                     ),
                     IncomeExpenseBox(
                         logo: 'assets/images/expense.png',
                         backGroundColor: Pallete.expenseBackGroundColor,
                         label: 'Expense',
-                        amount: '3300'),
+                        amount: expense.toString()),
                   ],
                 )
               ],
@@ -134,7 +139,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount:
                           transactionBox.length < 4 ? transactionBox.length : 4,
                       itemBuilder: (context, index) {
-                        Transactions transaction = transactionBox.getAt(index);
+                          int reversedIndex = transactionBox.length - 1 - index;
+                        Transactions transaction = transactionBox.getAt(reversedIndex);
+                       
 
                         if (transactionBox.isEmpty) {
                           return const Center(
@@ -143,11 +150,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         } else {
                           return GestureDetector(
                             onLongPress: () {
-                              transactionBox.deleteAt(index);
+                              transactionBox.deleteAt(reversedIndex);
                             },
                             child: TransactionCard(
-                              icon: Icon(categoryICons[transaction.category]),
-                              color: transaction.type=='expense'?Pallete.expenseBackGroundColor:Pallete.incomeBackGroundColor,
+                                icon: Icon(categoryICons[transaction.category]),
+                                color: transaction.type == 'expense'
+                                    ? Pallete.expenseBackGroundColor
+                                    : Pallete.incomeBackGroundColor,
                                 logo: 'assets/images/food.png',
                                 category: transaction.category,
                                 description: transaction.description,
