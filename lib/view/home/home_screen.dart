@@ -164,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 time: transaction.dateAndTime.toString()),
                           );
                         }
-                      });
+                      },);
                 }),
           )
         
@@ -173,3 +173,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+// test commit 
