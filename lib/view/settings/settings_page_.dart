@@ -33,8 +33,9 @@ class _SettingsPageState extends State<SettingsPage> {
               height: height * 0.27,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(width * 0.35),
-                      bottomRight: Radius.circular(width * 0.35)),
+                    bottomLeft: Radius.circular(width * 0.35),
+                    bottomRight: Radius.circular(width * 0.35),
+                  ),
                   color: Pallete.lightGrey),
             ),
           ),
@@ -44,7 +45,9 @@ class _SettingsPageState extends State<SettingsPage> {
             top: height * 0.14,
             child: Center(
               child: CircleAvatar(
-                backgroundImage: FileImage(File(currentUser.imageUrl)),
+                backgroundImage: FileImage(
+                  File(currentUser.imageUrl),
+                ),
                 radius: height * 0.09,
               ),
             ),
@@ -65,49 +68,56 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           Positioned(
-              top: height * .4,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: SettingsMenuItems(
-                    height: height, width: width, userBox: userBox),
-              )),
+            top: height * .4,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: SettingsMenuItems(
+                  height: height, width: width, userBox: userBox),
+            ),
+          ),
           Positioned(
-              left: 0,
-              right: 0,
-              top: height * 0.74,
-              child: Center(
-                  child: Text(
+            left: 0,
+            right: 0,
+            top: height * 0.74,
+            child: Center(
+              child: Text(
                 'Expensense',
                 style: TextStyle(
                   color: Pallete.grey,
                   fontSize: width * 0.05,
                 ),
-              ))),
+              ),
+            ),
+          ),
           Positioned(
-              left: 0,
-              right: 0,
-              top: height * 0.80,
-              child: Center(
-                  child: Text(
+            left: 0,
+            right: 0,
+            top: height * 0.80,
+            child: Center(
+              child: Text(
                 'By',
                 style: TextStyle(
                   color: Pallete.grey,
                   fontSize: width * 0.04,
                 ),
-              ))),
+              ),
+            ),
+          ),
           Positioned(
-              left: 0,
-              right: 0,
-              top: height * 0.85,
-              child: Center(
-                  child: Text(
+            left: 0,
+            right: 0,
+            top: height * 0.85,
+            child: Center(
+              child: Text(
                 'Rahul',
                 style: TextStyle(
                     color: Pallete.grey,
                     fontSize: width * 0.04,
                     fontWeight: FontWeight.bold),
-              )))
+              ),
+            ),
+          ),
         ],
       ),
     );

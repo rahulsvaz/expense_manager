@@ -85,7 +85,9 @@ class _AllTransactionsState extends State<AllTransactions> {
                       ),
                       itemCount: transactionBox.length,
                       itemBuilder: (context, index) {
-                        Transactions transaction = transactionBox.getAt(index)!;
+                                             int reversedIndex = transactionBox.length - 1 - index;
+
+                        Transactions transaction = transactionBox.getAt(reversedIndex)!;
                         if (transactionBox.isEmpty) {
                           return const Center(
                             child: Text('No Transaction Found'),
@@ -93,7 +95,7 @@ class _AllTransactionsState extends State<AllTransactions> {
                         } else {
                           return GestureDetector(
                             onLongPress: () {
-                              transactionBox.deleteAt(index);
+                              transactionBox.deleteAt(reversedIndex);
                             },
                             child: TransactionCard(
                               icon: Icon(categoryICons[transaction.category]),

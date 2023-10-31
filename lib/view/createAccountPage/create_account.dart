@@ -31,6 +31,7 @@ class _CreateAccountState extends State<CreateAccount> {
     _emailController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -108,7 +109,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         label: 'Email',
                         controller: _emailController,
                         obscureText: false,
-                        validator: nameValidator)),
+                        validator: emailValidator)),
               ),
               Positioned(
                 left: 0,
@@ -124,7 +125,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         label: 'Age',
                         controller: _ageController,
                         obscureText: false,
-                        validator: nameValidator)),
+                        validator: ageValidator)),
               ),
               Positioned(
                 left: 0,
@@ -139,7 +140,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       label: 'Phone',
                       controller: _phoneController,
                       obscureText: false,
-                      validator: nameValidator),
+                      validator: phoneValidator),
                 ),
               ),
               Positioned(
@@ -175,15 +176,20 @@ class _CreateAccountState extends State<CreateAccount> {
                       Get.defaultDialog(
                           title: 'Select Image Source',
                           middleText: '',
-                          textCancel: 'Camera',
-                          textConfirm: 'Gallery',
-                          onCancel: () {
-                            userController.pickUserImageWithCamera();
-                          },
-                          onConfirm: () {
-                            userController.pickUserImage();
-                            Get.back();
-                          });
+                          confirm: TextButton(
+                            onPressed: () {
+                              userController.pickUserImageWithCamera();
+                              Get.back();
+                            },
+                            child: const Text('Camera'),
+                          ),
+                          cancel: TextButton(
+                              onPressed: () {
+                                userController.pickUserImage();
+                                Get.back();
+                              },
+                              child: const Text('Gallery')),
+                          onConfirm: () {});
                     },
                     child: userController.imagePath.isEmpty
                         ? const Text(

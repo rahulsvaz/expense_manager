@@ -30,15 +30,17 @@ class UserTextfield extends StatelessWidget {
         obscureText: obscureText,
         cursorColor: Colors.grey,
         decoration: InputDecoration(
-           prefixIcon: prefix,
-            label: Text(
-              label.toString(),
-              style: const TextStyle(color: Pallete.hintTextColor),
-            ),
-            focusedErrorBorder: borderDecoration(),
-            errorBorder: borderDecoration(),
-            enabledBorder: borderDecoration(),
-            focusedBorder: borderDecoration()),
+          errorStyle: const TextStyle(color: Pallete.purple),
+          prefixIcon: prefix,
+          label: Text(
+            label.toString(),
+            style: const TextStyle(color: Pallete.hintTextColor),
+          ),
+          focusedErrorBorder: borderDecoration(),
+          errorBorder: borderDecoration(),
+          enabledBorder: borderDecoration(),
+          focusedBorder: borderDecoration(),
+        ),
       ),
     );
   }

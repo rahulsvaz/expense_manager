@@ -6,7 +6,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
 class TransactionDetails extends StatelessWidget {
-  const TransactionDetails({super.key});
+  final String amount;
+  final String description;
+  final String dateAndTime;
+
+   const TransactionDetails({required this.amount  ,required this.dateAndTime,required this.description, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +66,7 @@ class TransactionDetails extends StatelessWidget {
             Positioned(
               top: height * 0.14,
               child: Text(
-                '₹350',
+                amount,
                 style: TextStyle(
                     color: Pallete.white,
                     fontSize: height * 0.07,
@@ -72,7 +76,7 @@ class TransactionDetails extends StatelessWidget {
             Positioned(
               top: height * 0.23,
               child: Text(
-                'Buy Some food',
+                description,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Pallete.white,
@@ -83,7 +87,7 @@ class TransactionDetails extends StatelessWidget {
             Positioned(
               top: height * .27,
               child: Text(
-                'Saturday 4 June 2021 10:10 am',
+                dateAndTime,
                 style: TextStyle(
                   color: Pallete.white,
                   fontSize: height * 0.02,
