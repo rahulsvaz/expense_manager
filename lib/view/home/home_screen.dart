@@ -23,11 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
     Box userBox = Hive.box<User>('UserBox');
     Box transactionBox = Hive.box<Transactions>('TransactionBox');
     final homeScreenController = Get.put(HomeScreenControllers());
+    double income = homeScreenController.getTotalIncome();
+    double expense = homeScreenController.getTotalExpense();
+
     User currentUser = userBox.getAt(0);
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
-    double income = homeScreenController.getTotalIncome();
-    double expense = homeScreenController.getTotalExpense();
 
     return Scaffold(
       body: Column(
@@ -79,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 Text(
-                income.toString(),
+                  income.toString(),
                   style: TextStyle(
                       fontSize: height * 0.05, fontWeight: FontWeight.w700),
                 ),
@@ -96,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: 'Income',
                       amount: income.toString(),
                     ),
-                     IncomeExpenseBox(
+                    IncomeExpenseBox(
                         logo: 'assets/images/expense.png',
                         backGroundColor: Pallete.expenseBackGroundColor,
                         label: 'Expense',
@@ -126,49 +127,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   ))
             ],
           ),
+
           Expanded(
             child: ValueListenableBuilder(
-              valueListenable: transactionBox.listenable(),
-              builder: (context, transactionBox, child) {
-                return ListView.builder(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: width * 0.03,
-                  ),
-                  itemCount:
-                      transactionBox.length < 4 ? transactionBox.length : 4,
+                valueListenable: transactionBox.listenable(),
+                builder: (context, transactionBox, child) {
+                  return ListView.builder(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: width * 0.03,
+                      ),
+                      itemCount:
+                          transactionBox.length < 4 ? transactionBox.length : 4,
+                      itemBuilder: (context, index) {
+                          int reversedIndex = transactionBox.length - 1 - index;
+                        Transactions transaction = transactionBox.getAt(reversedIndex);
+                       
 
-                      
-                  itemBuilder: (context, index) {
-                     int reversedIndex = transactionBox.length - 1 - index;
-                    Transactions transaction = transactionBox.getAt(reversedIndex);
-
-                    if (transactionBox.isEmpty) {
-                      return const Center(
-                        child: Text('No Transaction Found'),
-                      );
-                    } else {
-                      return GestureDetector(
-                        onLongPress: () {
-                          transactionBox.deleteAt(reversedIndex);
-                        },
-                        child: TransactionCard(
-                          icon: Icon(categoryICons[transaction.category]),
-                          color: transaction.type == 'expense'
-                              ? Pallete.expenseBackGroundColor
-                              : Pallete.incomeBackGroundColor,
-                          logo: 'assets/images/food.png',
-                          category: transaction.category,
-                          description: transaction.description,
-                          amount: transaction.amount.toString(),
-                          time: transaction.dateAndTime.toString(),
-                        ),
-                      );
-                    }
-                  },
-                );
-              },
-            ),
-          ),
+                        if (transactionBox.isEmpty) {
+                          return const Center(
+                            child: Text('No Transaction Found'),
+                          );
+                        } else {
+                          return GestureDetector(
+                            onLongPress: () {
+                              transactionBox.deleteAt(reversedIndex);
+                            },
+                            child: TransactionCard(
+                                icon: Icon(categoryICons[transaction.category]),
+                                color: transaction.type == 'expense'
+                                    ? Pallete.expenseBackGroundColor
+                                    : Pallete.incomeBackGroundColor,
+                                logo: 'assets/images/food.png',
+                                category: transaction.category,
+                                description: transaction.description,
+                                amount: transaction.amount.toString(),
+                                time: transaction.dateAndTime.toString()),
+                          );
+                        }
+                      },);
+                }),
+          )
+        
         ],
       ),
     );

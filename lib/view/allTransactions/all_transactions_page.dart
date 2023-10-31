@@ -69,17 +69,16 @@ class _AllTransactionsState extends State<AllTransactions> {
             height: height * 0.01,
           ),
           SizedBox(
-            height: height*.74,
+            height: height * .74,
             child: ListView(
-          
               children: [
-                
                 ValueListenableBuilder(
                   valueListenable: transactionBox.listenable(),
                   builder: (context, Box<Transactions> transactionBox, child) {
                     return ListView.builder(
-                      shrinkWrap: true, 
-                      physics:const  NeverScrollableScrollPhysics(), // Added this line
+                      shrinkWrap: true,
+                      physics:
+                          const NeverScrollableScrollPhysics(), // Added this line
                       padding: EdgeInsets.symmetric(
                         horizontal: width * 0.03,
                       ),
@@ -88,6 +87,12 @@ class _AllTransactionsState extends State<AllTransactions> {
                                              int reversedIndex = transactionBox.length - 1 - index;
 
                         Transactions transaction = transactionBox.getAt(reversedIndex)!;
+
+                        int reversedIndex = transactionBox.length - 1 - index;
+
+                        Transactions transaction =
+                            transactionBox.getAt(reversedIndex)!;
+
                         if (transactionBox.isEmpty) {
                           return const Center(
                             child: Text('No Transaction Found'),

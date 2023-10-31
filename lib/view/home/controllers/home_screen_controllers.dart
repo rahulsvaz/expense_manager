@@ -13,6 +13,7 @@ class HomeScreenControllers extends GetxController {
 
       if (addedTransactions.type == 'income') {
         income += addedTransactions.amount;
+        income += addedTransactions.amount ;
       }
     }
     return income;
