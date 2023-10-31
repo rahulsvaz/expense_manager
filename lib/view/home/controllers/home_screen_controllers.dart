@@ -5,7 +5,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 class HomeScreenControllers extends GetxController {
   Box transactionBox = Hive.box<Transactions>('TransactionBox');
 
-
   double getTotalIncome() {
     double income = 0;
 
@@ -13,6 +12,7 @@ class HomeScreenControllers extends GetxController {
       Transactions addedTransactions = transactionBox.getAt(i);
 
       if (addedTransactions.type == 'income') {
+        income += addedTransactions.amount;
         income += addedTransactions.amount ;
       }
     }

@@ -164,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 time: transaction.dateAndTime.toString()),
                           );
                         }
-                      });
+                      },);
                 }),
           )
         

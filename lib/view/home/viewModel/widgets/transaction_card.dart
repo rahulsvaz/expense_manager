@@ -1,5 +1,4 @@
-import 'package:expense_manager/model/enum.dart';
-import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
+
 import 'package:expense_manager/view/viewTransaction/transaction_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -37,7 +36,7 @@ class TransactionCard extends StatelessWidget {
         child: Center(
           child: ListTile(
             onTap: () {
-              Get.to(const TransactionDetails());
+              Get.to( TransactionDetails(amount:amount ,dateAndTime: time,description: description,));
             },
             leading: icon,
             title: Row(
