@@ -167,24 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                 }),
           )
-          // Expanded(
-          //   child: ListView.builder(
-          //       padding: EdgeInsets.only(
-          //           top: height * 0.03,
-          //           left: width * 0.03,
-          //           right: width * 0.03),
-          //       itemCount:transactionBox.length ,
-          //       addRepaintBoundaries: false,
-          //       itemBuilder: (context, index) {
-          //         return const TransactionCard(
-          //           logo: 'assets/images/food.png',
-          //           category: 'Food',
-          //           description: 'Dinner with family',
-          //           amount: '500',
-          //           time: '10:10 AM',
-          //         );
-          //       }),
-          // ),
+        
         ],
       ),
     );
