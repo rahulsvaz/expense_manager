@@ -109,7 +109,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                       Transactions newTransaction =
                           transactionController.createNewExpense(
                               amount: amount,
-                              type: 'Expense',
+                              type:'expense',
                               dateAndTime: dateController.selectedDate,
                               category: categoryController
                                   .selectedCategory.value
@@ -117,10 +117,10 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                               imageUrl: '',
                               description:
                                   _descriptionController.text.toString(),
-                              transactionType: 'Expense');
+                             );
 
                       transactionController.addExpense(newTransaction);
-                      Get.offAll(GnavNavigation());
+                      Get.offAll(const GnavNavigation());
                     },
                     label: 'Add Expense',
                     buttonTextColor: Pallete.white,

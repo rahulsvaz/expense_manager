@@ -1,5 +1,6 @@
+import 'package:expense_manager/model/enum.dart';
+import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/viewTransaction/transaction_details.dart';
-import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -9,14 +10,18 @@ class TransactionCard extends StatelessWidget {
   final String description;
   final String amount;
   final String time;
+  final Color color;
+  final Icon icon;
 
   const TransactionCard({
     Key? key,
+    required this.color,
     required this.logo,
     required this.category,
     required this.description,
     required this.amount,
     required this.time,
+    required this.icon
   }) : super(key: key);
 
   @override
@@ -34,10 +39,7 @@ class TransactionCard extends StatelessWidget {
             onTap: () {
               Get.to(const TransactionDetails());
             },
-            leading: Image.asset(
-              logo,
-              height: height * 0.11,
-            ),
+            leading: icon,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -47,10 +49,8 @@ class TransactionCard extends StatelessWidget {
                       fontSize: height * 0.018, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '-₹ $amount',
-                  style: TextStyle(
-                      fontSize: height * 0.018,
-                      color: Pallete.expenseBackGroundColor),
+                  '₹ $amount',
+                  style: TextStyle(fontSize: height * 0.018, color: color),
                 )
               ],
             ),
@@ -61,7 +61,7 @@ class TransactionCard extends StatelessWidget {
                   description,
                   style: TextStyle(fontSize: height * 0.016),
                 ),
-                 Text(time.toString())
+                Text(time.toString())
               ],
             ),
           ),

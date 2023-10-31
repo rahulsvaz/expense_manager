@@ -2,6 +2,7 @@
 
 import 'package:hive_flutter/hive_flutter.dart';
 part 'transaction_model.g.dart';
+
 @HiveType(typeId: 2)
 class Transactions {
   @HiveField(0)
@@ -16,13 +17,13 @@ class Transactions {
   String description;
   @HiveField(5)
   String imageUrl;
-  
-  Transactions(
-      {required this.amount,
-      required this.type,
-      required this.dateAndTime,
-      required this.category,
-      required this.description,
-      required this.imageUrl,
-    });
+
+  Transactions({
+    required this.amount,
+    required this.type,
+    required this.dateAndTime,
+    required this.category,
+    required this.description,
+    required this.imageUrl,
+  });
 }

@@ -1,4 +1,6 @@
 
+import 'package:flutter/material.dart';
+
 enum Category {
   food,
   travel,
@@ -14,6 +16,9 @@ enum Category {
   others
 }
 
+const categoryICons = {
+Category.food : Icons.abc,
+};
 enum Month {
   january,
   february,

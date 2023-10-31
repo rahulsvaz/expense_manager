@@ -30,39 +30,40 @@ class GnavNavigationState extends State<GnavNavigation> {
     //   final width = MediaQuery.sizeOf(context).width;
     //  final height = MediaQuery.sizeOf(context).height;
     return Scaffold(
-        bottomNavigationBar: GNav(
-          backgroundColor: Pallete.scaffoldBgColor,
-          activeColor: Pallete.purple,
-          gap: 5,
-          padding: const EdgeInsets.all(16),
-          tabs: const [
-            GButton(
-              icon: IconlyLight.home,
-              text: "Home",
-            ),
-            GButton(
-              icon: IconlyLight.plus,
-              text: "Add Transaction",
-            ),
-            GButton(
-              icon: IconlyLight.time_circle,
-              text: "History",
-            ),
-            GButton(
-              icon: IconlyLight.setting,
-              text: "Settings",
-            ),
-          ],
-          selectedIndex: gnav.currentIndex.value,
-          onTabChange: (index) {
-            gnav.changeIndex(index);
-          },
-        ),
-        body: Obx(
-          () => IndexedStack(
-            index: gnav.currentIndex.value,
-            children: _screens,
+      bottomNavigationBar: GNav(
+        backgroundColor: Pallete.scaffoldBgColor,
+        activeColor: Pallete.purple,
+        gap: 5,
+        padding: const EdgeInsets.all(16),
+        tabs: const [
+          GButton(
+            icon: IconlyLight.home,
+            text: "Home",
           ),
-        ));
+          GButton(
+            icon: IconlyLight.plus,
+            text: "Add Transaction",
+          ),
+          GButton(
+            icon: IconlyLight.time_circle,
+            text: "History",
+          ),
+          GButton(
+            icon: IconlyLight.setting,
+            text: "Settings",
+          ),
+        ],
+        selectedIndex: gnav.currentIndex.value,
+        onTabChange: (index) {
+          gnav.changeIndex(index);
+        },
+      ),
+      body: Obx(
+        () => IndexedStack(
+          index: gnav.currentIndex.value,
+          children: _screens,
+        ),
+      ),
+    );
   }
 }

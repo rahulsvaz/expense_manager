@@ -1,5 +1,10 @@
+import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
+import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/date_button.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_button.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_controller.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/controller/add_transaction_controller.dart';
+import 'package:expense_manager/view/addTransaction/viewModel/controller/date_controller.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/methods/border_decoration_addfielld.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/attachment_button.dart';
@@ -8,8 +13,25 @@ import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class IncomeWidget extends StatelessWidget {
+class IncomeWidget extends StatefulWidget {
   const IncomeWidget({super.key});
+
+  @override
+  State<IncomeWidget> createState() => _IncomeWidgetState();
+}
+
+class _IncomeWidgetState extends State<IncomeWidget> {
+  final _amountController = TextEditingController();
+  final _descriptionController = TextEditingController();
+  final transactionController = Get.put(AddTransactionController());
+  final dateController = Get.put(DateController());
+  final categoryController = Get.put(DropDownController());
+  @override
+  void dispose() {
+    _amountController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +46,7 @@ class IncomeWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: width * 0.17),
           child: TextFormField(
+            controller: _amountController,
             keyboardType: TextInputType.number,
             style: const TextStyle(color: Pallete.white, fontSize: 80),
             showCursor: true,
@@ -52,13 +75,14 @@ class IncomeWidget extends StatelessWidget {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                const DropDown(),
+                  const DropDown(),
                   SizedBox(
                     height: height * 0.02,
                   ),
                   ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: width * 0.80),
                     child: TextFormField(
+                      controller: _descriptionController,
                       maxLength: 50,
                       cursorColor: Pallete.grey,
                       decoration: InputDecoration(
@@ -86,11 +110,20 @@ class IncomeWidget extends StatelessWidget {
                   SizedBox(height: height * 0.04),
                   LoginSignUpButton(
                     onPressed: () {
-                      Get.back();
-                      Get.snackbar(
-                        'Expense Details Added',
-                        '',
+                      final  amount =
+                          double.parse(_amountController.text.toString());
+                       Transactions newIncome =
+                          transactionController.createNewIncome(
+                        amount: amount,
+                        type: 'income',
+                        dateAndTime: dateController.selectedDate,
+                        category: categoryController.selectedCategory.value
+                            .toString(),
+                        imageUrl: '',
+                        description: _descriptionController.text.toString(),
                       );
+                      transactionController.addIncome(newIncome);
+                      Get.offAll(const GnavNavigation());
                     },
                     label: 'Add Income',
                     buttonTextColor: Pallete.white,

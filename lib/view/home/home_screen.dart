@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:expense_manager/model/enum.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
@@ -49,11 +50,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       width: width * 0.4,
                     ),
-                    Icon(
-                      Icons.notifications_active,
-                      size: height * 0.04,
-                      color: Pallete.purple,
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.note_add_rounded,
+                        size: height * 0.04,
+                        color: Pallete.purple,
+                      ),
                     )
+                    //
+                    //
                   ],
                 ),
                 //Second Row
@@ -135,12 +141,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Text('No Transaction Found'),
                           );
                         } else {
-                          return TransactionCard(
-                              logo: 'assets/images/food.png',
-                              category: transaction.category,
-                              description: transaction.description,
-                              amount: transaction.amount.toString(),
-                              time: transaction.dateAndTime.toString());
+                          return GestureDetector(
+                            onLongPress: () {
+                              transactionBox.deleteAt(index);
+                            },
+                            child: TransactionCard(
+                              icon: Icon(categoryICons[transaction.category]),
+                              color: transaction.type=='expense'?Pallete.expenseBackGroundColor:Pallete.incomeBackGroundColor,
+                                logo: 'assets/images/food.png',
+                                category: transaction.category,
+                                description: transaction.description,
+                                amount: transaction.amount.toString(),
+                                time: transaction.dateAndTime.toString()),
+                          );
                         }
                       });
                 }),

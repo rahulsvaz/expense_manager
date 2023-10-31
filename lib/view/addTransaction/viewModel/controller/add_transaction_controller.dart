@@ -21,7 +21,25 @@ class AddTransactionController extends GetxController {
       required String category,
       required String imageUrl,
       required String description,
-      required String transactionType}) {
+     }) {
+    return Transactions(
+        amount: amount,
+        type: type,
+        dateAndTime: dateAndTime,
+        category: category,
+        description: description,
+        imageUrl: imageUrl);
+  }
+
+
+  Transactions createNewIncome(
+      {required double amount,
+      required String type,
+      required DateTime dateAndTime,
+      required String category,
+      required String imageUrl,
+      required String description,
+     }) {
     return Transactions(
         amount: amount,
         type: type,

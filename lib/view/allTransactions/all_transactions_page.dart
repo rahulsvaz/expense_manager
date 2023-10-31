@@ -1,11 +1,14 @@
+import 'package:expense_manager/model/enum.dart';
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/allTransactions/Widgets/dropDown/drop_down_month.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
-import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 class AllTransactions extends StatefulWidget {
-  const AllTransactions({super.key});
+  const AllTransactions({Key? key}) : super(key: key);
 
   @override
   State<AllTransactions> createState() => _AllTransactionsState();
@@ -14,96 +17,106 @@ class AllTransactions extends StatefulWidget {
 class _AllTransactionsState extends State<AllTransactions> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
-    final height = MediaQuery.sizeOf(context).height;
+    Box<Transactions> transactionBox = Hive.box<Transactions>('TransactionBox');
+
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-        body: ListView(
-      children: [
-        SizedBox(
-          height: height * 0.05,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: height * 0.02,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: height * 0.06,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.05,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: width * 0.05,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: height * 0.05,
-                    width: width * 0.29,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(height * 0.50),
-                        border: Border.all(color: Pallete.lightGrey)),
-                    child: const Center(child: DropDownMonth()),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: height * 0.05,
+                  width: width * 0.29,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(height * 0.05),
+                    border: Border.all(color: Pallete.lightGrey),
                   ),
-                  IconButton(
-                      onPressed: () {}, icon: const Icon(IconlyBold.filter_2))
-                ],
+                  child: const Center(child: DropDownMonth()),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(IconlyBold.filter_2),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: width * 0.04),
+            child: Text(
+              'All Transactions',
+              style: TextStyle(
+                fontSize: height * 0.026,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: height * 0.03,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: width * 0.04),
-              child: Text(
-                'Today',
-                style: TextStyle(
-                    fontSize: height * 0.026, fontWeight: FontWeight.bold),
-              ),
-            ),
-            SizedBox(
-              height: height * 0.01,
-            ),
-            SizedBox(
-              height: height * 0.33,
-              child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return const TransactionCard(
-                      logo: 'assets/images/food.png',
-                      category: 'Food',
-                      description: 'Dinner with family',
-                      amount: '500',
-                      time: '10:10 AM',
+          ),
+          SizedBox(
+            height: height * 0.01,
+          ),
+          SizedBox(
+            height: height*.74,
+            child: ListView(
+          
+              children: [
+                
+                ValueListenableBuilder(
+                  valueListenable: transactionBox.listenable(),
+                  builder: (context, Box<Transactions> transactionBox, child) {
+                    return ListView.builder(
+                      shrinkWrap: true, 
+                      physics:const  NeverScrollableScrollPhysics(), // Added this line
+                      padding: EdgeInsets.symmetric(
+                        horizontal: width * 0.03,
+                      ),
+                      itemCount: transactionBox.length,
+                      itemBuilder: (context, index) {
+                        Transactions transaction = transactionBox.getAt(index)!;
+                        if (transactionBox.isEmpty) {
+                          return const Center(
+                            child: Text('No Transaction Found'),
+                          );
+                        } else {
+                          return GestureDetector(
+                            onLongPress: () {
+                              transactionBox.deleteAt(index);
+                            },
+                            child: TransactionCard(
+                              icon: Icon(categoryICons[transaction.category]),
+                              color: transaction.type == 'expense'
+                                  ? Pallete.expenseBackGroundColor
+                                  : Pallete.incomeBackGroundColor,
+                              logo: 'assets/images/food.png',
+                              category: transaction.category,
+                              description: transaction.description,
+                              amount: transaction.amount.toString(),
+                              time: transaction.dateAndTime.toString(),
+                            ),
+                          );
+                        }
+                      },
                     );
-                  }),
+                  },
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.only(left: width * 0.04),
-              child: Text(
-                'Yesterday',
-                style: TextStyle(
-                    fontSize: height * 0.026, fontWeight: FontWeight.bold),
-              ),
-            ),
-            SizedBox(
-              height: height * 0.01,
-            ),
-            SizedBox(
-              height: height * 0.41,
-              child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return const TransactionCard(
-                      logo: 'assets/images/food.png',
-                      category: 'Food',
-                      description: 'Dinner with family',
-                      amount: '500',
-                      time: '10:10 AM',
-                    );
-                  }),
-            ),
-          ],
-        ),
-      ],
-    ));
+          ),
+        ],
+      ),
+    );
   }
 }
