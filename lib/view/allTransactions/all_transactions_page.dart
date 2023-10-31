@@ -84,10 +84,6 @@ class _AllTransactionsState extends State<AllTransactions> {
                       ),
                       itemCount: transactionBox.length,
                       itemBuilder: (context, index) {
-                                             int reversedIndex = transactionBox.length - 1 - index;
-
-                        Transactions transaction = transactionBox.getAt(reversedIndex)!;
-
                         int reversedIndex = transactionBox.length - 1 - index;
 
                         Transactions transaction =
