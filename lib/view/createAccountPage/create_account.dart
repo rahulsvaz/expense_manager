@@ -116,16 +116,17 @@ class _CreateAccountState extends State<CreateAccount> {
                 right: 0,
                 top: height * 0.55,
                 child: Center(
-                    child: UserTextfield(
-                        // ignore: prefer_const_constructors
-                        prefix: Icon(
-                          Icons.numbers_rounded,
-                          color: Pallete.grey,
-                        ),
-                        label: 'Age',
-                        controller: _ageController,
-                        obscureText: false,
-                        validator: ageValidator)),
+                  child: UserTextfield(
+                      // ignore: prefer_const_constructors
+                      prefix: Icon(
+                        Icons.numbers_rounded,
+                        color: Pallete.grey,
+                      ),
+                      label: 'Age',
+                      controller: _ageController,
+                      obscureText: false,
+                      validator: ageValidator),
+                ),
               ),
               Positioned(
                 left: 0,
@@ -159,7 +160,11 @@ class _CreateAccountState extends State<CreateAccount> {
                                 userController.imagePath.value);
                             userController
                                 .saveUser(userController.newUser!)
-                                .then(Get.offAll(const GnavNavigation()));
+                                .then(
+                                  Get.offAll(
+                                    const GnavNavigation(),
+                                  ),
+                                );
                           }
                         },
                         label: 'Create Account',

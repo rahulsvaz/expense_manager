@@ -11,24 +11,14 @@ import 'package:expense_manager/view/home/viewModel/methods/home_screen_containe
 import 'package:expense_manager/view/home/viewModel/widgets/income_expense_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Box userBox = Hive.box<User>('UserBox');
-    Box transactionBox = Hive.box<Transactions>('TransactionBox');
-    final homeScreenController = Get.put(HomeScreenControllers());
-    double income = homeScreenController.getTotalIncome();
-    double expense = homeScreenController.getTotalExpense();
+    final userBox = Hive.box<User>('UserBox');
+    final homeController = Get.put(HomeScreenControllers());
 
-    User currentUser = userBox.getAt(0);
-    final width = MediaQuery.sizeOf(context).width;
-    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Column(
@@ -48,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     CircleAvatar(
                       radius: height * 0.02,
-                      backgroundImage: FileImage(
-                        File(currentUser.imageUrl),
-                      ),
+                      // backgroundImage: FileImage(
+                      //   File(userBox.getAt(0)?imageUrl),
+                      // ),
                     ),
                     SizedBox(
                       width: width * 0.4,
@@ -62,9 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         size: height * 0.04,
                         color: Pallete.purple,
                       ),
-                    )
-                    //
-                    //
+                    ),
                   ],
                 ),
                 //Second Row
@@ -78,30 +66,36 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: height * 0.02,
                 ),
-
-                Text(
-                  income.toString(),
-                  style: TextStyle(
-                      fontSize: height * 0.05, fontWeight: FontWeight.w700),
-                ),
+                GetBuilder<HomeScreenControllers>(builder: (controller) {
+                  return Text(
+                    controller.totalBalance().toString(),
+                    style: TextStyle(
+                        fontSize: height * 0.05, fontWeight: FontWeight.w700),
+                  );
+                }),
                 SizedBox(
-                  height: height * .04,
+                  height: height * 0.04,
                 ),
                 // Income Expense
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IncomeExpenseBox(
-                      logo: 'assets/images/income.png',
-                      backGroundColor: Pallete.incomeBackGroundColor,
-                      label: 'Income',
-                      amount: income.toString(),
-                    ),
-                    IncomeExpenseBox(
+                    GetBuilder<HomeScreenControllers>(builder: (controller) {
+                      return IncomeExpenseBox(
+                        logo: 'assets/images/income.png',
+                        backGroundColor: Pallete.incomeBackGroundColor,
+                        label: 'Income',
+                        amount: homeController.getTotalIncome().toString(),
+                      );
+                    }),
+                    GetBuilder<HomeScreenControllers>(builder: (controller) {
+                      return IncomeExpenseBox(
                         logo: 'assets/images/expense.png',
                         backGroundColor: Pallete.expenseBackGroundColor,
                         label: 'Expense',
-                        amount: expense.toString()),
+                        amount: homeController.getTotalExpense().toString(),
+                      );
+                    })
                   ],
                 )
               ],
@@ -116,61 +110,70 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 'Recent Transactions',
                 style: TextStyle(
-                    fontSize: height * 0.02, fontWeight: FontWeight.bold),
+                  fontSize: height * 0.02,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'See All',
-                    style: TextStyle(
-                        color: Pallete.purple, fontSize: height * 0.02),
-                  ))
+                onPressed: () {},
+                child: Text(
+                  'See All',
+                  style: TextStyle(
+                    color: Pallete.purple,
+                    fontSize: height * 0.02,
+                  ),
+                ),
+              ),
             ],
           ),
-
           Expanded(
-            child: ValueListenableBuilder(
-                valueListenable: transactionBox.listenable(),
-                builder: (context, transactionBox, child) {
-                  return ListView.builder(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: width * 0.03,
+            child: GetBuilder<HomeScreenControllers>(
+              builder: (controller) {
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    int reversedIndex =
+                        controller.transactionList.length - 1 - index;
+                    Transactions transaction =
+                        controller.transactionList[reversedIndex];
+                    return GestureDetector(
+                      onLongPress: () {
+                        controller.deleteTransaction(index);
+                        controller.totalBalance();
+                        controller.getTotalIncome();
+                        controller.getTotalExpense();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: TransactionCard(
+                          color: transaction.type == 'expense'
+                              ? Pallete.expenseBackGroundColor
+                              : Pallete.incomeBackGroundColor,
+                          logo: 'assets/images/food.png',
+                          category: transaction.category,
+                          description: transaction.description,
+                          amount: transaction.amount.toString(),
+                          time: transaction.dateAndTime.toString(),
+                          icon: transaction.type == 'expense'
+                              ? const Icon(
+                                  Icons.arrow_circle_up,
+                                  color: Pallete.expenseBackGroundColor,
+                                )
+                              : const Icon(
+                                  Icons.arrow_circle_down,
+                                  color: Pallete.incomeBackGroundColor,
+                                ),
+                        ),
                       ),
-                      itemCount:
-                          transactionBox.length < 4 ? transactionBox.length : 4,
-                      itemBuilder: (context, index) {
-                          int reversedIndex = transactionBox.length - 1 - index;
-                        Transactions transaction = transactionBox.getAt(reversedIndex);
-                       
-
-                        if (transactionBox.isEmpty) {
-                          return const Center(
-                            child: Text('No Transaction Found'),
-                          );
-                        } else {
-                          return GestureDetector(
-                            onLongPress: () {
-                              transactionBox.deleteAt(reversedIndex);
-                            },
-                            child: TransactionCard(
-                                icon: Icon(categoryICons[transaction.category]),
-                                color: transaction.type == 'expense'
-                                    ? Pallete.expenseBackGroundColor
-                                    : Pallete.incomeBackGroundColor,
-                                logo: 'assets/images/food.png',
-                                category: transaction.category,
-                                description: transaction.description,
-                                amount: transaction.amount.toString(),
-                                time: transaction.dateAndTime.toString()),
-                          );
-                        }
-                      },);
-                }),
-          )
-        
+                    );
+                  },
+                  itemCount:
+                      controller.listLength > 4 ? 4 : controller.listLength,
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 }
-// test commit 

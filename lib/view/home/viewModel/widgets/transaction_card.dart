@@ -13,7 +13,7 @@ class TransactionCard extends StatelessWidget {
   final Icon icon;
 
   const TransactionCard({
-    Key? key,
+    super.key,
     required this.color,
     required this.logo,
     required this.category,
@@ -21,7 +21,7 @@ class TransactionCard extends StatelessWidget {
     required this.amount,
     required this.time,
     required this.icon
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

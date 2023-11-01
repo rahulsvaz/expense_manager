@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
-import 'package:expense_manager/view/StartScreen/start_screen.dart';
+import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/onBoarding/on_boarding.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,7 +23,6 @@ void main() async {
   await Hive.openBox<Transactions>('TransactionBox');
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -32,10 +32,10 @@ class MyApp extends StatelessWidget {
       title: 'Expensense',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
-          useMaterial3: true, scaffoldBackgroundColor: Pallete.scaffoldBgColor),
+       useMaterial3: true, scaffoldBackgroundColor: Pallete.scaffoldBgColor),
       home: Hive.box<User>('UserBox').isEmpty
           ? const OnboardingScreen()
-          : const StartScreen(),
+          : const GnavNavigation(),
     );
   }
 }

@@ -10,7 +10,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconly/iconly.dart';
 
 class GnavNavigation extends StatefulWidget {
-  const GnavNavigation({Key? key}) : super(key: key);
+  const GnavNavigation({super.key});
 
   @override
   GnavNavigationState createState() => GnavNavigationState();
@@ -18,7 +18,7 @@ class GnavNavigation extends StatefulWidget {
 
 class GnavNavigationState extends State<GnavNavigation> {
   final gnav = Get.put(GnavController());
-  final List<Widget> _screens = const [
+  final List<Widget> _screens =  [
     HomeScreen(),
     AddTransaction(),
     AllTransactions(),

@@ -9,9 +9,7 @@ class TransactionDetails extends StatelessWidget {
   final String amount;
   final String description;
   final String dateAndTime;
-
    const TransactionDetails({required this.amount  ,required this.dateAndTime,required this.description, super.key});
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
