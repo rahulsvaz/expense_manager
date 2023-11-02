@@ -1,12 +1,11 @@
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/date_button.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_button.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_controller.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/controller/add_transaction_controller.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/controller/date_controller.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/view/home/viewModel/methods/border_decoration_addfielld.dart';
+import 'package:expense_manager/view/home/viewModel/methods/border_decoration_add_field.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/attachment_button.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/howMuch.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';
@@ -75,7 +74,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                  const DropDown(),
+                  // const DropDown(),
                   SizedBox(
                     height: height * 0.02,
                   ),
@@ -117,8 +116,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                         amount: amount,
                         type: 'income',
                         dateAndTime: dateController.selectedDate,
-                        category: categoryController.selectedCategory.value
-                            .toString(),
+                        category: '',
                         imageUrl: '',
                         description: _descriptionController.text.toString(),
                       );

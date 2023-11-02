@@ -47,6 +47,7 @@ dependencies:
   hive_generator: ^2.0.1
   image_picker: ^1.0.4
   google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
   
 dev_dependencies:
   flutter_test:

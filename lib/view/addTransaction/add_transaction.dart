@@ -19,6 +19,8 @@ class _AddTransactionState extends State<AddTransaction> {
   @override
   Widget build(BuildContext context) {
     final widgetController = Get.put(TransactionScreenController());
+    final height = MediaQuery.sizeOf(context).height;
+final width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       body: Obx(() => AnimatedContainer(
@@ -27,8 +29,8 @@ class _AddTransactionState extends State<AddTransaction> {
                 milliseconds: 1000), // Adjust the duration as needed
             decoration: BoxDecoration(
               color: widgetController.activeWidget.value == 'expense-widget'
-                  ? Pallete.expenseBackGroundColor
-                  : Pallete.incomeBackGroundColor,
+                  ? Pallete.incomeBackGroundColor
+                  : Pallete.expenseBackGroundColor,
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -36,12 +38,12 @@ class _AddTransactionState extends State<AddTransaction> {
                 children: [
                   Obx(() =>
                       widgetController.activeWidget.value == 'expense-widget'
-                          ? expenseScreen
-                          : incomeScreen),
-                  const SizedBox(
-                    height: 20,
+                          ? incomeScreen
+                          : expenseScreen),
+                   SizedBox(
+                    height: height*0.03,
                   ),
-                  Obx(() => TextButton(
+                  Obx(() => OutlinedButton(
                         onPressed: () {
                           if (widgetController.activeWidget.value ==
                               'expense-widget') {
@@ -53,10 +55,10 @@ class _AddTransactionState extends State<AddTransaction> {
                         child: Text(
                           widgetController.activeWidget.value ==
                                   'expense-widget'
-                              ? 'Add Income Details??'
-                              : 'Add Expense Details??',
-                          style: const TextStyle(
-                              color: Pallete.white, fontSize: 20),
+                              ? 'Add Expense Details??'
+                              : 'Add Income Details??',
+                          style:  TextStyle(
+                              color: Pallete.white, fontSize: width*0.04),
                         ),
                       )),
                 ],

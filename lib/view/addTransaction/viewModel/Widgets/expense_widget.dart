@@ -6,7 +6,7 @@ import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/d
 import 'package:expense_manager/view/addTransaction/viewModel/controller/add_transaction_controller.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/controller/date_controller.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/view/home/viewModel/methods/border_decoration_addfielld.dart';
+import 'package:expense_manager/view/home/viewModel/methods/border_decoration_add_field.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/attachment_button.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/howMuch.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';

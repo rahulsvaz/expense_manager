@@ -99,7 +99,9 @@ class _AllTransactionsState extends State<AllTransactions> {
                               transactionBox.deleteAt(reversedIndex);
                             },
                             child: TransactionCard(
-                              icon: Icon(categoryICons[transaction.category]),
+                              iconPath: transaction.type == 'expense'
+                            ?'assets/images/expense.png'
+                            :'assets/images/income.png',
                               color: transaction.type == 'expense'
                                   ? Pallete.expenseBackGroundColor
                                   : Pallete.incomeBackGroundColor,

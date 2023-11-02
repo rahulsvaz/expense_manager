@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:expense_manager/model/enum.dart';
+
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/home/controllers/home_screen_controllers.dart';
@@ -12,13 +12,15 @@ import 'package:expense_manager/view/home/viewModel/widgets/income_expense_box.d
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    final userBox = Hive.box<User>('UserBox');
     final homeController = Get.put(HomeScreenControllers());
 
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    final userBox = Hive.box<User>('UserBox');
+    final user = userBox.getAt(0);
 
     return Scaffold(
       body: Column(
@@ -38,9 +40,11 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: height * 0.02,
-                      // backgroundImage: FileImage(
-                      //   File(userBox.getAt(0)?imageUrl),
-                      // ),
+                      backgroundImage: FileImage(
+                        File(
+                          user!.imageUrl.toString(),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       width: width * 0.4,
@@ -48,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                     IconButton(
                       onPressed: () {},
                       icon: Icon(
-                        Icons.note_add_rounded,
+                        Icons.edit_rounded,
                         size: height * 0.04,
                         color: Pallete.purple,
                       ),
@@ -102,7 +106,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: height * 0.04,
+            height: height * 0.02,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -142,27 +146,18 @@ class HomeScreen extends StatelessWidget {
                         controller.getTotalIncome();
                         controller.getTotalExpense();
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                        child: TransactionCard(
-                          color: transaction.type == 'expense'
-                              ? Pallete.expenseBackGroundColor
-                              : Pallete.incomeBackGroundColor,
-                          logo: 'assets/images/food.png',
-                          category: transaction.category,
-                          description: transaction.description,
-                          amount: transaction.amount.toString(),
-                          time: transaction.dateAndTime.toString(),
-                          icon: transaction.type == 'expense'
-                              ? const Icon(
-                                  Icons.arrow_circle_up,
-                                  color: Pallete.expenseBackGroundColor,
-                                )
-                              : const Icon(
-                                  Icons.arrow_circle_down,
-                                  color: Pallete.incomeBackGroundColor,
-                                ),
-                        ),
+                      child: TransactionCard(
+                        color: transaction.type == 'expense'
+                            ? Pallete.expenseBackGroundColor
+                            : Pallete.incomeBackGroundColor,
+                        logo: 'assets/images/food.png',
+                        category: transaction.category,
+                        description: transaction.description,
+                        amount: transaction.amount.toString(),
+                        time: transaction.dateAndTime.toString(),
+                        iconPath: transaction.type == 'expense'
+                            ? 'assets/images/expense.png'
+                            : 'assets/images/income.png',
                       ),
                     );
                   },
