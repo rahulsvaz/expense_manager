@@ -27,7 +27,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
   final dateController = Get.put(DateController());
   final categoryController = Get.put(DropDownController());
   final attachment = Get.put(PickImageController());
-    String? pickedAttachment ;
+  String? pickedAttachment;
   @override
   void dispose() {
     _amountController.dispose();
@@ -85,7 +85,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                     constraints: BoxConstraints(maxWidth: width * 0.80),
                     child: TextFormField(
                       controller: _descriptionController,
-                      maxLength: 50,
+                      maxLength: 20,
                       cursorColor: Pallete.grey,
                       decoration: InputDecoration(
                         hintText: 'Description',
@@ -101,8 +101,8 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                       width: width * 0.05,
                     ),
                     GestureDetector(
-                      onTap: (){
-                      attachment.pickAttachment();
+                      onTap: () {
+                        attachment.pickAttachment();
                       },
                       child: AttachmentButton(
                         width: width * 0.50,
@@ -117,7 +117,6 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                   SizedBox(height: height * 0.04),
                   LoginSignUpButton(
                     onPressed: () {
-
                       final amount =
                           double.parse(_amountController.text.toString());
                       Transactions newIncome =
@@ -125,12 +124,12 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                         amount: amount,
                         type: 'income',
                         dateAndTime: dateController.selectedDate,
-                        category: '',
-                        imageUrl:attachment.imagePath.value,
+                        category: 'Amount Added',
+                        imageUrl: attachment.imagePath.value,
                         description: _descriptionController.text.toString(),
                       );
                       transactionController.addIncome(newIncome);
-                      
+
                       Get.offAll(const GnavNavigation());
                     },
                     label: 'Add Income',

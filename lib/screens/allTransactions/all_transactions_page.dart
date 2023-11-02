@@ -1,4 +1,3 @@
-import 'package:expense_manager/model/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
@@ -8,7 +7,7 @@ import 'package:expense_manager/screens/home/viewModel/widgets/transaction_card.
 import 'package:iconly/iconly.dart';
 
 class AllTransactions extends StatefulWidget {
-  const AllTransactions({Key? key}) : super(key: key);
+  const AllTransactions({super.key});
 
   @override
   State<AllTransactions> createState() => _AllTransactionsState();
@@ -71,6 +70,7 @@ class _AllTransactionsState extends State<AllTransactions> {
           SizedBox(
             height: height * .74,
             child: ListView(
+              padding:const  EdgeInsets.all(0),
               children: [
                 ValueListenableBuilder(
                   valueListenable: transactionBox.listenable(),

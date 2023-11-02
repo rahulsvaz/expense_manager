@@ -1,8 +1,8 @@
 import 'package:expense_manager/screens/addTransaction/viewModel/controller/date_controller.dart';
+import 'package:expense_manager/screens/constant/colors/colors.dart';
 import 'package:expense_manager/screens/viewTransaction/transaction_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 
 class TransactionCard extends StatelessWidget {
   final String logo;
@@ -53,7 +53,7 @@ class TransactionCard extends StatelessWidget {
               Text(
                 category,
                 style: TextStyle(
-                    fontSize: height * 0.018, fontWeight: FontWeight.bold),
+                    fontSize: height * 0.018, fontWeight: FontWeight.bold,color: Pallete.purple),
               ),
               Text(
                 '₹ $amount',
@@ -66,7 +66,7 @@ class TransactionCard extends StatelessWidget {
             children: [
               Text(
                 description,
-                style: TextStyle(fontSize: height * 0.016),
+                style: TextStyle(fontSize: height * 0.016,color: Pallete.grey),
               ),
               Text(
                 dateFormatter.formatDate(dateTime)
