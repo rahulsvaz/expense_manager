@@ -35,4 +35,5 @@ class UserController extends GetxController {
   changeElevation() {
     elevation.value = 5.0;
   }
+
 }
