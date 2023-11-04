@@ -1,32 +1,41 @@
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/date_button.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_button.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/dropDown/drop_down_controller.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/snackBars/snackbar.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/controller/add_transaction_controller.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/controller/date_controller.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/date_button.dart';
+import 'package:expense_manager/viewModel/dopDownController/drop_down_controller.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/snackBars/snackbar.dart';
+import 'package:expense_manager/viewModel/addTransaction/add_transaction_controller.dart';
+import 'package:expense_manager/viewModel/addTransaction/date_controller.dart';
+import 'package:expense_manager/viewModel/addTransaction/image_controller.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/home/viewModel/methods/border_decoration_add_field.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/attachment_button.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/howMuch.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/attachment_button.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/howMuch.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ExpenseWidget extends StatefulWidget {
-  const ExpenseWidget({super.key});
+class IncomeWidget extends StatefulWidget {
+  const IncomeWidget({super.key});
 
   @override
-  State<ExpenseWidget> createState() => _ExpenseWidgetState();
+  State<IncomeWidget> createState() => _IncomeWidgetState();
 }
 
-class _ExpenseWidgetState extends State<ExpenseWidget> {
+class _IncomeWidgetState extends State<IncomeWidget> {
+  final _amountController = TextEditingController();
+  final _descriptionController = TextEditingController();
   final transactionController = Get.put(AddTransactionController());
   final dateController = Get.put(DateController());
   final categoryController = Get.put(DropDownController());
-  final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
+  final attachment = Get.put(PickImageController());
+  String? pickedAttachment;
+  @override
+  void dispose() {
+    _amountController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
@@ -48,7 +57,6 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
             cursorColor: Pallete.white,
             decoration: InputDecoration(
               border: InputBorder.none,
-              // prefixText: '₹',
               hintText: '₹0',
               hintStyle:
                   TextStyle(fontSize: height * 0.11, color: Pallete.white),
@@ -70,7 +78,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                  const DropDown(),
+                  // const DropDown(),
                   SizedBox(
                     height: height * 0.02,
                   ),
@@ -78,7 +86,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                     constraints: BoxConstraints(maxWidth: width * 0.80),
                     child: TextFormField(
                       controller: _descriptionController,
-                      maxLength: 50,
+                      maxLength: 20,
                       cursorColor: Pallete.grey,
                       decoration: InputDecoration(
                         hintText: 'Description',
@@ -93,9 +101,14 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                     SizedBox(
                       width: width * 0.05,
                     ),
-                    AttachmentButton(
-                      width: width * 0.50,
-                      height: height,
+                    GestureDetector(
+                      onTap: () {
+                        attachment.pickAttachment();
+                      },
+                      child: AttachmentButton(
+                        width: width * 0.50,
+                        height: height,
+                      ),
                     ),
                     SizedBox(
                       width: width * 0.03,
@@ -106,31 +119,27 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                   LoginSignUpButton(
                     onPressed: () {
                       if (_amountController.text.isEmpty) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
+                        ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.emptyAmountSnackbar);
                       }
+
                       final amount =
-                          double.parse(_amountController.text.trim());
-                      Transactions newTransaction =
-                          transactionController.createNewExpense(
+                          double.parse(_amountController.text.toString());
+                      Transactions newIncome =
+                          transactionController.createNewIncome(
                         amount: amount,
-                        type: 'expense',
+                        type: 'income',
                         dateAndTime: dateController.selectedDate,
-                        category: categoryController.selectedCategory.value
-                            .toString(),
-                        imageUrl: '',
+                        category: 'Amount Added',
+                        imageUrl: attachment.imagePath.value,
                         description: _descriptionController.text.toString(),
                       );
+                      transactionController.addIncome(newIncome,context);
 
-                      transactionController.addExpense(newTransaction, context);
-
-                      Get.offAll(
-                        const GnavNavigation(),
-                      );
+                      Get.offAll(const GnavNavigation());
                     },
-                    label: 'Add Expense',
+                    label: 'Add Income',
                     buttonTextColor: Pallete.white,
-                    backgroundColor: Pallete.expenseBackGroundColor,
+                    backgroundColor: Pallete.incomeBackGroundColor,
                   ),
                   SizedBox(
                     height: height * 0.11,

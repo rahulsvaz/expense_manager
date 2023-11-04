@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/view/settings/widgets/menuitem.dart';
+import 'package:expense_manager/view/settings/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';

@@ -1,6 +1,6 @@
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/snackBars/snackbar.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/snackBars/snackbar.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/snackBars/snackbar.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/snackBars/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';

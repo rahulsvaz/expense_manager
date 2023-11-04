@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:expense_manager/controllers/user_controller.dart';
+import 'package:expense_manager/viewModel/userController/user_controller.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/createAccountPage/validators/validators.dart';

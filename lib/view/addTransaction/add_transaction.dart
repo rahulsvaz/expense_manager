@@ -1,7 +1,7 @@
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/controller/transaction_screen_controller.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/expense_widget.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/income_widget.dart';
+import 'package:expense_manager/viewModel/addTransaction/transaction_screen_controller.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/expense_widget.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/income_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

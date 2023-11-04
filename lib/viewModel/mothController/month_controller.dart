@@ -1,4 +1,4 @@
-import 'package:expense_manager/model/enum.dart';
+import 'package:expense_manager/model/category.dart';
 import 'package:get/get.dart';
 
 class MonthController extends GetxController {

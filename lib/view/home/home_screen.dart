@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
-import 'package:expense_manager/view/home/controllers/home_screen_controllers.dart';
+import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
