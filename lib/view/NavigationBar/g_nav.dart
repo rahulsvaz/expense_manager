@@ -1,8 +1,8 @@
+import 'package:expense_manager/viewModel/navigationControllers/gnav_controller.dart';
 import 'package:expense_manager/view/addTransaction/add_transaction.dart';
 import 'package:expense_manager/view/allTransactions/all_transactions_page.dart';
-import 'package:expense_manager/view/home/home_screen.dart';
+import 'package:expense_manager/view/homeScreen/home_screen.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/viewModel/navigationControllers/gnav_controller.dart';
 import 'package:expense_manager/view/settings/settings_page_.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

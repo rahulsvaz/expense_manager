@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/allTransactions/Widgets/dropDown/drop_down_month.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
+import 'package:expense_manager/view/homeScreen/widgets/transaction_card.dart';
 import 'package:iconly/iconly.dart';
 
 class AllTransactions extends StatefulWidget {

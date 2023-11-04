@@ -4,7 +4,7 @@ import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/createAccountPage/validators/validators.dart';
 import 'package:expense_manager/view/createAccountPage/widgets/text_form_field.dart';
-import 'package:expense_manager/view/home/viewModel/widgets/login_sign_up_button.dart';
+import 'package:expense_manager/view/homeScreen/widgets/login_sign_up_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -1,13 +1,14 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
+import 'package:expense_manager/view/graphScreen/graph_screen.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
-import 'package:expense_manager/view/home/viewModel/widgets/transaction_card.dart';
+import 'package:expense_manager/view/homeScreen/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/view/home/viewModel/methods/home_screen_container_decoration.dart';
-import 'package:expense_manager/view/home/viewModel/widgets/income_expense_box.dart';
+import 'package:expense_manager/view/homeScreen/methods/home_screen_container_decoration.dart';
+import 'package:expense_manager/view/homeScreen/widgets/income_expense_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -45,14 +46,22 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text('Hello ${user.name}',style: TextStyle(fontSize: width*0.04, fontWeight: FontWeight.bold,color: Pallete.grey),),
+                    Text(
+                      'Hello ${user.name}',
+                      style: TextStyle(
+                          fontSize: width * 0.04,
+                          fontWeight: FontWeight.bold,
+                          color: Pallete.grey),
+                    ),
                     // SizedBox(
                     //   width: width * 0.4,
                     // ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(const GraphScreen());
+                      },
                       icon: Icon(
-                        Icons.draw_rounded,
+                        Icons.graphic_eq,
                         size: height * 0.04,
                         color: Pallete.grey,
                       ),
@@ -151,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                         key:
                             ValueKey(controller.transactionList[reversedIndex]),
                         onDismissed: (direction) async {
-                          controller.deleteTransaction(context,reversedIndex);
+                          controller.deleteTransaction(context, reversedIndex);
                         },
                         child: TransactionCard(
                           dateTime: transaction.dateAndTime,
