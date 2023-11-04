@@ -3,6 +3,7 @@ import 'package:expense_manager/screens/NavigationBar/g_nav.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/Widgets/date_button.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/Widgets/dropDown/drop_down_button.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/Widgets/dropDown/drop_down_controller.dart';
+import 'package:expense_manager/screens/addTransaction/viewModel/Widgets/snackbars/snackbar.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/controller/add_transaction_controller.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/controller/date_controller.dart';
 import 'package:expense_manager/screens/constant/colors/colors.dart';
@@ -104,23 +105,28 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                   SizedBox(height: height * 0.04),
                   LoginSignUpButton(
                     onPressed: () {
+                      if (_amountController.text.isEmpty) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
+                      }
                       final amount =
                           double.parse(_amountController.text.trim());
                       Transactions newTransaction =
                           transactionController.createNewExpense(
-                              amount: amount,
-                              type:'expense',
-                              dateAndTime: dateController.selectedDate,
-                              category: categoryController
-                                  .selectedCategory.value
-                                  .toString(),
-                              imageUrl: '',
-                              description:
-                                  _descriptionController.text.toString(),
-                             );
+                        amount: amount,
+                        type: 'expense',
+                        dateAndTime: dateController.selectedDate,
+                        category: categoryController.selectedCategory.value
+                            .toString(),
+                        imageUrl: '',
+                        description: _descriptionController.text.toString(),
+                      );
 
-                      transactionController.addExpense(newTransaction);
-                      Get.offAll(const GnavNavigation());
+                      transactionController.addExpense(newTransaction, context);
+
+                      Get.offAll(
+                        const GnavNavigation(),
+                      );
                     },
                     label: 'Add Expense',
                     buttonTextColor: Pallete.white,

@@ -19,7 +19,7 @@ class IncomeExpenseBox extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Card(
-      elevation: 10,
+      elevation: 03,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
       ),

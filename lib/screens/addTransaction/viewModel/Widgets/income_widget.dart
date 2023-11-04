@@ -2,6 +2,7 @@ import 'package:expense_manager/model/repository/transactionsModel/transaction_m
 import 'package:expense_manager/screens/NavigationBar/g_nav.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/Widgets/date_button.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/Widgets/dropDown/drop_down_controller.dart';
+import 'package:expense_manager/screens/addTransaction/viewModel/Widgets/snackbars/snackbar.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/controller/add_transaction_controller.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/controller/date_controller.dart';
 import 'package:expense_manager/screens/addTransaction/viewModel/controller/image_controller.dart';
@@ -117,6 +118,10 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                   SizedBox(height: height * 0.04),
                   LoginSignUpButton(
                     onPressed: () {
+                      if (_amountController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.emptyAmountSnackbar);
+                      }
+
                       final amount =
                           double.parse(_amountController.text.toString());
                       Transactions newIncome =
@@ -128,7 +133,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                         imageUrl: attachment.imagePath.value,
                         description: _descriptionController.text.toString(),
                       );
-                      transactionController.addIncome(newIncome);
+                      transactionController.addIncome(newIncome,context);
 
                       Get.offAll(const GnavNavigation());
                     },

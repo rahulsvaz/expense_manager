@@ -18,11 +18,11 @@ class GnavNavigation extends StatefulWidget {
 
 class GnavNavigationState extends State<GnavNavigation> {
   final gnav = Get.put(GnavController());
-  final List<Widget> _screens =  [
-    HomeScreen(),
-    AddTransaction(),
-    AllTransactions(),
-    SettingsPage()
+  final List<Widget> _screens = [
+    const HomeScreen(),
+    const AddTransaction(),
+    const AllTransactions(),
+    const SettingsPage()
   ];
 
   @override
