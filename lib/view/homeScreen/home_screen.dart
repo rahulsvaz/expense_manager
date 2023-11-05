@@ -24,7 +24,6 @@ class HomeScreen extends StatelessWidget {
     final user = userBox.getAt(0);
 
     return Scaffold(
-    
       body: Column(
         children: [
           Container(
@@ -121,6 +120,26 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: height * 0.02,
           ),
+          SizedBox(
+              height: height * 0.26,
+              child: GetBuilder<HomeScreenControllers>(
+                builder: (controller) {
+                  double income = controller.getTotalIncome();
+                  double expense = controller.getTotalExpense();
+                  Map<String, double> dataMap = {
+                    "Income": income,
+                    "Expense": expense
+                  };
+
+                  return PieChart(
+                    dataMap: dataMap,
+                    colorList: const [
+                      Pallete.incomeBackGroundColor,
+                      Pallete.expenseBackGroundColor
+                    ],
+                  );
+                },
+              )),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -143,26 +162,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-              height: height * 0.26,
-              child: GetBuilder<HomeScreenControllers>(
-                builder: (controller) {
-                  double income = controller.getTotalIncome();
-                  double expense = controller.getTotalExpense();
-                  Map<String, double> dataMap = {
-                    "Income": income,
-                    "Expense": expense
-                  };
-
-                  return PieChart(
-                    dataMap: dataMap,
-                    colorList: const [
-                      Pallete.incomeBackGroundColor,
-                      Pallete.expenseBackGroundColor
-                    ],
-                  );
-                },
-              )),
           Expanded(
             child: GetBuilder<HomeScreenControllers>(
               builder: (controller) {
@@ -185,14 +184,17 @@ class HomeScreen extends StatelessWidget {
                           controller.deleteTransaction(context, reversedIndex);
                         },
                         child: TransactionCard(
+                          index: reversedIndex,
+                          type: transaction.type,
                           dateTime: transaction.dateAndTime,
-                          imagePath: transaction.imageUrl,
+                          imagePath: transaction.imageUrl.toString(),
                           color: transaction.type == 'expense'
                               ? Pallete.expenseBackGroundColor
                               : Pallete.incomeBackGroundColor,
                           logo: 'assets/images/food.png',
-                          category: transaction.category,
-                          description: transaction.description,
+                          category: transaction.category=='Amount Added'?transaction.category:
+                              transaction.category.substring(9).toUpperCase(),
+                          description: transaction.description.toUpperCase(),
                           amount: transaction.amount.toString(),
                           time: transaction.dateAndTime.toString(),
                           iconPath: transaction.type == 'expense'
@@ -203,7 +205,7 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                   itemCount:
-                      controller.listLength > 4 ? 4 : controller.listLength,
+                      controller.listLength > 2 ? 2 : controller.listLength,
                 );
               },
             ),

@@ -99,6 +99,8 @@ class _AllTransactionsState extends State<AllTransactions> {
                               transactionBox.deleteAt(reversedIndex);
                             },
                             child: TransactionCard(
+                              index: index,
+                              type: transaction.type,
                               dateTime: transaction.dateAndTime,
                               imagePath: transaction.imageUrl,
                               iconPath: transaction.type == 'expense'

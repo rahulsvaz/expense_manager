@@ -1,9 +1,7 @@
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/expense_widget.dart';
 import 'package:expense_manager/viewModel/addTransaction/controller/add_transaction_controller.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/date_button.dart';
-import 'package:expense_manager/viewModel/addTransaction/transaction_screen_controller.dart';
 import 'package:expense_manager/viewModel/dopDownController/drop_down_controller.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/snackBars/snackbar.dart';
 import 'package:expense_manager/viewModel/addTransaction/date_controller.dart';
@@ -30,7 +28,6 @@ class _IncomeWidgetState extends State<IncomeWidget> {
   final dateController = Get.put(DateController());
   final categoryController = Get.put(DropDownController());
   final attachment = Get.put(PickImageController());
-  String? pickedAttachment;
   @override
   void dispose() {
     _amountController.dispose();
@@ -96,8 +93,9 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                 SizedBox(height: height * 0.01),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   GestureDetector(
-                    onTap: () {
-                      attachment.pickAttachment();
+                    onTap: () async {
+                      attachment.imagePath.value =
+                          await attachment.pickAttachment();
                     },
                     child: AttachmentButton(
                       width: width * 0.50,
@@ -109,6 +107,16 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                   ),
                   const DateButton()
                 ]),
+                SizedBox(height: height * 0.04),
+
+                Obx(() => Container(
+                      child: attachment.imagePath.value.isNotEmpty
+                          ? const Text(
+                              'Attachment Added',
+                              style: TextStyle(color: Pallete.grey),
+                            )
+                          : null,
+                    )),
                 SizedBox(height: height * 0.04),
                 LoginSignUpButton(
                   onPressed: () {
@@ -131,6 +139,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                     transactionController.addIncome(newIncome, context);
 
                     Get.offAll(const GnavNavigation());
+                    attachment.imagePath.value = '';
                   },
                   label: 'Add Income',
                   buttonTextColor: Pallete.white,

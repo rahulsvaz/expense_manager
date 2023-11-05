@@ -1,5 +1,6 @@
 import 'package:expense_manager/viewModel/addTransaction/controller/add_transaction_controller.dart';
 import 'package:expense_manager/viewModel/addTransaction/date_controller.dart';
+import 'package:expense_manager/viewModel/addTransaction/image_controller.dart';
 import 'package:expense_manager/viewModel/dopDownController/drop_down_controller.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
@@ -27,6 +28,8 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
   final categoryController = Get.put(DropDownController());
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  final attachment = Get.put(PickImageController());
+
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
@@ -89,9 +92,15 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                 ),
                 SizedBox(height: height * 0.01),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  AttachmentButton(
-                    width: width * 0.50,
-                    height: height,
+                  GestureDetector(
+                    onTap: () async {
+                      attachment.imagePath.value =
+                          await attachment.pickAttachment();
+                    },
+                    child: AttachmentButton(
+                      width: width * 0.50,
+                      height: height,
+                    ),
                   ),
                   SizedBox(
                     width: width * 0.03,
@@ -113,11 +122,12 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                       dateAndTime: dateController.selectedDate,
                       category:
                           categoryController.selectedCategory.value.toString(),
-                      imageUrl: '',
+                      imageUrl: attachment.imagePath.value,
                       description: _descriptionController.text.toString(),
                     );
 
                     transactionController.addExpense(newTransaction, context);
+                    attachment.imagePath.value = '';
 
                     Get.offAll(
                       const GnavNavigation(),

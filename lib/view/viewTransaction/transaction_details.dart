@@ -1,23 +1,36 @@
+import 'dart:io';
+
 import 'package:expense_manager/view/editTransaction/edit_transaction.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
+import 'package:expense_manager/view/viewImage/image_view.dart';
+import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_button/flutter_swipe_button.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 
 class TransactionDetails extends StatelessWidget {
+  final int index;
   final String amount;
   final String imagePath;
   final String description;
   final String dateAndTime;
+  final String type;
+  final String category;
   const TransactionDetails(
-      {required this.amount,
+      {required this.index,
+      required this.type,
+      required this.amount,
+      required this.category,
       required this.imagePath,
       required this.dateAndTime,
       required this.description,
       super.key});
+
+
   @override
+
   Widget build(BuildContext context) {
+    final transaction = Get.put(HomeScreenControllers());
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
@@ -32,7 +45,9 @@ class TransactionDetails extends StatelessWidget {
                 width: width,
                 height: height * 0.4,
                 decoration: BoxDecoration(
-                  color: Pallete.expenseDetails,
+                  color: type == 'expense'
+                      ? Pallete.expenseBackGroundColor
+                      : Pallete.incomeBackGroundColor,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(width * 0.1),
                     bottomRight: Radius.circular(width * 0.1),
@@ -56,13 +71,18 @@ class TransactionDetails extends StatelessWidget {
                           color: Pallete.white,
                         )),
                     Text(
-                      'Detail Transaction',
+                      'Transaction Details',
                       style: TextStyle(
                           color: Pallete.white,
                           fontSize: width * 0.05,
                           fontWeight: FontWeight.bold),
                     ),
-                    Image.asset('assets/images/trash.png')
+                    InkWell(
+                        onTap: () {
+                          transaction.deleteTransaction(context, index);
+                          Get.back();
+                        },
+                        child: Image.asset('assets/images/trash.png'))
                   ],
                 ),
               ),
@@ -80,7 +100,7 @@ class TransactionDetails extends StatelessWidget {
             Positioned(
               top: height * 0.23,
               child: Text(
-                description,
+                category.toUpperCase(),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Pallete.white,
@@ -102,34 +122,25 @@ class TransactionDetails extends StatelessWidget {
               top: height * .45,
               left: width * 0.09,
               child: Text(
-                'Description',
+                description,
                 style: TextStyle(fontSize: height * 0.023, color: Pallete.grey),
               ),
             ),
             Positioned(
-              top: height * .55,
-              left: width * 0.09,
-              child: Text(
-                'Paid Cash',
-                style: TextStyle(
-                  fontSize: height * 0.025,
-                ),
-              ),
-            ),
-            Positioned(
-              top: height * .65,
-              left: width * 0.09,
-              child: Text(
-                'Attachment',
-                style: TextStyle(fontSize: height * 0.023, color: Pallete.grey),
-              ),
-            ),
-            Positioned(
-              top: height * .75,
-              child: Image.asset(
-                imagePath,
-                height: height * 0.12,
-              ),
+              top: height * .70,
+              child: imagePath.isEmpty
+                  ? const Text(
+                      'No Attachment Found',
+                      style: TextStyle(color: Pallete.grey),
+                    )
+                  : SizedBox(
+                      height: height * .50,
+                      width: width * .50,
+                      child: GestureDetector(
+                          onTap: () {
+                            Get.to(ImageViewer(imagePath: imagePath));
+                          },
+                          child: Image.file(File(imagePath)))),
             ),
             Positioned(
               top: height * .90,

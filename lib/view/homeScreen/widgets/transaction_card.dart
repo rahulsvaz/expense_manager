@@ -14,9 +14,13 @@ class TransactionCard extends StatelessWidget {
   final String iconPath;
   final String imagePath;
   final DateTime dateTime;
+  final String type;
+  final int index;
 
   const TransactionCard(
       {super.key,
+required this.type,
+required this.index,
       required this.dateTime,
       required this.iconPath,
       required this.color,
@@ -40,6 +44,9 @@ class TransactionCard extends StatelessWidget {
         child: ListTile(
           onTap: () {
             Get.to(TransactionDetails(
+              index: index,
+              category: category,
+              type: type,
               imagePath: imagePath,
               amount: amount,
               dateAndTime: time,
