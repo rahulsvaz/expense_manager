@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
-import 'package:expense_manager/view/graphScreen/graph_screen.dart';
+import 'package:expense_manager/view/BudgetScreen/budget_calculator_page.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:expense_manager/view/homeScreen/widgets/transaction_card.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                     // ),
                     IconButton(
                       onPressed: () {
-                        Get.to(const GraphScreen());
+                        Get.to(const BudgetCalculatorPage());
                       },
                       icon: Icon(
                         Icons.graphic_eq,

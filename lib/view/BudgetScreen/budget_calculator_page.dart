@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pie_chart/pie_chart.dart';
 
-class GraphScreen extends StatefulWidget {
-  const GraphScreen({super.key});
+class BudgetCalculatorPage extends StatefulWidget {
+  const BudgetCalculatorPage({super.key});
 
   @override
-  State<GraphScreen> createState() => _GraphScreenState();
+  State<BudgetCalculatorPage> createState() => _BudgetCalculatorPageState();
 }
 
-class _GraphScreenState extends State<GraphScreen> {
+class _BudgetCalculatorPageState extends State<BudgetCalculatorPage> {
   final graph = Get.put(HomeScreenControllers());
 
   @override
@@ -26,6 +26,16 @@ class _GraphScreenState extends State<GraphScreen> {
     };
 
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Budget Calculator'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.settings),
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +73,7 @@ class PiChartOverView extends StatelessWidget {
         Pallete.incomeBackGroundColor,
         Pallete.grey,
       ],
-      legendOptions:const  LegendOptions(showLegends: true),
+      legendOptions: const LegendOptions(showLegends: true),
       chartType: ChartType.disc,
 
       dataMap: dataMap,
@@ -74,6 +84,3 @@ class PiChartOverView extends StatelessWidget {
     );
   }
 }
-
-
-

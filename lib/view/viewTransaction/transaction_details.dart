@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:expense_manager/view/editTransaction/edit_transaction.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/viewImage/image_view.dart';
@@ -127,7 +126,7 @@ class TransactionDetails extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: height * .70,
+              top: height * .50,
               child: imagePath.isEmpty
                   ? const Text(
                       'No Attachment Found',

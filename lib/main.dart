@@ -21,6 +21,7 @@ void main() async {
   Hive.registerAdapter(TransactionsAdapter());
   await Hive.openBox<User>('UserBox');
   await Hive.openBox<Transactions>('TransactionBox');
+ 
   
   runApp(const MyApp());
 }
