@@ -44,4 +44,5 @@ class HomeScreenControllers extends GetxController {
         .showSnackBar(CustomSnackbar.deleteDoneSnackbar));
     update();
   }
+  
 }

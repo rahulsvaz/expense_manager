@@ -10,6 +10,7 @@ import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/homeScreen/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/view/homeScreen/widgets/income_expense_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -141,6 +142,26 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+              height: height * 0.26,
+              child: GetBuilder<HomeScreenControllers>(
+                builder: (controller) {
+                  double income = controller.getTotalIncome();
+                  double expense = controller.getTotalExpense();
+                  Map<String, double> dataMap = {
+                    "Income": income,
+                    "Expense": expense
+                  };
+
+                  return PieChart(
+                    dataMap: dataMap,
+                    colorList: const [
+                      Pallete.incomeBackGroundColor,
+                      Pallete.expenseBackGroundColor
+                    ],
+                  );
+                },
+              )),
           Expanded(
             child: GetBuilder<HomeScreenControllers>(
               builder: (controller) {
