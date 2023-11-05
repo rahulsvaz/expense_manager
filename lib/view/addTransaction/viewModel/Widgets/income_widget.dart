@@ -1,7 +1,9 @@
+import 'package:expense_manager/view/addTransaction/viewModel/Widgets/expense_widget.dart';
 import 'package:expense_manager/viewModel/addTransaction/controller/add_transaction_controller.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/date_button.dart';
+import 'package:expense_manager/viewModel/addTransaction/transaction_screen_controller.dart';
 import 'package:expense_manager/viewModel/dopDownController/drop_down_controller.dart';
 import 'package:expense_manager/view/addTransaction/viewModel/Widgets/snackBars/snackbar.dart';
 import 'package:expense_manager/viewModel/addTransaction/date_controller.dart';
@@ -63,89 +65,82 @@ class _IncomeWidgetState extends State<IncomeWidget> {
             ),
           ),
         ),
-        Card(
-          elevation: 10,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          child: Container(
-            width: width * 0.9,
-            decoration: const BoxDecoration(
-                color: Pallete.white,
-                borderRadius: BorderRadius.all(Radius.circular(30))),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
-                  // const DropDown(),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: width * 0.80),
-                    child: TextFormField(
-                      controller: _descriptionController,
-                      maxLength: 20,
-                      cursorColor: Pallete.grey,
-                      decoration: InputDecoration(
-                        hintText: 'Description',
-                        hintStyle: const TextStyle(color: Pallete.grey),
-                        enabledBorder: borderDecoration(),
-                        focusedBorder: borderDecoration(),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: height * 0.01),
-                  Row(children: [
-                    SizedBox(
-                      width: width * 0.05,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        attachment.pickAttachment();
-                      },
-                      child: AttachmentButton(
-                        width: width * 0.50,
-                        height: height,
-                      ),
-                    ),
-                    SizedBox(
-                      width: width * 0.03,
-                    ),
-                    const DateButton()
-                  ]),
-                  SizedBox(height: height * 0.04),
-                  LoginSignUpButton(
-                    onPressed: () {
-                      if (_amountController.text.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.emptyAmountSnackbar);
-                      }
+        Container(
+          decoration: BoxDecoration(
+              color: Pallete.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(width * 0.15),
+                  topRight: Radius.circular(width * 0.15))),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: height * 0.06,
+                ),
+                // const DropDown(),
 
-                      final amount =
-                          double.parse(_amountController.text.toString());
-                      Transactions newIncome =
-                          transactionController.createNewIncome(
-                        amount: amount,
-                        type: 'income',
-                        dateAndTime: dateController.selectedDate,
-                        category: 'Amount Added',
-                        imageUrl: attachment.imagePath.value,
-                        description: _descriptionController.text.toString(),
-                      );
-                      transactionController.addIncome(newIncome,context);
-
-                      Get.offAll(const GnavNavigation());
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: width * 0.80),
+                  child: TextFormField(
+                    controller: _descriptionController,
+                    maxLength: 20,
+                    cursorColor: Pallete.grey,
+                    decoration: InputDecoration(
+                      hintText: 'Description',
+                      hintStyle: const TextStyle(color: Pallete.grey),
+                      enabledBorder: borderDecoration(),
+                      focusedBorder: borderDecoration(),
+                    ),
+                  ),
+                ),
+                SizedBox(height: height * 0.01),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  GestureDetector(
+                    onTap: () {
+                      attachment.pickAttachment();
                     },
-                    label: 'Add Income',
-                    buttonTextColor: Pallete.white,
-                    backgroundColor: Pallete.incomeBackGroundColor,
+                    child: AttachmentButton(
+                      width: width * 0.50,
+                      height: height,
+                    ),
                   ),
                   SizedBox(
-                    height: height * 0.11,
+                    width: width * 0.03,
                   ),
-                ],
-              ),
+                  const DateButton()
+                ]),
+                SizedBox(height: height * 0.04),
+                LoginSignUpButton(
+                  onPressed: () {
+                    if (_amountController.text.isEmpty) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
+                    }
+
+                    final amount =
+                        double.parse(_amountController.text.toString());
+                    Transactions newIncome =
+                        transactionController.createNewIncome(
+                      amount: amount,
+                      type: 'income',
+                      dateAndTime: dateController.selectedDate,
+                      category: 'Amount Added',
+                      imageUrl: attachment.imagePath.value,
+                      description: _descriptionController.text.toString(),
+                    );
+                    transactionController.addIncome(newIncome, context);
+
+                    Get.offAll(const GnavNavigation());
+                  },
+                  label: 'Add Income',
+                  buttonTextColor: Pallete.white,
+                  backgroundColor: Pallete.incomeBackGroundColor,
+                ),
+
+                SizedBox(
+                  height: height * 0.11,
+                ),
+              ],
             ),
           ),
         ),

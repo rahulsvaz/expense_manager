@@ -20,7 +20,7 @@ class _AddTransactionState extends State<AddTransaction> {
   Widget build(BuildContext context) {
     final widgetController = Get.put(TransactionScreenController());
     final height = MediaQuery.sizeOf(context).height;
-final width = MediaQuery.sizeOf(context).width;
+    final width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       body: Obx(() => AnimatedContainer(
@@ -34,16 +34,11 @@ final width = MediaQuery.sizeOf(context).width;
             ),
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Obx(() =>
-                      widgetController.activeWidget.value == 'expense-widget'
-                          ? incomeScreen
-                          : expenseScreen),
-                   SizedBox(
-                    height: height*0.03,
+                    SizedBox(
+                    height: height * 0.13,
                   ),
-                  Obx(() => OutlinedButton(
+                  Obx(() => TextButton(
                         onPressed: () {
                           if (widgetController.activeWidget.value ==
                               'expense-widget') {
@@ -57,10 +52,15 @@ final width = MediaQuery.sizeOf(context).width;
                                   'expense-widget'
                               ? 'Add Expense Details??'
                               : 'Add Income Details??',
-                          style:  TextStyle(
-                              color: Pallete.white, fontSize: width*0.04),
+                          style: TextStyle(
+                              color: Pallete.white, fontSize: width * 0.04),
                         ),
                       )),
+                  Obx(() =>
+                      widgetController.activeWidget.value == 'expense-widget'
+                          ? incomeScreen
+                          : expenseScreen),
+                
                 ],
               ),
             ),

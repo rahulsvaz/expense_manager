@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'Expensense',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
-       useMaterial3: true, scaffoldBackgroundColor: Pallete.scaffoldBgColor),
+       useMaterial3: true,),
       home: Hive.box<User>('UserBox').isEmpty
           ? const OnboardingScreen()
           : const GnavNavigation(),

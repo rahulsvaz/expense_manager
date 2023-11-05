@@ -31,7 +31,6 @@ class GnavNavigationState extends State<GnavNavigation> {
     //  final height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       bottomNavigationBar: GNav(
-        backgroundColor: Pallete.scaffoldBgColor,
         activeColor: Pallete.purple,
         gap: 5,
         padding: const EdgeInsets.all(16),

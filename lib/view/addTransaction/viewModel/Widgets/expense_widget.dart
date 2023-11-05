@@ -55,88 +55,82 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
             ),
           ),
         ),
-        Card(
-          elevation: 10,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          child: Container(
-            width: width * 0.9,
-            decoration: const BoxDecoration(
-                color: Pallete.white,
-                borderRadius: BorderRadius.all(Radius.circular(30))),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Pallete.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(width * 0.15),
+              topRight: Radius.circular(width * 0.15),
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: height * 0.03,
+                ),
+                const DropDown(),
+                SizedBox(
+                  height: height * 0.02,
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: width * 0.80),
+                  child: TextFormField(
+                    controller: _descriptionController,
+                    maxLength: 20,
+                    cursorColor: Pallete.grey,
+                    decoration: InputDecoration(
+                      hintText: 'Description',
+                      hintStyle: const TextStyle(color: Pallete.grey),
+                      enabledBorder: borderDecoration(),
+                      focusedBorder: borderDecoration(),
+                    ),
+                  ),
+                ),
+                SizedBox(height: height * 0.01),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  AttachmentButton(
+                    width: width * 0.50,
+                    height: height,
+                  ),
                   SizedBox(
-                    height: height * 0.03,
+                    width: width * 0.03,
                   ),
-                  const DropDown(),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: width * 0.80),
-                    child: TextFormField(
-                      controller: _descriptionController,
-                      maxLength: 50,
-                      cursorColor: Pallete.grey,
-                      decoration: InputDecoration(
-                        hintText: 'Description',
-                        hintStyle: const TextStyle(color: Pallete.grey),
-                        enabledBorder: borderDecoration(),
-                        focusedBorder: borderDecoration(),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: height * 0.01),
-                  Row(children: [
-                    SizedBox(
-                      width: width * 0.05,
-                    ),
-                    AttachmentButton(
-                      width: width * 0.50,
-                      height: height,
-                    ),
-                    SizedBox(
-                      width: width * 0.03,
-                    ),
-                    const DateButton()
-                  ]),
-                  SizedBox(height: height * 0.04),
-                  LoginSignUpButton(
-                    onPressed: () {
-                      if (_amountController.text.isEmpty) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
-                      }
-                      final amount =
-                          double.parse(_amountController.text.trim());
-                      Transactions newTransaction =
-                          transactionController.createNewExpense(
-                        amount: amount,
-                        type: 'expense',
-                        dateAndTime: dateController.selectedDate,
-                        category: categoryController.selectedCategory.value
-                            .toString(),
-                        imageUrl: '',
-                        description: _descriptionController.text.toString(),
-                      );
+                  const DateButton()
+                ]),
+                SizedBox(height: height * 0.04),
+                LoginSignUpButton(
+                  onPressed: () {
+                    if (_amountController.text.isEmpty) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
+                    }
+                    final amount = double.parse(_amountController.text.trim());
+                    Transactions newTransaction =
+                        transactionController.createNewExpense(
+                      amount: amount,
+                      type: 'expense',
+                      dateAndTime: dateController.selectedDate,
+                      category:
+                          categoryController.selectedCategory.value.toString(),
+                      imageUrl: '',
+                      description: _descriptionController.text.toString(),
+                    );
 
-                      transactionController.addExpense(newTransaction, context);
+                    transactionController.addExpense(newTransaction, context);
 
-                      Get.offAll(
-                        const GnavNavigation(),
-                      );
-                    },
-                    label: 'Add Expense',
-                    buttonTextColor: Pallete.white,
-                    backgroundColor: Pallete.expenseBackGroundColor,
-                  ),
-                  SizedBox(
-                    height: height * 0.11,
-                  ),
-                ],
-              ),
+                    Get.offAll(
+                      const GnavNavigation(),
+                    );
+                  },
+                  label: 'Add Expense',
+                  buttonTextColor: Pallete.white,
+                  backgroundColor: Pallete.expenseBackGroundColor,
+                ),
+                SizedBox(
+                  height: height * 0.11,
+                ),
+              ],
             ),
           ),
         ),
