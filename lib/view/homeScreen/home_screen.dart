@@ -24,6 +24,7 @@ class HomeScreen extends StatelessWidget {
     final user = userBox.getAt(0);
 
     return Scaffold(
+    
       body: Column(
         children: [
           Container(
