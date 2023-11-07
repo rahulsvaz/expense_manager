@@ -23,48 +23,50 @@ class _AddTransactionState extends State<AddTransaction> {
     final width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
-      body: Obx(() => AnimatedContainer(
-            height: Get.height,
-            duration: const Duration(
-                milliseconds: 1000), // Adjust the duration as needed
-            decoration: BoxDecoration(
-              color: widgetController.activeWidget.value == 'expense-widget'
-                  ? Pallete.incomeBackGroundColor
-                  : Pallete.expenseBackGroundColor,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                    SizedBox(
-                    height: height * 0.13,
-                  ),
-                  Obx(() => TextButton(
-                        onPressed: () {
-                          if (widgetController.activeWidget.value ==
-                              'expense-widget') {
-                            widgetController.changeActiveWidget();
-                          } else {
-                            widgetController.changeToExpense();
-                          }
-                        },
-                        child: Text(
-                          widgetController.activeWidget.value ==
-                                  'expense-widget'
-                              ? 'Add Expense Details??'
-                              : 'Add Income Details??',
-                          style: TextStyle(
-                              color: Pallete.white, fontSize: width * 0.04),
-                        ),
-                      )),
-                  Obx(() =>
+      body: Obx(
+        () => AnimatedContainer(
+          height: Get.height,
+          duration: const Duration(
+              milliseconds: 1000), // Adjust the duration as needed
+          decoration: BoxDecoration(
+            color: widgetController.activeWidget.value == 'expense-widget'
+                ? Pallete.incomeBackGroundColor
+                : Pallete.expenseBackGroundColor,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: height * 0.13,
+                ),
+                Obx(
+                  () => TextButton(
+                    onPressed: () {
+                      if (widgetController.activeWidget.value ==
+                          'expense-widget') {
+                        widgetController.changeActiveWidget();
+                      } else {
+                        widgetController.changeToExpense();
+                      }
+                    },
+                    child: Text(
                       widgetController.activeWidget.value == 'expense-widget'
-                          ? incomeScreen
-                          : expenseScreen),
-                
-                ],
-              ),
+                          ? 'Add Expense Details??'
+                          : 'Add Income Details??',
+                      style: TextStyle(
+                          color: Pallete.white, fontSize: width * 0.04),
+                    ),
+                  ),
+                ),
+                Obx(() =>
+                    widgetController.activeWidget.value == 'expense-widget'
+                        ? incomeScreen
+                        : expenseScreen),
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

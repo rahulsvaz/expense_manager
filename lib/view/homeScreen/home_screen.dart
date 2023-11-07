@@ -39,13 +39,21 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CircleAvatar(
-                      radius: height * 0.02,
-                      backgroundImage: FileImage(
-                        File(
-                          user!.imageUrl.toString(),
-                        ),
-                      ),
+                    SizedBox(
+                      child: user!.imageUrl.isEmpty
+                          ? CircleAvatar(
+                              radius: height * 0.02,
+                              backgroundImage: const AssetImage(
+                                  'assets/images/user_logo.jpg'),
+                            )
+                          : CircleAvatar(
+                              radius: height * 0.02,
+                              backgroundImage: FileImage(
+                                File(
+                                  user.imageUrl.toString(),
+                                ),
+                              ),
+                            ),
                     ),
                     Text(
                       'Hello ${user.name}',
@@ -132,6 +140,7 @@ class HomeScreen extends StatelessWidget {
                   };
 
                   return PieChart(
+                    chartType: ChartType.disc,
                     dataMap: dataMap,
                     colorList: const [
                       Pallete.incomeBackGroundColor,
@@ -192,8 +201,9 @@ class HomeScreen extends StatelessWidget {
                               ? Pallete.expenseBackGroundColor
                               : Pallete.incomeBackGroundColor,
                           logo: 'assets/images/food.png',
-                          category: transaction.category=='Amount Added'?transaction.category:
-                              transaction.category.substring(9).toUpperCase(),
+                          category: transaction.category == 'Amount Added'
+                              ? transaction.category
+                              : transaction.category.substring(9).toUpperCase(),
                           description: transaction.description.toUpperCase(),
                           amount: transaction.amount.toString(),
                           time: transaction.dateAndTime.toString(),

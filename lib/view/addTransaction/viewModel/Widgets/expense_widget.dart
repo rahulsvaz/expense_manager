@@ -1,4 +1,4 @@
-import 'package:expense_manager/viewModel/addTransaction/controller/add_transaction_controller.dart';
+import 'package:expense_manager/viewModel/addTransaction/add_transaction_controller.dart';
 import 'package:expense_manager/viewModel/addTransaction/date_controller.dart';
 import 'package:expense_manager/viewModel/addTransaction/image_controller.dart';
 import 'package:expense_manager/viewModel/dopDownController/drop_down_controller.dart';

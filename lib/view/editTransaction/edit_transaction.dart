@@ -1,19 +1,23 @@
 import 'package:expense_manager/view/constant/colors/colors.dart';
+import 'package:expense_manager/viewModel/addTransaction/transaction_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_button/flutter_swipe_button.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 
 class EditTransactionPage extends StatefulWidget {
-  const EditTransactionPage({super.key});
+  final String amount;
+
+  const EditTransactionPage({required this.amount, super.key});
 
   @override
   State<EditTransactionPage> createState() => _EditTransactionPageState();
 }
 
 class _EditTransactionPageState extends State<EditTransactionPage> {
+  final _amountController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final tController = Get.put(TransactionControllers());
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
@@ -38,6 +42,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
             ),
             Positioned(
               top: height * 0.05,
+              
               child: SizedBox(
                 width: width,
                 child: Row(
@@ -65,26 +70,30 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
               ),
             ),
             Positioned(
-              top: height * 0.14,
-              child: Text(
-                '₹350',
-                style: TextStyle(
-                    color: Pallete.white,
-                    fontSize: height * 0.07,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Positioned(
-              top: height * 0.23,
-              child: Text(
-                'Buy Some food',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Pallete.white,
-                  fontSize: height * 0.02,
-                ),
-              ),
-            ),
+                top: height * 0.10,
+                left:width*0.3,
+                right: 0,
+                child: Center(
+                  child: SizedBox(
+                 
+                    child: TextFormField(
+                      controller: _amountController..text = widget.amount,
+                      keyboardType: TextInputType.number,
+                      style: const TextStyle(color: Pallete.white, fontSize: 80),
+                      showCursor: true,
+                      cursorHeight: height * 0.1,
+                      cursorColor: Pallete.white,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        // prefixText: '₹',
+                        hintText: '₹0',
+                        hintStyle: TextStyle(
+                            fontSize: height * 0.11, color: Pallete.white),
+                      ),
+                    ),
+                  ),
+                )),
+            
             Positioned(
               top: height * .27,
               child: Text(
@@ -139,7 +148,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
                 activeThumbColor: Pallete.purple,
                 activeTrackColor: Colors.grey.shade300,
                 onSwipe: () {
-                  Get.back();
+                  tController.edit.value = !tController.edit.value;
                 },
                 child: const Text(
                   "Save Changes",

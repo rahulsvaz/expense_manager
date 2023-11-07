@@ -1,7 +1,8 @@
 import 'dart:io';
-import 'package:expense_manager/view/editTransaction/edit_transaction.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
+import 'package:expense_manager/view/editTransaction/edit_transaction.dart';
 import 'package:expense_manager/view/viewImage/image_view.dart';
+import 'package:expense_manager/viewModel/addTransaction/transaction_controller.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_button/flutter_swipe_button.dart';
@@ -25,10 +26,9 @@ class TransactionDetails extends StatelessWidget {
       required this.description,
       super.key});
 
-
   @override
-
   Widget build(BuildContext context) {
+    final tController = Get.put(TransactionControllers());
     final transaction = Get.put(HomeScreenControllers());
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
@@ -64,6 +64,7 @@ class TransactionDetails extends StatelessWidget {
                     IconButton(
                         onPressed: () {
                           Get.back();
+                          tController.edit.value = !tController.edit.value;
                         },
                         icon: const Icon(
                           Icons.arrow_back,
@@ -154,7 +155,9 @@ class TransactionDetails extends StatelessWidget {
                 activeThumbColor: Pallete.purple,
                 activeTrackColor: Colors.grey.shade300,
                 onSwipe: () {
-                  Get.to(const EditTransactionPage());
+                  Get.to(EditTransactionPage(amount: amount));
+
+                  // Get.to(const EditTransactionPage());
                 },
                 child: const Text(
                   "Edit Transaction",

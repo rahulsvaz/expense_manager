@@ -44,12 +44,18 @@ class _SettingsPageState extends State<SettingsPage> {
             right: 0,
             top: height * 0.14,
             child: Center(
-              child: CircleAvatar(
-                backgroundImage: FileImage(
-                  File(currentUser.imageUrl),
-                ),
-                radius: height * 0.09,
-              ),
+              child: currentUser.imageUrl.isEmpty
+                  ? CircleAvatar(
+                      backgroundImage:
+                          const AssetImage('assets/images/user_logo.jpg'),
+                      radius: height * 0.09,
+                    )
+                  : CircleAvatar(
+                      backgroundImage: FileImage(
+                        File(currentUser.imageUrl),
+                      ),
+                      radius: height * 0.09,
+                    ),
             ),
           ),
           Positioned(

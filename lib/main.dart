@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:expense_manager/model/repository/budget/budget_model.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
@@ -10,7 +11,6 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
-
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
@@ -19,12 +19,14 @@ void main() async {
   Hive.init(directory.path);
   Hive.registerAdapter<User>(UserAdapter());
   Hive.registerAdapter(TransactionsAdapter());
+  Hive.registerAdapter(BudgetModelAdapter());
+  await Hive.openBox<BudgetModel>('BudgetBox');
   await Hive.openBox<User>('UserBox');
   await Hive.openBox<Transactions>('TransactionBox');
- 
-  
+
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -35,7 +37,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Pallete.white,
-       useMaterial3: true,),
+        useMaterial3: true,
+      ),
       home: Hive.box<User>('UserBox').isEmpty
           ? const OnboardingScreen()
           : const GnavNavigation(),

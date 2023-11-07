@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/allTransactions/Widgets/dropDown/drop_down_month.dart';
@@ -8,6 +9,8 @@ import 'package:iconly/iconly.dart';
 
 class AllTransactions extends StatefulWidget {
   const AllTransactions({super.key});
+
+  
 
   @override
   State<AllTransactions> createState() => _AllTransactionsState();
@@ -33,6 +36,7 @@ class _AllTransactionsState extends State<AllTransactions> {
               horizontal: width * 0.05,
             ),
             child: Row(
+
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
@@ -45,7 +49,30 @@ class _AllTransactionsState extends State<AllTransactions> {
                   child: const Center(child: DropDownMonth()),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // bottom sheet
+                    Get.bottomSheet(
+                        SizedBox(
+                          height: height * .40,
+                          child: Column(children: [
+                            Row(
+                              children: [
+                                DropdownButton(items: const [            
+                                  DropdownMenuItem(
+                                    child: Text('Date'),
+                                  )
+                                ], onChanged: (e) {})
+                              ],
+                            )
+                          ]),
+                        ),
+                        backgroundColor: Pallete.scaffoldBgColor,
+                        elevation: 10,
+                        enterBottomSheetDuration:
+                            const Duration(milliseconds: 300),
+                        exitBottomSheetDuration:
+                            const Duration(milliseconds: 200));
+                  },
                   icon: const Icon(IconlyBold.filter_2),
                 ),
               ],
@@ -70,7 +97,7 @@ class _AllTransactionsState extends State<AllTransactions> {
           SizedBox(
             height: height * .74,
             child: ListView(
-              padding:const  EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               children: [
                 ValueListenableBuilder(
                   valueListenable: transactionBox.listenable(),
@@ -104,8 +131,8 @@ class _AllTransactionsState extends State<AllTransactions> {
                               dateTime: transaction.dateAndTime,
                               imagePath: transaction.imageUrl,
                               iconPath: transaction.type == 'expense'
-                            ?'assets/images/expense.png'
-                            :'assets/images/income.png',
+                                  ? 'assets/images/expense.png'
+                                  : 'assets/images/income.png',
                               color: transaction.type == 'expense'
                                   ? Pallete.expenseBackGroundColor
                                   : Pallete.incomeBackGroundColor,
