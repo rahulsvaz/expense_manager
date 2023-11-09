@@ -4,6 +4,9 @@ class FilterController extends GetxController {
   RxBool income = false.obs;
   RxBool expense = false.obs;
 
+
+
+
   clearFilter() {
     expense.value = false;
     income.value = false;

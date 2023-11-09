@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class HomeScreenControllers extends GetxController {
   Box transactionBox = Hive.box<Transactions>('TransactionBox');
 
+
   List get transactionList => transactionBox.values.toList();
   int get listLength => transactionList.length;
 
@@ -44,6 +45,7 @@ class HomeScreenControllers extends GetxController {
         expense += addedTransactions.amount;
       }
     }
+
     return expense;
   }
 

@@ -1,4 +1,5 @@
-import 'package:expense_manager/view/allTransactions/Widgets/dropDown/onlyIncomeWidget/only_income.dart';
+import 'package:expense_manager/view/allTransactions/Widgets/onlyIncomeWidget/only_income.dart';
+import 'package:expense_manager/view/allTransactions/Widgets/onlyExpenseWidget/only_expense.dart';
 import 'package:expense_manager/viewModel/filterController/filter_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -148,67 +149,11 @@ class _AllTransactionsState extends State<AllTransactions> {
           SizedBox(
             height: height * 0.01,
           ),
-          
-            Expanded(
-              child:onlyIncomeWidget,
-            )
+          Expanded(
+            child: onlyIncomeWidget,
+          ),
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
-/* ValueListenableBuilder(
-                  valueListenable: transactionBox.listenable(),
-                  builder: (context, Box<Transactions> transactionBox, child) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      physics:
-                          const NeverScrollableScrollPhysics(), // Added this line
-                      padding: EdgeInsets.symmetric(
-                        horizontal: width * 0.03,
-                      ),
-                      itemCount: transactionBox.length,
-                      itemBuilder: (context, index) {
-                        int reversedIndex = transactionBox.length - 1 - index;
-
-                        Transactions transaction =
-                            transactionBox.getAt(reversedIndex)!;
-
-                        if (transactionBox.isEmpty) {
-                          return const Center(
-                            child: Text('No Transaction Found'),
-                          );
-                        }
-                        if (filterController.income.isTrue) {
-                          return Text('Income Filter');
-                        } else {
-                          return TransactionCard(
-                            index: index,
-                            type: transaction.type,
-                            dateTime: transaction.dateAndTime,
-                            imagePath: transaction.imageUrl,
-                            iconPath: transaction.type == 'expense'
-                                ? 'assets/images/expense.png'
-                                : 'assets/images/income.png',
-                            color: transaction.type == 'expense'
-                                ? Pallete.expenseBackGroundColor
-                                : Pallete.incomeBackGroundColor,
-                            logo: 'assets/images/food.png',
-                            category: transaction.category,
-                            description: transaction.description,
-                            amount: transaction.amount.toString(),
-                            time: transaction.dateAndTime.toString(),
-                          );
-                        }
-                      },
-                    );
-                  },
-                ),*/
-
-                
