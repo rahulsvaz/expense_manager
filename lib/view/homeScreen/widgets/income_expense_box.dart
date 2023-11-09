@@ -52,13 +52,21 @@ class IncomeExpenseBox extends StatelessWidget {
                 Container(
                     margin: EdgeInsets.only(
                         top: height * 0.003, left: width * 0.02),
-                    child: Text(
-                      '₹ $amount',
-                      style: TextStyle(
+                    child: Expanded(
+                      child: SizedBox(
+                        width: width*0.24,
+                        child: Text(
+                          '₹ $amount',
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          color: Pallete.white,
-                          fontSize: height * 0.02,
-                          fontWeight: FontWeight.bold),
+                          
+                          style: TextStyle(
+                              
+                              color: Pallete.white,
+                              fontSize: width * 0.04,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     )),
               ],
             )

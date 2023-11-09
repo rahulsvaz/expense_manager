@@ -1,5 +1,5 @@
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
-import 'package:expense_manager/view/addTransaction/viewModel/Widgets/snackBars/snackbar.dart';
+import 'package:expense_manager/view/addTransaction/Widgets/snackBars/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -7,16 +7,24 @@ import 'package:hive_flutter/hive_flutter.dart';
 class AddTransactionController extends GetxController {
   Box transactionBox = Hive.box<Transactions>('TransactionBox');
 
-  addExpense(Transactions newTransaction ,BuildContext context) {
-    transactionBox
-        .add(newTransaction)
-        .then((value) => ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.successSnackBar));
+  addExpense(Transactions newTransaction, BuildContext context) {
+    transactionBox.add(newTransaction).then((value) =>
+        ScaffoldMessenger.of(context)
+            .showSnackBar(CustomSnackbar.successSnackBar));
   }
 
   addIncome(Transactions newTransaction, BuildContext context) {
-    transactionBox
-        .add(newTransaction)
-         .then((value) => ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.successSnackBar));
+    transactionBox.add(newTransaction).then(
+          (value) => ScaffoldMessenger.of(context)
+              .showSnackBar(CustomSnackbar.successSnackBar),
+        
+        
+        
+        
+        
+        
+        
+        );
   }
 
   Transactions createNewExpense({

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TransactionCard extends StatelessWidget {
-  final String logo;
+
+  
   final String category;
   final String description;
   final String amount;
@@ -19,12 +20,11 @@ class TransactionCard extends StatelessWidget {
 
   const TransactionCard(
       {super.key,
-required this.type,
-required this.index,
+      required this.type,
+      required this.index,
       required this.dateTime,
       required this.iconPath,
       required this.color,
-      required this.logo,
       required this.category,
       required this.description,
       required this.amount,
@@ -35,7 +35,7 @@ required this.index,
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final dateFormatter = Get.put(DateController());
-    //final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
 
     return Card(
       elevation: 5,
@@ -43,15 +43,17 @@ required this.index,
       child: Center(
         child: ListTile(
           onTap: () {
-            Get.to(TransactionDetails(
-              index: index,
-              category: category,
-              type: type,
-              imagePath: imagePath,
-              amount: amount,
-              dateAndTime: time,
-              description: description,
-            ));
+            Get.to(
+              TransactionDetails(
+                index: index,
+                category: category,
+                type: type,
+                imagePath: imagePath,
+                amount: amount,
+                dateAndTime: time,
+                description: description,
+              ),
+            );
           },
           leading: Image.asset(iconPath),
           title: Row(
@@ -60,11 +62,18 @@ required this.index,
               Text(
                 category.trim(),
                 style: TextStyle(
-                    fontSize: height * 0.018, fontWeight: FontWeight.bold,color: Pallete.grey),
+                    fontSize: height * 0.018,
+                    fontWeight: FontWeight.bold,
+                    color: Pallete.grey),
               ),
-              Text(
-                '₹ $amount',
-                style: TextStyle(fontSize: height * 0.018, color: color),
+              SizedBox(
+                width: width * 0.2,
+                child: Text(
+                  '₹ $amount',
+                  style: TextStyle(fontSize: height * 0.018, color: color),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               )
             ],
           ),
@@ -73,12 +82,9 @@ required this.index,
             children: [
               Text(
                 description,
-                style: TextStyle(fontSize: height * 0.016,color: Pallete.grey),
+                style: TextStyle(fontSize: height * 0.016, color: Pallete.grey),
               ),
-              Text(
-                dateFormatter.formatDate(dateTime)
-                
-              )
+              Text(dateFormatter.formatDate(dateTime))
             ],
           ),
         ),

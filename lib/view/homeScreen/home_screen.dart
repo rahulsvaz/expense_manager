@@ -10,6 +10,7 @@ import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/homeScreen/methods/home_screen_container_decoration.dart';
 import 'package:expense_manager/view/homeScreen/widgets/income_expense_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:money_formatter/money_formatter.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -89,8 +90,13 @@ class HomeScreen extends StatelessWidget {
                   height: height * 0.02,
                 ),
                 GetBuilder<HomeScreenControllers>(builder: (controller) {
+                  MoneyFormatter fmf =
+                      MoneyFormatter(amount: controller.totalBalance());
+
                   return Text(
-                    '₹ ${controller.totalBalance().toString()}',
+                    '₹ ${fmf.output.compactNonSymbol}',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontSize: height * 0.05, fontWeight: FontWeight.w700),
                   );
@@ -200,7 +206,6 @@ class HomeScreen extends StatelessWidget {
                           color: transaction.type == 'expense'
                               ? Pallete.expenseBackGroundColor
                               : Pallete.incomeBackGroundColor,
-                          logo: 'assets/images/food.png',
                           category: transaction.category == 'Amount Added'
                               ? transaction.category
                               : transaction.category.substring(9).toUpperCase(),
