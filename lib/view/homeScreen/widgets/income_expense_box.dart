@@ -40,34 +40,33 @@ class IncomeExpenseBox extends StatelessWidget {
               ),
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    margin: EdgeInsets.only(
-                        top: height * 0.024, left: width * 0.01),
-                    child: Text(
-                      label,
-                      style: TextStyle(
-                          color: Pallete.white, fontSize: height * 0.012),
-                    )),
+                  margin:
+                      EdgeInsets.only(top: height * 0.024, left: width * 0.05),
+                  child: Text(
+                    label,
+                    style: TextStyle(
+                        color: Pallete.white, fontSize: height * 0.012),
+                  ),
+                ),
                 Container(
-                    margin: EdgeInsets.only(
-                        top: height * 0.003, left: width * 0.02),
-                    child: Expanded(
-                      child: SizedBox(
-                        width: width*0.24,
-                        child: Text(
-                          '₹ $amount',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          
-                          style: TextStyle(
-                              
-                              color: Pallete.white,
-                              fontSize: width * 0.04,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )),
+                  margin:
+                      EdgeInsets.only(top: height * 0.003, left: width * 0.02),
+                  child: SizedBox(
+                    width: width * 0.24,
+                    child: Text(
+                      '₹ $amount',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Pallete.white,
+                          fontSize: width * 0.04,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               ],
             )
           ],

@@ -1,4 +1,5 @@
 import 'package:expense_manager/view/createAccountPage/create_account.dart';
+import 'package:expense_manager/viewModel/userController/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -18,6 +19,8 @@ class SettingsMenuItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+       final user = Get.put(UserController());
+
     return Card(
       elevation: 10,
       shape: RoundedRectangleBorder(
@@ -62,11 +65,13 @@ class SettingsMenuItems extends StatelessWidget {
                     Get.defaultDialog(
                       middleText: 'Your all data  will be deleted',
                       confirm: TextButton(
-                        onPressed: () {
+                        onPressed: ()async {
                           Get.offAll(
-                            const CreateAccount(),
+                        
+                       await user.deleteUser()
+                       
+
                           );
-                          userBox.delete(0);
                         },
                         child: const Text('Yes'),
                       ),

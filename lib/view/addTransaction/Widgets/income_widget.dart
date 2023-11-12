@@ -39,121 +39,111 @@ class _IncomeWidgetState extends State<IncomeWidget> {
   Widget build(BuildContext context) {
     final width = Get.width;
     final height = Get.height;
-    return Column(
-      children: [
-        SizedBox(
-          height: height * 0.10,
-        ),
-        HowMuchText(width: width, height: height),
-        Padding(
-          padding: EdgeInsets.only(left: width * 0.17),
-          child: TextFormField(
-            controller: _amountController,
-            keyboardType: TextInputType.number,
-            style: const TextStyle(color: Pallete.white, fontSize: 80),
-            showCursor: true,
-            cursorHeight: height * 0.1,
-            cursorColor: Pallete.white,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: '₹0',
-              hintStyle:
-                  TextStyle(fontSize: height * 0.11, color: Pallete.white),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: height * 0.10,
+          ),
+          HowMuchText(width: width, height: height),
+          Padding(
+            padding: EdgeInsets.only(left: width * 0.17),
+            child: TextFormField(
+              controller: _amountController,
+              keyboardType: TextInputType.number,
+              style: const TextStyle(color: Pallete.incomeBackGroundColor, fontSize: 80),
+              showCursor: true,
+              cursorHeight: height * 0.1,
+              cursorColor: Colors.black,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: '₹0',
+                hintStyle:
+                    TextStyle(fontSize: height * 0.11,),
+              ),
             ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-              color: Pallete.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(width * 0.15),
-                  topRight: Radius.circular(width * 0.15))),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: height * 0.06,
-                ),
-                // const DropDown(),
-
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: width * 0.80),
-                  child: TextFormField(
-                    controller: _descriptionController,
-                    maxLength: 20,
-                    cursorColor: Pallete.grey,
-                    decoration: InputDecoration(
-                      hintText: 'Description',
-                      hintStyle: const TextStyle(color: Pallete.grey),
-                      enabledBorder: borderDecoration(),
-                      focusedBorder: borderDecoration(),
-                    ),
+          Column(
+            children: [
+              SizedBox(
+                height: height * 0.06,
+              ),
+              // const DropDown(),
+    
+              ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: width * 0.80),
+                child: TextFormField(
+                  controller: _descriptionController,
+                  maxLength: 20,
+                  cursorColor: Pallete.grey,
+                  decoration: InputDecoration(
+                    hintText: 'Description',
+                    hintStyle: const TextStyle(color: Pallete.grey),
+                    enabledBorder: borderDecoration(),
+                    focusedBorder: borderDecoration(),
                   ),
                 ),
-                SizedBox(height: height * 0.01),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  GestureDetector(
-                    onTap: () async {
-                      attachment.imagePath.value =
-                          await attachment.pickAttachment();
-                    },
-                    child: AttachmentButton(
-                      width: width * 0.50,
-                      height: height,
-                    ),
-                  ),
-                  SizedBox(
-                    width: width * 0.03,
-                  ),
-                  const DateButton()
-                ]),
-                SizedBox(height: height * 0.04),
-
-                Obx(() => Container(
-                      child: attachment.imagePath.value.isNotEmpty
-                          ? const Text(
-                              'Attachment Added',
-                              style: TextStyle(color: Pallete.grey),
-                            )
-                          : null,
-                    )),
-                SizedBox(height: height * 0.04),
-                LoginSignUpButton(
-                  onPressed: () {
-                    if (_amountController.text.isEmpty) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
-                    }
-
-                    final amount =
-                        double.parse(_amountController.text.toString());
-                    Transactions newIncome =
-                        transactionController.createNewIncome(
-                      amount: amount,
-                      type: 'income',
-                      dateAndTime: dateController.selectedDate,
-                      category: 'Amount Added',
-                      imageUrl: attachment.imagePath.value,
-                      description: _descriptionController.text.toString(),
-                    );
-                    transactionController.addIncome(newIncome, context);
-
-                    Get.offAll(const GnavNavigation());
-                    attachment.imagePath.value = '';
+              ),
+              SizedBox(height: height * 0.01),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                GestureDetector(
+                  onTap: () async {
+                    attachment.imagePath.value =
+                        await attachment.pickAttachment();
                   },
-                  label: 'Add Income',
-                  buttonTextColor: Pallete.white,
-                  backgroundColor: Pallete.incomeBackGroundColor,
+                  child: AttachmentButton(
+                    width: width * 0.50,
+                    height: height,
+                  ),
                 ),
-
                 SizedBox(
-                  height: height * 0.11,
+                  width: width * 0.03,
                 ),
-              ],
-            ),
+                const DateButton()
+              ]),
+              SizedBox(height: height * 0.04),
+    
+              Obx(() => Container(
+                    child: attachment.imagePath.value.isNotEmpty
+                        ? const Text(
+                            'Attachment Added',
+                            style: TextStyle(color: Pallete.grey),
+                          )
+                        : null,
+                  )),
+              SizedBox(height: height * 0.04),
+              LoginSignUpButton(
+                onPressed: () {
+                  if (_amountController.text.isEmpty) {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
+                  }
+    
+                  final amount =
+                      double.parse(_amountController.text.toString());
+                  Transactions newIncome =
+                      transactionController.createNewIncome(
+                    amount: amount,
+                    type: 'income',
+                    dateAndTime: dateController.selectedDate,
+                    category: 'Amount Added',
+                    imageUrl: attachment.imagePath.value,
+                    description: _descriptionController.text.toString(),
+                  );
+                  transactionController.addIncome(newIncome, context);
+    
+                  Get.offAll(const GnavNavigation());
+                  attachment.imagePath.value = '';
+                },
+                label: 'Add Income',
+                buttonTextColor: Pallete.white,
+                backgroundColor: Pallete.incomeBackGroundColor,
+              ),
+    
+            ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

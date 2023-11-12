@@ -34,39 +34,39 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
   Widget build(BuildContext context) {
     final width = Get.width;
     final height = Get.height;
-    return Column(
-      children: [
-        SizedBox(
-          height: height * 0.10,
-        ),
-        HowMuchText(width: width, height: height),
-        Padding(
-          padding: EdgeInsets.only(left: width * 0.17),
-          child: TextFormField(
-            controller: _amountController,
-            keyboardType: TextInputType.number,
-            style: const TextStyle(color: Pallete.white, fontSize: 80),
-            showCursor: true,
-            cursorHeight: height * 0.1,
-            cursorColor: Pallete.white,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              // prefixText: '₹',
-              hintText: '₹0',
-              hintStyle:
-                  TextStyle(fontSize: height * 0.11, color: Pallete.white),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: height * 0.10,
+          ),
+          HowMuchText(width: width, height: height),
+          Padding(
+            padding: EdgeInsets.only(left: width * 0.17),
+            child: TextFormField(
+              controller: _amountController,
+              keyboardType: TextInputType.number,
+              style: const TextStyle(color: Pallete.expenseBackGroundColor, fontSize: 80),
+              showCursor: true,
+              cursorHeight: height * 0.1,
+              cursorColor: Colors.black,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                // prefixText: '₹',
+                hintText: '₹0',
+                hintStyle:
+                    TextStyle(fontSize: height * 0.11,),
+              ),
             ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Pallete.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(width * 0.15),
-              topRight: Radius.circular(width * 0.15),
+          Container(
+            decoration: BoxDecoration(
+              color: Pallete.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(width * 0.15),
+                topRight: Radius.circular(width * 0.15),
+              ),
             ),
-          ),
-          child: SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
@@ -125,10 +125,10 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                       imageUrl: attachment.imagePath.value,
                       description: _descriptionController.text.toString(),
                     );
-
+    
                     transactionController.addExpense(newTransaction, context);
                     attachment.imagePath.value = '';
-
+    
                     Get.offAll(
                       const GnavNavigation(),
                     );
@@ -137,14 +137,14 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                   buttonTextColor: Pallete.white,
                   backgroundColor: Pallete.expenseBackGroundColor,
                 ),
-                SizedBox(
-                  height: height * 0.11,
-                ),
+                // SizedBox(
+                //   height: height * 0.11,
+                // ),
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

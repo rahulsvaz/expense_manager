@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/BudgetScreen/budget_calculator_page.dart';
-import 'package:expense_manager/view/allTransactions/Widgets/allTransactionWidget/all_transactionWidget.dart';
+import 'package:expense_manager/view/addTransaction/add_transaction_page.dart';
+import 'package:expense_manager/view/allTransactions/Widgets/allTransactionWidget/all_transaction_widget.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,8 +13,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:money_formatter/money_formatter.dart';
 import 'package:pie_chart/pie_chart.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.put(HomeScreenControllers());
@@ -62,9 +69,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Pallete.grey),
                     ),
-                    // SizedBox(
-                    //   width: width * 0.4,
-                    // ),
+                   
                     IconButton(
                       onPressed: () {
                         Get.to(const BudgetCalculatorPage());
@@ -134,26 +139,27 @@ class HomeScreen extends StatelessWidget {
             height: height * 0.02,
           ),
           SizedBox(
-              height: height * 0.26,
-              child: GetBuilder<HomeScreenControllers>(
-                builder: (controller) {
-                  double income = controller.getTotalIncome();
-                  double expense = controller.getTotalExpense();
-                  Map<String, double> dataMap = {
-                    "Income": income,
-                    "Expense": expense
-                  };
+            height: height * 0.23,
+            child: GetBuilder<HomeScreenControllers>(
+              builder: (controller) {
+                double income = controller.getTotalIncome();
+                double expense = controller.getTotalExpense();
+                Map<String, double> dataMap = {
+                  "Income": income,
+                  "Expense": expense
+                };
 
-                  return PieChart(
-                    chartType: ChartType.disc,
-                    dataMap: dataMap,
-                    colorList: const [
-                      Pallete.incomeBackGroundColor,
-                      Pallete.expenseBackGroundColor
-                    ],
-                  );
-                },
-              )),
+                return PieChart(
+                  chartType: ChartType.disc,
+                  dataMap: dataMap,
+                  colorList: const [
+                    Pallete.incomeBackGroundColor,
+                    Pallete.expenseBackGroundColor
+                  ],
+                );
+              },
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -165,7 +171,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(const AddTransactionPage());
+                },
                 child: Text(
                   'See All',
                   style: TextStyle(
@@ -176,9 +184,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-        const   Expanded(
-            child: AllTransactionWidget()
-          ),
+         const  Expanded(child:  AllTransactionWidget()),
         ],
       ),
     );

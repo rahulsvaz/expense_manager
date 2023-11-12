@@ -19,8 +19,8 @@ class HowMuchText extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: height * 0.03,
-          color: const Color.fromARGB(190, 255, 255, 255),
-        ),
+          // color: Color.fromARGB(189, 238, 23, 23),
+              ),
       ),
     );
   }

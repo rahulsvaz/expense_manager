@@ -1,4 +1,5 @@
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
+import 'package:expense_manager/view/homeScreen/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -36,4 +37,9 @@ class UserController extends GetxController {
     elevation.value = 5.0;
   }
 
+
+deleteUser()async{
+  Get.offAll(const HomeScreen());
+ await userBox.deleteFromDisk();
+}
 }
