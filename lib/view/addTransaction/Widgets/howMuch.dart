@@ -1,3 +1,4 @@
+import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 class HowMuchText extends StatelessWidget {
@@ -19,7 +20,7 @@ class HowMuchText extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: height * 0.03,
-          // color: Color.fromARGB(189, 238, 23, 23),
+       color: Pallete.grey
               ),
       ),
     );

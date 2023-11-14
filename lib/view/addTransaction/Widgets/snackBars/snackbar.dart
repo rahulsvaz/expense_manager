@@ -52,4 +52,15 @@ class CustomSnackbar {
           contentType: ContentType.success));
 
 
+static final incomeLowSnackbar = SnackBar(
+      duration: const Duration(milliseconds: 2000),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      behavior: SnackBarBehavior.fixed,
+      showCloseIcon: false,
+      content: AwesomeSnackbarContent(
+          title: 'Low Balance',
+          message: 'Your available balance is not enough to add this transaction',
+          contentType: ContentType.warning));
+
 }

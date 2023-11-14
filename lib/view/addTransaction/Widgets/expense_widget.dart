@@ -12,6 +12,7 @@ import 'package:expense_manager/view/addTransaction/Widgets/snackBars/snackbar.d
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/homeScreen/methods/border_decoration_add_field.dart';
 import 'package:expense_manager/view/homeScreen/widgets/login_sign_up_button.dart';
+import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,6 +26,7 @@ class ExpenseWidget extends StatefulWidget {
 class _ExpenseWidgetState extends State<ExpenseWidget> {
   final transactionController = Get.put(AddTransactionController());
   final dateController = Get.put(DateController());
+  final homeScreenController = Get.put(HomeScreenControllers());
   final categoryController = Get.put(DropDownController());
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
@@ -46,7 +48,8 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
             child: TextFormField(
               controller: _amountController,
               keyboardType: TextInputType.number,
-              style: const TextStyle(color: Pallete.expenseBackGroundColor, fontSize: 80),
+              style: const TextStyle(
+                  color: Pallete.expenseBackGroundColor, fontSize: 80),
               showCursor: true,
               cursorHeight: height * 0.1,
               cursorColor: Colors.black,
@@ -54,8 +57,9 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                 border: InputBorder.none,
                 // prefixText: '₹',
                 hintText: '₹0',
-                hintStyle:
-                    TextStyle(fontSize: height * 0.11,),
+                hintStyle: TextStyle(
+                  fontSize: height * 0.11,
+                ),
               ),
             ),
           ),
@@ -79,6 +83,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                 ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: width * 0.80),
                   child: TextFormField(
+                    style: const TextStyle(color: Pallete.grey),
                     controller: _descriptionController,
                     maxLength: 20,
                     cursorColor: Pallete.grey,
@@ -110,11 +115,19 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                 SizedBox(height: height * 0.04),
                 LoginSignUpButton(
                   onPressed: () {
+                    final totalIncome = homeScreenController.getTotalIncome();
+                    final amount = double.parse(_amountController.text.trim());
+                    if (totalIncome < amount) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(CustomSnackbar.incomeLowSnackbar);
+                    }
+
                     if (_amountController.text.isEmpty) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
                     }
-                    final amount = double.parse(_amountController.text.trim());
+                    if(totalIncome>=amount){
+
                     Transactions newTransaction =
                         transactionController.createNewExpense(
                       amount: amount,
@@ -125,18 +138,21 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                       imageUrl: attachment.imagePath.value,
                       description: _descriptionController.text.toString(),
                     );
-    
+                    
                     transactionController.addExpense(newTransaction, context);
                     attachment.imagePath.value = '';
-    
-                    Get.offAll(
+                     Get.offAll(
                       const GnavNavigation(),
                     );
+                  
+                    }
+                   
                   },
                   label: 'Add Expense',
                   buttonTextColor: Pallete.white,
                   backgroundColor: Pallete.expenseBackGroundColor,
                 ),
+  
                 // SizedBox(
                 //   height: height * 0.11,
                 // ),

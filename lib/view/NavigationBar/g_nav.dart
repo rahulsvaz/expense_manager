@@ -1,6 +1,5 @@
 import 'package:expense_manager/view/addTransaction/add_transaction_page.dart';
 import 'package:expense_manager/viewModel/navigationControllers/gnav_controller.dart';
-import 'package:expense_manager/view/addTransaction/add_transaction.dart';
 import 'package:expense_manager/view/allTransactions/all_transactions_page.dart';
 import 'package:expense_manager/view/homeScreen/home_screen.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';

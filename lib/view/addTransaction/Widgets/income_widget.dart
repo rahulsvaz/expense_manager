@@ -49,6 +49,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
           Padding(
             padding: EdgeInsets.only(left: width * 0.17),
             child: TextFormField(
+              
               controller: _amountController,
               keyboardType: TextInputType.number,
               style: const TextStyle(color: Pallete.incomeBackGroundColor, fontSize: 80),
@@ -73,6 +74,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: width * 0.80),
                 child: TextFormField(
+                  style:const  TextStyle(color: Pallete.grey),
                   controller: _descriptionController,
                   maxLength: 20,
                   cursorColor: Pallete.grey,

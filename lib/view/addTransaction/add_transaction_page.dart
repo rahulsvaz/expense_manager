@@ -19,21 +19,22 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Add Transaction'),
-          bottom:const  TabBar(
+          bottom: const TabBar(
             labelColor: Pallete.buttonColor,
             indicatorColor: Colors.black,
-            
             isScrollable: true,
-            indicator:BoxDecoration(),
+            indicator: BoxDecoration(),
             tabs: [
-
-            Tab(text: 'Add Income',
-            ),
-                        Tab(text: 'Add Expense',)
-
-          ]),
+              Tab(
+                text: 'Add Income',
+              ),
+              Tab(
+                text: 'Add Expense',
+              )
+            ],
+          ),
         ),
-        body: const  TabBarView(children: [
+        body: const TabBarView(children: [
           IncomeWidget(),
           ExpenseWidget(),
         ]),
