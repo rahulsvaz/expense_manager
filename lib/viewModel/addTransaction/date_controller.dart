@@ -7,6 +7,9 @@ class DateController extends GetxController {
   final formatter = DateFormat.yMd();
   DateTime selectedDate = DateTime.now();
 
+
+
+// D A T E   P I C K E R
   showPresentDatePicker(BuildContext context) async {
     var pickedDate = await showDatePicker(
         context: context,
@@ -18,6 +21,8 @@ class DateController extends GetxController {
     }
   }
 
+
+// D A T E      F O R M A T T E R 
   String formatDate(DateTime date) {
     return format.format(date);
   }

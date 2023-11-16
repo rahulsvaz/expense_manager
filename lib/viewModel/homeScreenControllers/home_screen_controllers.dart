@@ -8,8 +8,19 @@ class HomeScreenControllers extends GetxController {
   Box transactionBox = Hive.box<Transactions>('TransactionBox');
 
 
+
+
+
+
+
+// TO GET ALL TRANSACTION TO A LIST
   List get transactionList => transactionBox.values.toList();
   int get listLength => transactionList.length;
+
+
+
+
+  // FOR ONLY INCOME TRANSACTION  LIST
 
   List get incomeTransactionList {
     return transactionList
@@ -17,12 +28,14 @@ class HomeScreenControllers extends GetxController {
         .toList();
   }
 
+  // FOR ONLY EXPENSE TRANSACTION  LIST
   List get expenseTransactionList {
     return transactionList
         .where((transaction) => transaction.type == 'expense')
         .toList();
   }
 
+// GET TOTAL INCOME AMOUNT
   double getTotalIncome() {
     double income = 0.0;
     for (int i = 0; i < transactionList.length; i++) {
@@ -35,6 +48,7 @@ class HomeScreenControllers extends GetxController {
     return income;
   }
 
+// GET TOTAL EXPENSE LIST AMOUNT
   double getTotalExpense() {
     double expense = 0.0;
 
@@ -52,6 +66,8 @@ class HomeScreenControllers extends GetxController {
   double totalBalance() {
     return getTotalIncome() - getTotalExpense();
   }
+
+// FOR DELETING TRANSACTION LIST
 
   deleteTransaction(BuildContext context, int index) {
     transactionBox.deleteAt(index).then((value) => ScaffoldMessenger.of(context)

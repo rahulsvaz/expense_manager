@@ -7,6 +7,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 class AddTransactionController extends GetxController {
   Box transactionBox = Hive.box<Transactions>('TransactionBox');
 
+
+  // N O T I F I C A T I O N   F O R    A D D I N G  N E W   T R A N S A C T I O N
+
   addExpense(Transactions newTransaction, BuildContext context) {
     transactionBox.add(newTransaction).then((value) =>
         ScaffoldMessenger.of(context)
@@ -17,16 +20,13 @@ class AddTransactionController extends GetxController {
     transactionBox.add(newTransaction).then(
           (value) => ScaffoldMessenger.of(context)
               .showSnackBar(CustomSnackbar.successSnackBar),
-        
-        
-        
-        
-        
-        
-        
         );
   }
 
+
+
+
+//  F O R   A D D I N G   N E W     T R A N S A C T I O N
   Transactions createNewExpense({
     required double amount,
     required String type,

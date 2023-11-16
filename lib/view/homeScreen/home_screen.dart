@@ -69,7 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.bold,
                           color: Pallete.grey),
                     ),
-                   
                     IconButton(
                       onPressed: () {
                         Get.to(const BudgetCalculatorPage());
@@ -161,8 +160,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(height: height*0.07,),
+              SizedBox(width: width*0.09,),
               Text(
                 'Recent Transactions',
                 style: TextStyle(
@@ -170,21 +172,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  Get.to(const AddTransactionPage());
-                },
-                child: Text(
-                  'See All',
-                  style: TextStyle(
-                    color: Pallete.purple,
-                    fontSize: height * 0.02,
-                  ),
-                ),
-              ),
             ],
           ),
-         const  Expanded(child:  AllTransactionWidget()),
+          const Expanded(child: AllTransactionWidget()),
         ],
       ),
     );

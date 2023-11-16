@@ -1,17 +1,17 @@
-import 'package:get/get.dart';
+// // import 'package:get/get.dart';
 
-class TransactionScreenController extends GetxController {
-  RxString activeWidget = 'expense-widget'.obs;
+// // class TransactionScreenController extends GetxController {
+// //   RxString activeWidget = 'expense-widget'.obs;
 
-  RxBool isIncome = false.obs;
+// //   RxBool isIncome = false.obs;
 
-  get animationController => null;
+// //   get animationController => null;
 
-  changeActiveWidget() {
-    activeWidget.value = 'income-widget';
-  }
+// //   changeActiveWidget() {
+// //     activeWidget.value = 'income-widget';
+// //   }
 
-  changeToExpense() {
-    activeWidget.value = 'expense-widget';
-  }
-}
+// //   changeToExpense() {
+// //     activeWidget.value = 'expense-widget';
+// //   }
+// }

@@ -20,6 +20,7 @@ void main() async {
   Hive.registerAdapter<User>(UserAdapter());
   Hive.registerAdapter(TransactionsAdapter());
   Hive.registerAdapter(BudgetModelAdapter());
+
   await Hive.openBox<BudgetModel>('BudgetBox');
   await Hive.openBox<User>('UserBox');
   await Hive.openBox<Transactions>('TransactionBox');
