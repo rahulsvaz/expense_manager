@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:expense_manager/view/constant/colors/colors.dart';
+import 'package:expense_manager/view/editTransaction/edit_scree.dart';
 import 'package:expense_manager/view/editTransaction/edit_transaction.dart';
 import 'package:expense_manager/view/viewImage/image_view.dart';
 import 'package:expense_manager/viewModel/addTransaction/transaction_controller.dart';
@@ -99,12 +100,23 @@ class TransactionDetails extends StatelessWidget {
             ),
             Positioned(
               top: height * 0.23,
-              child: Text(
-                category.toUpperCase(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Pallete.white,
-                  fontSize: height * 0.02,
+              child: SizedBox(
+                child: 
+                 category == 'Amount Added'
+                    ? Text(
+                        category, style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Pallete.white,
+                    fontSize: height * 0.02,
+                  ),):
+                
+                Text(
+                  category.substring(9).toUpperCase(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Pallete.white,
+                    fontSize: height * 0.02,
+                  ),
                 ),
               ),
             ),
@@ -155,12 +167,12 @@ class TransactionDetails extends StatelessWidget {
                 activeThumbColor: Pallete.purple,
                 activeTrackColor: Colors.grey.shade300,
                 onSwipe: () {
-                  Get.to(EditTransactionPage(amount: amount));
+                 Get.to(EditScreen(index:index, amount: double.parse(amount), description: description, imageUrl: imagePath,category: category,type: type,));
 
                   // Get.to(const EditTransactionPage());
                 },
                 child: const Text(
-                  "Edit Transaction",
+                  "Edit Transaction", 
                   style: TextStyle(
                     color: Colors.black,
                   ),

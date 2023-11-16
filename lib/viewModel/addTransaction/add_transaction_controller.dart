@@ -25,6 +25,16 @@ class AddTransactionController extends GetxController {
 
 
 
+  updateTransaction(Transactions updated, BuildContext context , int index)async {
+   await transactionBox.putAt(index,updated).then(
+          (value) => ScaffoldMessenger.of(context)
+              .showSnackBar(CustomSnackbar.successSnackBar),
+        );
+  }
+
+  
+
+
 
 //  F O R   A D D I N G   N E W     T R A N S A C T I O N
   Transactions createNewExpense({

@@ -40,7 +40,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Pallete.white,
         useMaterial3: true,
       ),
-      home: Hive.box<User>('UserBox').isEmpty
+      home: 
+      
+      Hive.box<User>('UserBox').isEmpty
           ? const OnboardingScreen()
           : const GnavNavigation(),
     );

@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TransactionCard extends StatelessWidget {
-
-  
   final String category;
   final String description;
   final String amount;
@@ -59,12 +57,22 @@ class TransactionCard extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                category.trim(),
-                style: TextStyle(
-                    fontSize: height * 0.018,
-                    fontWeight: FontWeight.bold,
-                    color: Pallete.grey),
+              SizedBox(
+                child: category == 'Amount Added'
+                    ? Text(
+                        category,
+                        style: TextStyle(
+                            fontSize: height * 0.018,
+                            fontWeight: FontWeight.bold,
+                            color: Pallete.grey),
+                      )
+                    : Text(
+                        category.substring(9).toUpperCase(),
+                        style: TextStyle(
+                            fontSize: height * 0.018,
+                            fontWeight: FontWeight.bold,
+                            color: Pallete.grey),
+                      ),
               ),
               SizedBox(
                 width: width * 0.2,
