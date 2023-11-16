@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/BudgetScreen/budget_calculator_page.dart';
-import 'package:expense_manager/view/addTransaction/add_transaction_page.dart';
 import 'package:expense_manager/view/allTransactions/Widgets/allTransactionWidget/all_transaction_widget.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';

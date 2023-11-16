@@ -1,5 +1,4 @@
 
-import 'package:expense_manager/view/allTransactions/Widgets/sortedList/sorted_list.dart';
 import 'package:expense_manager/viewModel/dateFilterController/date_filter_controller.dart';
 import 'package:expense_manager/viewModel/filterController/filter_controller.dart';
 import 'package:flutter/material.dart';
