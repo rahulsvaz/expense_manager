@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/settings/widgets/menu_item.dart';
+import 'package:expense_manager/viewModel/userController/user_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -19,6 +21,12 @@ class _SettingsPageState extends State<SettingsPage> {
     User currentUser = userBox.getAt(0);
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final userController = Get.put(UserController());
+    userController.name.value = currentUser.name;
+    userController.age.value = currentUser.age;
+    userController.email.value = currentUser.email;
+    userController.phone.value = currentUser.phone;
+    userController.imagePath.value = currentUser.imageUrl;
 
     return Scaffold(
       body: Stack(
@@ -46,15 +54,15 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Center(
               child: currentUser.imageUrl.isEmpty
                   ? CircleAvatar(
-                      backgroundImage:
-                          const AssetImage('assets/images/user_logo.jpg'),
+                      backgroundImage: FileImage(File(currentUser.imageUrl)),
                       radius: height * 0.09,
                     )
-                  : CircleAvatar(
-                      backgroundImage: FileImage(
-                        File(currentUser.imageUrl),
+                  : Obx(
+                      () => CircleAvatar(
+                        backgroundImage:
+                            FileImage(File(userController.imagePath.value)),
+                        radius: height * 0.09,
                       ),
-                      radius: height * 0.09,
                     ),
             ),
           ),
@@ -63,14 +71,16 @@ class _SettingsPageState extends State<SettingsPage> {
             left: 0,
             right: 0,
             child: Center(
-              child: Text(
-                currentUser.name,
-                style: GoogleFonts.aBeeZee(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 3,
-                    color: Pallete.grey),
-              ),
+              child: GetBuilder<UserController>(builder: (controller) {
+                return Text(
+                  controller.name.value,
+                  style: GoogleFonts.aBeeZee(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 3,
+                      color: Pallete.grey),
+                );
+              }),
             ),
           ),
           Positioned(

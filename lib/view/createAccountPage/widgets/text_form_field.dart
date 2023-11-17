@@ -24,12 +24,15 @@ class UserTextfield extends StatelessWidget {
       decoration: const BoxDecoration(),
       width: Get.width * 0.79,
       child: TextFormField(
+        
         controller: controller,
         validator: validator,
-        style: const TextStyle(color: Pallete.textFieldColor),
+        style: const TextStyle(color: Pallete.grey),
         obscureText: obscureText,
+
         cursorColor: Colors.grey,
         decoration: InputDecoration(
+          
           errorStyle: const TextStyle(color: Pallete.purple),
           prefixIcon: prefix,
           label: Text(

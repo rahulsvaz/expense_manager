@@ -1,6 +1,6 @@
 import 'dart:io';
+import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/viewModel/userController/user_controller.dart';
-import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/createAccountPage/validators/validators.dart';
 import 'package:expense_manager/view/createAccountPage/widgets/text_form_field.dart';
@@ -8,6 +8,7 @@ import 'package:expense_manager/view/homeScreen/widgets/login_sign_up_button.dar
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
@@ -22,6 +23,7 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
+  final userBox = Hive.box<User>('UserBox');
 
   @override
   void dispose() {
@@ -86,30 +88,32 @@ class _CreateAccountState extends State<CreateAccount> {
                 right: 0,
                 top: height * 0.35,
                 child: Center(
-                    child: UserTextfield(
-                        label: 'Name',
-                        prefix: const Icon(
-                          Icons.abc,
-                          color: Pallete.grey,
-                        ),
-                        controller: _nameController,
-                        obscureText: false,
-                        validator: nameValidator)),
+                  child: UserTextfield(
+                      label: 'Name',
+                      prefix: const Icon(
+                        Icons.abc,
+                        color: Pallete.grey,
+                      ),
+                      controller: _nameController,
+                      obscureText: false,
+                      validator: nameValidator),
+                ),
               ),
               Positioned(
                 left: 0,
                 right: 0,
                 top: height * 0.45,
                 child: Center(
-                    child: UserTextfield(
-                        prefix: const Icon(
-                          Icons.email,
-                          color: Pallete.grey,
-                        ),
-                        label: 'Email',
-                        controller: _emailController,
-                        obscureText: false,
-                        validator: emailValidator)),
+                  child: UserTextfield(
+                      prefix: const Icon(
+                        Icons.email,
+                        color: Pallete.grey,
+                      ),
+                      label: 'Email',
+                      controller: _emailController,
+                      obscureText: false,
+                      validator: emailValidator),
+                ),
               ),
               Positioned(
                 left: 0,
@@ -117,8 +121,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 top: height * 0.55,
                 child: Center(
                   child: UserTextfield(
-                      // ignore: prefer_const_constructors
-                      prefix: Icon(
+                      prefix: const  Icon(
                         Icons.numbers_rounded,
                         color: Pallete.grey,
                       ),
@@ -156,15 +159,9 @@ class _CreateAccountState extends State<CreateAccount> {
                             final phone = _phoneController.text.toString();
                             final email = _emailController.text.toString();
                             final age = _ageController.text.toString();
-                            userController.createUser(name, phone, email, age,
-                                userController.imagePath.value);
-                            userController
-                                .saveUser(userController.newUser!)
-                                .then(
-                                  Get.offAll(
-                                    const GnavNavigation(),
-                                  ),
-                                );
+
+                            userController.createNewUser(name, phone, age,
+                                email, userController.imagePath.value);
                           }
                         },
                         label: 'Create Account',

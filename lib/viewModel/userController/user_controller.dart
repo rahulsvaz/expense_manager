@@ -1,19 +1,31 @@
+
+
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
+import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/homeScreen/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
-  final userBox = Hive.box<User>('UserBox');
-  User? newUser;
+  Box userBox = Hive.box<User>('UserBox');
+
+RxString name =''.obs;
+RxString age =''.obs;
+RxString email =''.obs;
+RxString phone =''.obs;
+
+  
+
   RxString imagePath = ''.obs;
   XFile? pickedImage;
 
-  createUser(
-      String name, String phone, String email, String age, String imagePath) {
-    newUser = User(
-        name: name, phone: phone, age: age, email: email, imageUrl: imagePath);
+  createNewUser(
+      String name, String phone, String age, String email, String imageUrl) {
+    User newUser = User(
+        name: name, phone: phone, age: age, email: email, imageUrl: imageUrl);
+
+    userBox.add(newUser).then((value) => Get.offAll(const GnavNavigation()));
   }
 
   saveUser(User newUser) async {
@@ -37,9 +49,13 @@ class UserController extends GetxController {
     elevation.value = 5.0;
   }
 
+  deleteUser() async {
+    Get.offAll(const HomeScreen());
+    await userBox.deleteFromDisk();
+  }
 
-deleteUser()async{
-  Get.offAll(const HomeScreen());
- await userBox.deleteFromDisk();
-}
+  updateUser(User updated) async {
+    await userBox.put(0, updated);
+    Get.back();
+  }
 }

@@ -1,4 +1,6 @@
-import 'package:expense_manager/viewModel/userController/user_controller.dart';
+import 'package:expense_manager/model/repository/userModel/user_model.dart';
+import 'package:expense_manager/view/createAccountPage/create_account.dart';
+import 'package:expense_manager/view/ediAccount.dart/edit_Account.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -18,7 +20,9 @@ class SettingsMenuItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-       final user = Get.put(UserController());
+    Box userBox = Hive.box<User>('UserBox');
+
+    User currentUser = userBox.getAt(0);
 
     return Card(
       elevation: 10,
@@ -36,7 +40,15 @@ class SettingsMenuItems extends StatelessWidget {
               contentPadding: EdgeInsets.symmetric(
                   horizontal: width * 0.08, vertical: height * 0.01),
               leading: IconButton(
-                  onPressed: () {}, icon: const Icon(IconlyLight.edit)),
+                  onPressed: () {
+                    Get.to(EditAccount(
+                        name: currentUser.name,
+                        phone: currentUser.phone,
+                        age: currentUser.age,
+                        email: currentUser.email,
+                        imageUrl: currentUser.imageUrl));
+                  },
+                  icon: const Icon(IconlyLight.edit)),
               trailing: Text(
                 'Edit Profile Information',
                 textAlign: TextAlign.end,
@@ -64,13 +76,10 @@ class SettingsMenuItems extends StatelessWidget {
                     Get.defaultDialog(
                       middleText: 'Your all data  will be deleted',
                       confirm: TextButton(
-                        onPressed: ()async {
-                          Get.offAll(
-                        
-                       await user.deleteUser()
-                       
-
-                          );
+                        onPressed: () async {
+                          Get.offAll(const CreateAccount());
+                    
+                    await userBox.deleteAt(0);
                         },
                         child: const Text('Yes'),
                       ),

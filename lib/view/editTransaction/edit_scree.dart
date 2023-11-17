@@ -16,14 +16,14 @@ import 'package:expense_manager/viewModel/addTransaction/image_controller.dart';
 import 'package:expense_manager/viewModel/dopDownController/drop_down_controller.dart';
 
 class EditScreen extends StatefulWidget {
-  int index;
-  double amount;
-  String description;
-  String imageUrl;
-  String type;
-  String category;
+ final int index;
+ final double amount;
+ final String description;
+ final  String imageUrl;
+ final String type;
+  final String category;
 
-  EditScreen({
+  const EditScreen({
     super.key,
     required this.index,
     required this.amount,
@@ -59,116 +59,120 @@ class _EditScreenState extends State<EditScreen> {
     final height = Get.height;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: height * 0.10,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: width * 0.17),
-              child: TextFormField(
-                controller: _amountController..text = widget.amount.toString(),
-                keyboardType: TextInputType.number,
-                style: const TextStyle(
-                    color: Pallete.incomeBackGroundColor, fontSize: 80),
-                showCursor: true,
-                cursorHeight: height * 0.1,
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: '₹0',
-                  hintStyle: TextStyle(
-                    fontSize: height * 0.11,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: height * 0.10,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: width * 0.17),
+                child: TextFormField(
+                  controller: _amountController..text = widget.amount.toString(),
+                  keyboardType: TextInputType.number,
+                  style:  TextStyle(
+                      color: widget.type=='income'?Pallete.incomeBackGroundColor:Pallete.expenseBackGroundColor, fontSize: 80),
+                  showCursor: true,
+                  cursorHeight: height * 0.1,
+                  cursorColor: Colors.black,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: '₹0',
+                    hintStyle: TextStyle(
+                      fontSize: height * 0.11,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: height * 0.06,
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: width * 0.80),
-                  child: TextFormField(
-                    style: const TextStyle(color: Pallete.grey),
-                    controller: _descriptionController
-                      ..text = widget.description,
-                    maxLength: 20,
-                    cursorColor: Pallete.grey,
-                    decoration: InputDecoration(
-                      hintText: 'Description',
-                      hintStyle: const TextStyle(color: Pallete.grey),
-                      enabledBorder: borderDecoration(),
-                      focusedBorder: borderDecoration(),
-                    ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: height * 0.06,
                   ),
-                ),
-                SizedBox(height: height * 0.01),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () async {
-                        attachment.imagePath.value =
-                            await attachment.pickAttachment();
-                      },
-                      child: AttachmentButton(
-                        width: width * 0.50,
-                        height: height,
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: width * 0.80),
+                    child: TextFormField(
+                      style: const TextStyle(color: Pallete.grey),
+                      controller: _descriptionController
+                        ..text = widget.description,
+                      maxLength: 20,
+                      cursorColor: Pallete.grey,
+                      decoration: InputDecoration(
+                        hintText: 'Description',
+                        hintStyle: const TextStyle(color: Pallete.grey),
+                        enabledBorder: borderDecoration(),
+                        focusedBorder: borderDecoration(),
                       ),
                     ),
-                    SizedBox(
-                      width: width * 0.03,
-                    ),
-                    const DateButton()
-                  ],
-                ),
-                SizedBox(height: height * 0.04),
-                Obx(
-                  () => Container(
-                    child: attachment.imagePath.value.isNotEmpty
-                        ? const Text(
-                            'Attachment Added',
-                            style: TextStyle(color: Pallete.grey),
-                          )
-                        : null,
                   ),
-                ),
-                SizedBox(height: height * 0.04),
-                LoginSignUpButton(
-                  onPressed: () async {
-                    if (_amountController.text.isEmpty) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
-                    }
+                  SizedBox(height: height * 0.01),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () async {
+                          attachment.imagePath.value =
+                              await attachment.pickAttachment();
+                        },
+                        child: AttachmentButton(
+                          width: width * 0.50,
+                          height: height,
+                        ),
+                      ),
+                      SizedBox(
+                        width: width * 0.03,
+                      ),
+                      const DateButton()
+                    ],
+                  ),
+                  SizedBox(height: height * 0.04),
+                  Obx(
+                    () => Container(
+                      child: attachment.imagePath.value.isNotEmpty
+                          ? const Text(
+                              'Attachment Added',
+                              style: TextStyle(color: Pallete.grey),
+                            )
+                          : null,
+                    ),
+                  ),
+                  SizedBox(height: height * 0.04),
+                  LoginSignUpButton(
+                    onPressed: () async {
+                      if (_amountController.text.isEmpty) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
+                      }
+        
+                      final amount = double.parse(
+                        _amountController.text.toString(),
+                      );
+                      Transactions updated = Transactions(
+                          amount: amount,
+                          type: widget.type,
+                          dateAndTime: dateController.selectedDate,
+                          category:widget.category,
+                          description:_descriptionController.text,
+                          imageUrl:  attachment.imagePath.value);
+        
+                      await transactionController.updateTransaction(
+                          updated, context, widget.index);
+        
+                      Get.offAll(
+                        const GnavNavigation(),
+                      );
+                      attachment.imagePath.value = '';
+                    },
+                    label: 'Update',
+                    buttonTextColor: Pallete.white,
 
-                    final amount = double.parse(
-                      _amountController.text.toString(),
-                    );
-                    Transactions updated = Transactions(
-                        amount: amount,
-                        type: widget.type,
-                        dateAndTime: dateController.selectedDate,
-                        category:widget.category,
-                        description:_descriptionController.text,
-                        imageUrl:  attachment.imagePath.value);
-
-                    await transactionController.updateTransaction(
-                        updated, context, widget.index);
-
-                    Get.offAll(
-                      const GnavNavigation(),
-                    );
-                    attachment.imagePath.value = '';
-                  },
-                  label: 'Update',
-                  buttonTextColor: Pallete.white,
-                  backgroundColor: Pallete.incomeBackGroundColor,
-                ),
-              ],
-            ),
-          ],
+                    backgroundColor:widget.type=='income'?Pallete.incomeBackGroundColor:Pallete.expenseBackGroundColor,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
