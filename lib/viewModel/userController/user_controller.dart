@@ -1,8 +1,5 @@
-
-
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/NavigationBar/g_nav.dart';
-import 'package:expense_manager/view/homeScreen/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,12 +7,10 @@ import 'package:image_picker/image_picker.dart';
 class UserController extends GetxController {
   Box userBox = Hive.box<User>('UserBox');
 
-RxString name =''.obs;
-RxString age =''.obs;
-RxString email =''.obs;
-RxString phone =''.obs;
-
-  
+  RxString name = ''.obs;
+  RxString age = ''.obs;
+  RxString email = ''.obs;
+  RxString phone = ''.obs;
 
   RxString imagePath = ''.obs;
   XFile? pickedImage;
@@ -50,8 +45,8 @@ RxString phone =''.obs;
   }
 
   deleteUser() async {
-    Get.offAll(const HomeScreen());
-    await userBox.deleteFromDisk();
+    userBox.deleteAll(userBox.keys);
+    if (userBox.isEmpty) {}
   }
 
   updateUser(User updated) async {

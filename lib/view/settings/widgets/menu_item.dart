@@ -1,5 +1,4 @@
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
-import 'package:expense_manager/view/createAccountPage/create_account.dart';
 import 'package:expense_manager/view/ediAccount.dart/edit_Account.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,38 +67,41 @@ class SettingsMenuItems extends StatelessWidget {
                     fontSize: width * 0.03, fontWeight: FontWeight.bold),
               ),
             ),
-            ListTile(
-              contentPadding: EdgeInsets.symmetric(
-                  horizontal: width * 0.08, vertical: height * 0.00),
-              leading: IconButton(
-                  onPressed: () {
-                    Get.defaultDialog(
-                      middleText: 'Your all data  will be deleted',
-                      confirm: TextButton(
-                        onPressed: () async {
-                          Get.offAll(const CreateAccount());
-                    
-                    await userBox.deleteAt(0);
-                        },
-                        child: const Text('Yes'),
-                      ),
-                      titlePadding: const EdgeInsets.all(20),
-                      title: 'Are You Sure To Logout',
-                      cancel: TextButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        child: const Text('NO'),
-                      ),
-                    );
-                  },
-                  icon: const Icon(IconlyLight.delete)),
-              trailing: Text(
-                'Delete All Data And Logout',
-                style: TextStyle(
-                    fontSize: width * 0.03, fontWeight: FontWeight.bold),
-              ),
-            ),
+            // ListTile(
+            //   contentPadding: EdgeInsets.symmetric(
+            //       horizontal: width * 0.08, vertical: height * 0.00),
+            //   leading: IconButton(
+            //       onPressed: () {
+            //         Get.defaultDialog(
+            //           middleText: 'Your all data  will be deleted',
+            //           confirm: TextButton(
+            //             onPressed: () async {
+            //                 Get.offAll(const HomeScreen());
+            //               await user.deleteUser();
+
+            //               await transaction.deleteAllTransaction();
+            //               // await user.deleteUser();
+            //               // Get.offAll(const CreateAccount());
+            //             },
+            //             child: const Text('Yes'),
+            //           ),
+            //           titlePadding: const EdgeInsets.all(20),
+            //           title: 'Are You Sure To Logout',
+            //           cancel: TextButton(
+            //             onPressed: () {
+            //               Get.back();
+            //             },
+            //             child: const Text('NO'),
+            //           ),
+            //         );
+            //       },
+            //       icon: const Icon(IconlyLight.delete)),
+            //   trailing: Text(
+            //     'Delete All Data And Logout',
+            //     style: TextStyle(
+            //         fontSize: width * 0.03, fontWeight: FontWeight.bold),
+            //   ),
+            // ),
           ],
         ),
       ),

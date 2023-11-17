@@ -25,6 +25,11 @@ void main() async {
   await Hive.openBox<User>('UserBox');
   await Hive.openBox<Transactions>('TransactionBox');
 
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(const MyApp());
 }
 
@@ -40,9 +45,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Pallete.white,
         useMaterial3: true,
       ),
-      home: 
-      
-      Hive.box<User>('UserBox').isEmpty
+      home: Hive.box<User>('UserBox').isEmpty
           ? const OnboardingScreen()
           : const GnavNavigation(),
     );

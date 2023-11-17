@@ -1,4 +1,5 @@
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
+import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/addTransaction/Widgets/snackBars/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,18 +8,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 class HomeScreenControllers extends GetxController {
   Box transactionBox = Hive.box<Transactions>('TransactionBox');
 
-
-
-
-
-
+  final userBox = Hive.box<User>('UserBox');
 
 // TO GET ALL TRANSACTION TO A LIST
   List get transactionList => transactionBox.values.toList();
   int get listLength => transactionList.length;
-
-
-
 
   // FOR ONLY INCOME TRANSACTION  LIST
 

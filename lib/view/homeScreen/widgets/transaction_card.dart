@@ -92,7 +92,7 @@ class TransactionCard extends StatelessWidget {
                 description,
                 style: TextStyle(fontSize: height * 0.016, color: Pallete.grey),
               ),
-              Text(dateFormatter.formatDate(dateTime))
+              Text(dateFormatter.formatDate(dateTime),style:const  TextStyle(color: Pallete.grey),)
             ],
           ),
         ),

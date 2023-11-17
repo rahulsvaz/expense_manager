@@ -27,7 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     final userBox = Hive.box<User>('UserBox');
-    final user = userBox.getAt(0);
+
+    late User? user = userBox.getAt(0);
 
     return Scaffold(
       body: Column(
@@ -92,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: height * 0.02,
                 ),
                 GetBuilder<HomeScreenControllers>(builder: (controller) {
+                  
                   MoneyFormatter fmf =
                       MoneyFormatter(amount: controller.totalBalance());
 
@@ -159,11 +161,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Row(
-            
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: height*0.07,),
-              SizedBox(width: width*0.09,),
+              SizedBox(
+                height: height * 0.07,
+              ),
+              SizedBox(
+                width: width * 0.09,
+              ),
               Text(
                 'Recent Transactions',
                 style: TextStyle(

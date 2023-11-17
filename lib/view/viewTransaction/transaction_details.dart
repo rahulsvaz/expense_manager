@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/editTransaction/edit_scree.dart';
-import 'package:expense_manager/view/editTransaction/edit_transaction.dart';
 import 'package:expense_manager/view/viewImage/image_view.dart';
+import 'package:expense_manager/viewModel/addTransaction/date_controller.dart';
 import 'package:expense_manager/viewModel/addTransaction/transaction_controller.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +29,7 @@ class TransactionDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dateController = Get.put(DateController());
     final tController = Get.put(TransactionControllers());
     final transaction = Get.put(HomeScreenControllers());
     final height = MediaQuery.sizeOf(context).height;
@@ -123,13 +124,14 @@ class TransactionDetails extends StatelessWidget {
             Positioned(
               top: height * .27,
               child: Text(
-                dateAndTime,
+                '${dateController.formattedDate}',
                 style: TextStyle(
                   color: Pallete.white,
                   fontSize: height * 0.02,
                 ),
               ),
             ),
+           
             Positioned(
               top: height * .45,
               left: width * 0.09,
