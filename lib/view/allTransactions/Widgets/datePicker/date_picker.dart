@@ -1,4 +1,4 @@
-
+import 'package:expense_manager/view/sortedTransactions/date_filttered_transaction.dart';
 import 'package:expense_manager/viewModel/dateFilterController/date_filter_controller.dart';
 import 'package:expense_manager/viewModel/filterController/filter_controller.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +10,9 @@ class DatePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
-
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     final controller = Get.put(DateFilter());
-    final filterController = Get.put(FilterController());
     return Scaffold(
       body: Center(
         child: SizedBox(
@@ -33,16 +30,12 @@ class DatePicker extends StatelessWidget {
                 onCancel: () {
                   Get.back();
                 },
-                
-                onSubmit: (value) {
-
-                 
-
-                  if (value is PickerDateRange){
-                    controller.getTransactionsInDateRange(value.startDate!, value.endDate!);
-                    filterController.changeToFilteredScreen();
-                    Get.back();
-                  
+                onSubmit: (value) {     
+                  if (value is PickerDateRange) {
+                    controller.getTransactionsInDateRange(
+                        value.startDate!, value.endDate!);
+                    // filterController.changeToFilteredScreen();
+                    Get.to(()=> const DateFilteredPage());
                   }
                 },
               ),
@@ -54,17 +47,3 @@ class DatePicker extends StatelessWidget {
   }
 }
 
-
-
-// void dateRangePicker(context)async{
-
-// final DateRangePicker? picked = await showDateRangePicker(
-//   context: context,
-// initialDateRange: DateTimeRange(
-// start: DateTime.now(), 
-// end: 
-// DateTime.now()), 
-// firstDate: DateTime(2023), 
-// lastDate: DateTime.now());
-
-// }

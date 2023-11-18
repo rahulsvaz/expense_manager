@@ -46,9 +46,9 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
                   color: transaction.type == 'expense'
                       ? Pallete.expenseBackGroundColor
                       : Pallete.incomeBackGroundColor,
-                  category: transaction.category == 'Amount Added'
+                  category: transaction.category == 'Amount Added'||transaction.category.length<11
                       ? transaction.category
-                      : transaction.category,
+                      : transaction.category.substring(9).toUpperCase(),
                   description: transaction.description.toUpperCase(),
                   amount: transaction.amount.toString(),
                   time: transaction.dateAndTime.toString(),

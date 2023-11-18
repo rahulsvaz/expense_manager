@@ -49,18 +49,19 @@ class _IncomeWidgetState extends State<IncomeWidget> {
           Padding(
             padding: EdgeInsets.only(left: width * 0.17),
             child: TextFormField(
-              
               controller: _amountController,
               keyboardType: TextInputType.number,
-              style: const TextStyle(color: Pallete.incomeBackGroundColor, fontSize: 80),
+              style: const TextStyle(
+                  color: Pallete.incomeBackGroundColor, fontSize: 80),
               showCursor: true,
               cursorHeight: height * 0.1,
               cursorColor: Colors.black,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: '₹0',
-                hintStyle:
-                    TextStyle(fontSize: height * 0.11,),
+                hintStyle: TextStyle(
+                  fontSize: height * 0.11,
+                ),
               ),
             ),
           ),
@@ -70,11 +71,11 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                 height: height * 0.06,
               ),
               // const DropDown(),
-    
+
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: width * 0.80),
                 child: TextFormField(
-                  style:const  TextStyle(color: Pallete.grey),
+                  style: const TextStyle(color: Pallete.grey),
                   controller: _descriptionController,
                   maxLength: 20,
                   cursorColor: Pallete.grey,
@@ -104,7 +105,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                 const DateButton()
               ]),
               SizedBox(height: height * 0.04),
-    
+
               Obx(() => Container(
                     child: attachment.imagePath.value.isNotEmpty
                         ? const Text(
@@ -120,28 +121,29 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                     ScaffoldMessenger.of(context)
                         .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
                   }
-    
+
                   final amount =
                       double.parse(_amountController.text.toString());
-                  Transactions newIncome =
-                      transactionController.createNewIncome(
-                    amount: amount,
-                    type: 'income',
-                    dateAndTime: dateController.selectedDate,
-                    category: 'Amount Added',
-                    imageUrl: attachment.imagePath.value,
-                    description: _descriptionController.text.toString(),
-                  );
-                  transactionController.addIncome(newIncome, context);
-    
-                  Get.offAll(const GnavNavigation());
-                  attachment.imagePath.value = '';
+                  if (amount > 0) {
+                    Transactions newIncome =
+                        transactionController.createNewIncome(
+                      amount: amount,
+                      type: 'income',
+                      dateAndTime: dateController.selectedDate,
+                      category: 'Amount Added',
+                      imageUrl: attachment.imagePath.value,
+                      description: _descriptionController.text.toString(),
+                    );
+                    transactionController.addIncome(newIncome, context);
+
+                    Get.offAll(const GnavNavigation());
+                    attachment.imagePath.value = '';
+                  }
                 },
                 label: 'Add Income',
                 buttonTextColor: Pallete.white,
                 backgroundColor: Pallete.incomeBackGroundColor,
               ),
-    
             ],
           ),
         ],

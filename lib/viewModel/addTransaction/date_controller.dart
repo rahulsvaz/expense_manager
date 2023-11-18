@@ -3,12 +3,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class DateController extends GetxController {
-  
   final format = DateFormat.Hm();
   final formatter = DateFormat.yMd();
   DateTime selectedDate = DateTime.now();
-
-
 
 // D A T E   P I C K E R
   showPresentDatePicker(BuildContext context) async {
@@ -22,17 +19,12 @@ class DateController extends GetxController {
     }
   }
 
-
-// D A T E      F O R M A T T E R 
+// D A T E      F O R M A T T E R
   String formatDate(DateTime date) {
-
     return format.format(date);
-    
-
   }
 
   String get formattedDate {
     return formatter.format(selectedDate);
-    
   }
 }

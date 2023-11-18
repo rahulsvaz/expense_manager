@@ -67,7 +67,8 @@ class TransactionCard extends StatelessWidget {
                             color: Pallete.grey),
                       )
                     : Text(
-                        category.substring(9).toUpperCase(),
+
+                       category,
                         style: TextStyle(
                             fontSize: height * 0.018,
                             fontWeight: FontWeight.bold,

@@ -115,6 +115,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                 SizedBox(height: height * 0.04),
                 LoginSignUpButton(
                   onPressed: () {
+
                     final totalIncome = homeScreenController.getTotalIncome();
                     final amount = double.parse(_amountController.text.trim());
                     if (totalIncome < amount) {
@@ -126,7 +127,8 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(CustomSnackbar.emptyAmountSnackbar);
                     }
-                    if(totalIncome>=amount){
+                    
+                    if(totalIncome>=amount && amount>0){
 
                     Transactions newTransaction =
                         transactionController.createNewExpense(

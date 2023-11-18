@@ -41,9 +41,7 @@ class _OnlyExpenseState extends State<OnlyExpense> {
                 color: transactions.type == 'expense'
                     ? Pallete.expenseBackGroundColor
                     : Pallete.incomeBackGroundColor,
-                category: transactions.category == 'Amount Added'
-                    ? transactions.category
-                    : transactions.category.substring(9).toUpperCase(),
+                category:transactions.category.substring(9).toUpperCase(),
                 description: transactions.description.toUpperCase(),
                 amount: transactions.amount.toString(),
                 time: transactions.dateAndTime.toString(),

@@ -14,10 +14,6 @@ class AllTransactions extends StatefulWidget {
 
 class _AllTransactionsState extends State<AllTransactions> {
   final filterController = Get.put(FilterController());
-  // // Widget onlyIncomeWidget = const OnlyIncome();
-  // // Widget onlyExpenseWidget = const OnlyExpense();
-  // Widget dateFilteredWidget = const SortedTransactions();
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -31,26 +27,26 @@ class _AllTransactionsState extends State<AllTransactions> {
             SizedBox(
               height: height * 0.06,
             ),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(
-            //     horizontal: width * 0.05,
-            //   ),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       Container(
-            //         height: height * 0.05,
-            //         width: width * 0.350,
-            //         decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(height * 0.05),
-            //           border: Border.all(color: Pallete.lightGrey),
-            //         ),
-            //         child: const Center(child: DropDownMonth()),
-            //       ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: width * 0.05,
+              ),
+              child:const  Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Container(
+                  //   height: height * 0.05,
+                  //   width: width * 0.350,
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(height * 0.05),
+                  //     border: Border.all(color: Pallete.lightGrey),
+                  //   ),
+                  //   child: const Center(child:DropDown()),
+                  // ),
 
-            //     ],
-            //   ),
-            // ),
+                ],
+              ),
+            ),
 
             SizedBox(
               height: height * 0.01,
@@ -62,6 +58,8 @@ class _AllTransactionsState extends State<AllTransactions> {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+
+
                       Text(
                         controller.activeText,
                         style: TextStyle(
@@ -147,7 +145,7 @@ class _AllTransactionsState extends State<AllTransactions> {
                 // Icon Button
                 IconButton(
                   onPressed: () {
-                    Get.to(const DatePicker());
+                    Get.to(()=>const DatePicker());
                   },
                   icon: const Icon(IconlyBold.calendar),
                 ),

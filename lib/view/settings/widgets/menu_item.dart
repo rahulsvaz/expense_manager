@@ -40,7 +40,7 @@ class SettingsMenuItems extends StatelessWidget {
                   horizontal: width * 0.08, vertical: height * 0.01),
               leading: IconButton(
                   onPressed: () {
-                    Get.to(EditAccount(
+                    Get.to(()=>EditAccount(
                         name: currentUser.name,
                         phone: currentUser.phone,
                         age: currentUser.age,
@@ -55,7 +55,7 @@ class SettingsMenuItems extends StatelessWidget {
                     fontSize: width * 0.03, fontWeight: FontWeight.bold),
               ),
             ),
-            // NOTIFICATION
+          //  NOTIFICATION
             ListTile(
               contentPadding: EdgeInsets.symmetric(
                   horizontal: width * 0.08, vertical: height * 0.00),
@@ -66,7 +66,7 @@ class SettingsMenuItems extends StatelessWidget {
                 style: TextStyle(
                     fontSize: width * 0.03, fontWeight: FontWeight.bold),
               ),
-            ),
+           ),
             // ListTile(
             //   contentPadding: EdgeInsets.symmetric(
             //       horizontal: width * 0.08, vertical: height * 0.00),

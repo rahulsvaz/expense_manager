@@ -20,11 +20,12 @@ class _SortedTransactionsState extends State<SortedTransactions> {
     final width = MediaQuery.sizeOf(context).width;
 
     List<Transactions> filterd = controller.filter;
-    return Scaffold(
-      body: ListView.builder(
+
+    return  ListView.builder(
           padding: const EdgeInsets.all(0),
           itemCount: filterd.length,
           itemBuilder: (context, index) {
+            
             return Padding(
               padding: EdgeInsets.only(
                   left: width * 0.04,
@@ -46,7 +47,7 @@ class _SortedTransactionsState extends State<SortedTransactions> {
                   time: filterd[index].dateAndTime.toString(),
                   imagePath: filterd[index].imageUrl),
             );
-          }),
+          },
     );
   }
 }

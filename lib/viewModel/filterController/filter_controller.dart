@@ -19,7 +19,7 @@ class FilterController extends GetxController {
   Widget activeScreen = const AllTransactionWidget();
   // Widget incomeScreen = const OnlyIncome();
   // Widget expanseScreen = const OnlyExpense();
-  // Widget filteredScreen = const SortedTransactions();
+  Widget filteredScreen = const SortedTransactions();
 
   clearFilter() {
     expense.value = false;
@@ -40,6 +40,14 @@ class FilterController extends GetxController {
     income.value == true
         ? activeText = 'All Income'
         : activeText = 'All Transactions';
+
+    if (income.value == true && expense.value == true) {
+      activeScreen = const AllTransactionWidget();
+      activeText = 'All Transactions';
+      income.value = !income.value;
+      expense.value = !expense.value;
+    }
+
     update();
   }
 
@@ -53,11 +61,20 @@ class FilterController extends GetxController {
         ? activeText = 'All Expense'
         : activeText = 'All Transactions';
 
+    if (income.value == true && expense.value == true) {
+      activeScreen = const AllTransactionWidget();
+      activeText = 'All Transactions';
+
+      income.value = !income.value;
+      expense.value = !expense.value;
+    }
+
     update();
   }
 
   changeToFilteredScreen() {
     filter.value = !filter.value;
+
     activeScreen = const SortedTransactions();
     activeText = 'Filtered Transactions';
 

@@ -112,7 +112,7 @@ class TransactionDetails extends StatelessWidget {
                   ),):
                 
                 Text(
-                  category.substring(9).toUpperCase(),
+                  category.toUpperCase(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Pallete.white,
