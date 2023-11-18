@@ -92,6 +92,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   height: height, width: width, userBox: userBox),
             ),
           ),
+          
           Positioned(
             left: 0,
             right: 0,

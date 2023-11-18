@@ -3,12 +3,12 @@ import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/homeScreen/widgets/transaction_card.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:slideable/slideable.dart';
 
 class AllTransactionWidget extends StatefulWidget {
-  
   const AllTransactionWidget({super.key});
-
 
   @override
   State<AllTransactionWidget> createState() => _AllTransactionWidgetState();
@@ -33,11 +33,24 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
                   left: width * 0.04,
                   right: width * 0.04,
                   bottom: height * 0.01),
-              child: Dismissible(
-                key: ValueKey(controller.transactionList[reversedIndex]),
-                onDismissed: (direction) async {
-                  controller.deleteTransaction(context, reversedIndex);
-                },
+              child:
+
+                  // Dismissible(
+                  //   key: ValueKey(controller.transactionList[reversedIndex]),
+                  //   onDismissed: (direction) async {
+                  //     // controller.deleteTransaction(context, reversedIndex);
+                  //   },
+                  //  child:
+
+                  Slideable(
+                items: [
+                  ActionItems(
+                      backgroudColor: Colors.transparent,
+                      icon: const Icon(Icons.delete,color: Pallete.expenseBackGroundColor,),
+                      onPress: () {
+                        controller.deleteTransaction(context, reversedIndex);
+                      })
+                ],
                 child: TransactionCard(
                   index: reversedIndex,
                   type: transaction.type,
@@ -46,7 +59,8 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
                   color: transaction.type == 'expense'
                       ? Pallete.expenseBackGroundColor
                       : Pallete.incomeBackGroundColor,
-                  category: transaction.category == 'Amount Added'||transaction.category.length<11
+                  category: transaction.category == 'Amount Added' ||
+                          transaction.category.length < 11
                       ? transaction.category
                       : transaction.category.substring(9).toUpperCase(),
                   description: transaction.description.toUpperCase(),
@@ -57,6 +71,7 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
                       : 'assets/images/income.png',
                 ),
               ),
+              //     ),
             );
           },
           itemCount: controller.listLength,
