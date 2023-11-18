@@ -1,6 +1,5 @@
 import 'package:expense_manager/view/sortedTransactions/date_filttered_transaction.dart';
 import 'package:expense_manager/viewModel/dateFilterController/date_filter_controller.dart';
-import 'package:expense_manager/viewModel/filterController/filter_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';

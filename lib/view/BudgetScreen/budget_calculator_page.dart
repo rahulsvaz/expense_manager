@@ -1,3 +1,4 @@
+import 'package:expense_manager/view/budgetScreen/add_budget_screen.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,9 @@ class _BudgetCalculatorPageState extends State<BudgetCalculatorPage> {
         title: const Text('Budget Calculator'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(()=> const AddBudgetScreen());
+            },
             icon: const Icon(Icons.settings),
           ),
         ],
