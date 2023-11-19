@@ -32,7 +32,7 @@ class EditAccount extends StatefulWidget {
 
 class _EditAccountState extends State<EditAccount> {
   final _formKey = GlobalKey<FormState>();
-  
+
   final userController = Get.put(UserController());
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -187,7 +187,6 @@ class _EditAccountState extends State<EditAccount> {
                             email: email,
                             imageUrl: userController.imagePath.toString());
                         userController.updateUser(updated);
-                      
                       }
                     },
                     label: 'Save Changes',

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path/path.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -22,8 +23,6 @@ class _SettingsPageState extends State<SettingsPage> {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     final userController = Get.put(UserController());
-    userController.name.value = currentUser.name;
-    userController.age.value = currentUser.age;
     userController.email.value = currentUser.email;
     userController.phone.value = currentUser.phone;
     userController.imagePath.value = currentUser.imageUrl;
@@ -54,7 +53,8 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Center(
               child: currentUser.imageUrl.isEmpty
                   ? CircleAvatar(
-                      backgroundImage: FileImage(File(currentUser.imageUrl)),
+                      backgroundImage:
+                          const AssetImage('assets/images/user_logo.jpg'),
                       radius: height * 0.09,
                     )
                   : Obx(
@@ -71,16 +71,14 @@ class _SettingsPageState extends State<SettingsPage> {
             left: 0,
             right: 0,
             child: Center(
-              child: GetBuilder<UserController>(builder: (controller) {
-                return Text(
-                  controller.name.value,
-                  style: GoogleFonts.aBeeZee(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 3,
-                      color: Pallete.grey),
-                );
-              }),
+              child: Text(
+                currentUser.name,
+                style: GoogleFonts.aBeeZee(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 3,
+                    color: Pallete.grey),
+              ),
             ),
           ),
           Positioned(
@@ -92,7 +90,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   height: height, width: width, userBox: userBox),
             ),
           ),
-          
           Positioned(
             left: 0,
             right: 0,

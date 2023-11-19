@@ -13,10 +13,11 @@ class DateController extends GetxController {
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(2022),
-        lastDate: DateTime(2025));
+        lastDate: DateTime.now());
     if (pickedDate != null) {
       selectedDate = pickedDate;
     }
+    update();
   }
 
 // D A T E      F O R M A T T E R

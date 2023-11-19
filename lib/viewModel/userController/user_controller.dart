@@ -5,10 +5,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
-  Box userBox = Hive.box<User>('UserBox');
-
-  RxString name = ''.obs;
-  RxString age = ''.obs;
+  Box userBox = Hive.box<User>('UserBox'); 
+  RxString name =''.obs;
   RxString email = ''.obs;
   RxString phone = ''.obs;
 
@@ -50,7 +48,10 @@ class UserController extends GetxController {
   }
 
   updateUser(User updated) async {
+   
     await userBox.put(0, updated);
+    
+    update();
     Get.back();
   }
 }
