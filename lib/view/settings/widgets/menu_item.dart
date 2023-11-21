@@ -31,23 +31,23 @@ class SettingsMenuItems extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(height * .2))),
         width: width * 0.8,
-        height: height * 0.28,
+        height: height * .20,
         child: ListView(
           children: [
             // MENU ITEMS
             ListTile(
+              onTap: () {
+                Get.to(() => EditAccount(
+                    name: currentUser.name,
+                    phone: currentUser.phone,
+                    age: currentUser.age,
+                    email: currentUser.email,
+                    imageUrl: currentUser.imageUrl));
+              },
               contentPadding: EdgeInsets.symmetric(
                   horizontal: width * 0.08, vertical: height * 0.01),
               leading: IconButton(
-                  onPressed: () {
-                    Get.to(()=>EditAccount(
-                        name: currentUser.name,
-                        phone: currentUser.phone,
-                        age: currentUser.age,
-                        email: currentUser.email,
-                        imageUrl: currentUser.imageUrl));
-                  },
-                  icon: const Icon(IconlyLight.edit)),
+                  onPressed: () {}, icon: const Icon(IconlyLight.edit)),
               trailing: Text(
                 'Edit Profile Information',
                 textAlign: TextAlign.end,
@@ -55,18 +55,18 @@ class SettingsMenuItems extends StatelessWidget {
                     fontSize: width * 0.03, fontWeight: FontWeight.bold),
               ),
             ),
-          //  NOTIFICATION
-            ListTile(
-              contentPadding: EdgeInsets.symmetric(
-                  horizontal: width * 0.08, vertical: height * 0.00),
-              leading: IconButton(
-                  onPressed: () {}, icon: const Icon(IconlyLight.notification)),
-              trailing: Text(
-                'Change Notification Settings',
-                style: TextStyle(
-                    fontSize: width * 0.03, fontWeight: FontWeight.bold),
-              ),
-           ),
+            //  NOTIFICATION
+            //   ListTile(
+            //     contentPadding: EdgeInsets.symmetric(
+            //         horizontal: width * 0.08, vertical: height * 0.00),
+            //     leading: IconButton(
+            //         onPressed: () {}, icon: const Icon(IconlyLight.notification)),
+            //     trailing: Text(
+            //       'Change Notification Settings',
+            //       style: TextStyle(
+            //           fontSize: width * 0.03, fontWeight: FontWeight.bold),
+            //     ),
+            //  ),
             // ListTile(
             //   contentPadding: EdgeInsets.symmetric(
             //       horizontal: width * 0.08, vertical: height * 0.00),

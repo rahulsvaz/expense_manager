@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path/path.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
