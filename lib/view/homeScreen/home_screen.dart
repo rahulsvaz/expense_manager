@@ -69,16 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.bold,
                           color: Pallete.grey),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        Get.to(const BudgetCalculatorPage());
-                      },
-                      icon: Icon(
-                        Icons.graphic_eq,
-                        size: height * 0.04,
-                        color: Pallete.grey,
-                      ),
-                    ),
+
+                    Icon(Icons.graphic_eq, size: height * 0.04,
+                        color: Pallete.grey,),
+                    
+                 
                   ],
                 ),
                 //Second Row
@@ -93,11 +88,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: height * 0.02,
                 ),
                 GetBuilder<HomeScreenControllers>(builder: (controller) {
-                  
+                    
+
+
                   MoneyFormatter fmf =
                       MoneyFormatter(amount: controller.totalBalance());
 
+                
+
+
+
                   return Text(
+
+
                     '₹ ${fmf.output.compactNonSymbol}',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

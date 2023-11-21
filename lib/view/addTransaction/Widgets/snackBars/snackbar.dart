@@ -49,7 +49,7 @@ class CustomSnackbar {
       content: AwesomeSnackbarContent(
           title: 'Done',
           message: 'Transaction Deleted Successfully',
-          contentType: ContentType.success));
+          contentType: ContentType.success),);
 
 
 static final incomeLowSnackbar = SnackBar(
@@ -62,5 +62,19 @@ static final incomeLowSnackbar = SnackBar(
           title: 'Low Balance',
           message: 'Your available balance is not enough to add this transaction',
           contentType: ContentType.warning));
+
+
+           static final negativeAmountSnackbar = SnackBar(
+    duration: const Duration(milliseconds: 500),
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    behavior: SnackBarBehavior.fixed,
+    showCloseIcon: false,
+    content: AwesomeSnackbarContent(
+        inMaterialBanner: true,
+        title: 'Not a valid Amount',
+        message: 'Please enter an amount greater than zero',
+        contentType: ContentType.warning),
+  );
 
 }
