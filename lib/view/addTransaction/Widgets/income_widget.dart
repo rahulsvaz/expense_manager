@@ -124,9 +124,10 @@ class _IncomeWidgetState extends State<IncomeWidget> {
 
                   final amount =
                       double.parse(_amountController.text.toString());
-if(amount<0){
- ScaffoldMessenger.of(context).showSnackBar( CustomSnackbar.negativeAmountSnackbar);
-}
+                  if (amount < 0) {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(CustomSnackbar.negativeAmountSnackbar);
+                  }
 
                   if (amount > 0) {
                     Transactions newIncome =

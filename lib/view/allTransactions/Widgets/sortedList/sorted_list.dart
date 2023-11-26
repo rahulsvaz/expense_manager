@@ -41,7 +41,13 @@ class _SortedTransactionsState extends State<SortedTransactions> {
                   color: filterd[index].type == 'expense'
                       ? Pallete.expenseBackGroundColor
                       : Pallete.incomeBackGroundColor,
-                  category: filterd[index].category,
+                  category:  filterd[index].category  == 'Amount Added' ||
+                         filterd[index].category.length < 11
+                      ?filterd[index].category
+                      : filterd[index].category.substring(9).toUpperCase(),  
+                  
+                  
+                  
                   description: filterd[index].description,
                   amount: filterd[index].amount.toString(),
                   time: filterd[index].dateAndTime.toString(),

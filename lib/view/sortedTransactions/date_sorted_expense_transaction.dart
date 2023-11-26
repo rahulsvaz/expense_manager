@@ -41,7 +41,7 @@ class _DateFilteredOnlyIncomeState extends State<DateFilteredOnlyExpense> {
                   dateTime: transactions.dateAndTime,
                   iconPath: 'assets/images/expense.png',
                   color: Pallete.expenseBackGroundColor,
-                  category: transactions.category,
+                  category: transactions.category.substring(9),
                   description: transactions.description,
                   amount: transactions.amount.toString(),
                   time: transactions.dateAndTime.toString(),
