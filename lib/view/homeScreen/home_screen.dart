@@ -97,14 +97,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-                  return Text(
+                  return TweenAnimationBuilder(
+                    duration: Duration(seconds: 1),
+                    tween: Tween(begin: 0,end:   height*0.05),
+                    builder: (context,object,widget) {
+                      return Text(
 
 
-                    '₹ ${fmf.output.compactNonSymbol}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        fontSize: height * 0.05, fontWeight: FontWeight.w700),
+                        '₹ ${fmf.output.compactNonSymbol}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: double.parse(object.toString()), fontWeight: FontWeight.w700),
+                      );
+                    }
                   );
                 }),
                 SizedBox(
