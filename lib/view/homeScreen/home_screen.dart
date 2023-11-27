@@ -61,18 +61,24 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                     ),
-                    Text(
-                      'Hello ${user.name}',
-                      style: TextStyle(
-                          fontSize: width * 0.04,
-                          fontWeight: FontWeight.bold,
-                          color: Pallete.grey),
+                    TweenAnimationBuilder(
+                      tween: Tween(begin: 0 ,end :width*0.04),
+                      duration: const Duration(seconds: 1),
+                      builder: (context,object,widget) {
+                        return Text(
+                          'Hello ${user.name}',
+                          style: TextStyle(
+                              fontSize: double.parse(object.toString()),
+                              fontWeight: FontWeight.bold,
+                              color: Pallete.grey),
+                        );
+                      }
                     ),
-
-                    Icon(Icons.graphic_eq, size: height * 0.04,
-                        color: Pallete.grey,),
-                    
-                 
+                    Icon(
+                      Icons.graphic_eq,
+                      size: height * 0.04,
+                      color: Pallete.grey,
+                    ),
                   ],
                 ),
                 //Second Row
@@ -87,31 +93,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: height * 0.02,
                 ),
                 GetBuilder<HomeScreenControllers>(builder: (controller) {
-                    
-
-
                   MoneyFormatter fmf =
                       MoneyFormatter(amount: controller.totalBalance());
 
-                
-
-
-
                   return TweenAnimationBuilder(
-                    duration: Duration(seconds: 1),
-                    tween: Tween(begin: 0,end:   height*0.05),
-                    builder: (context,object,widget) {
-                      return Text(
-
-
-                        '₹ ${fmf.output.compactNonSymbol}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: double.parse(object.toString()), fontWeight: FontWeight.w700),
-                      );
-                    }
-                  );
+                      duration: const Duration(seconds: 1),
+                      tween: Tween(begin: 0, end: height * 0.05),
+                      builder: (context, object, widget) {
+                        return Text(
+                          '₹ ${fmf.output.compactNonSymbol}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: double.parse(object.toString()),
+                              fontWeight: FontWeight.w700,
+                            ),
+                        );
+                      });
                 }),
                 SizedBox(
                   height: height * 0.04,
