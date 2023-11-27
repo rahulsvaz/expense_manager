@@ -47,7 +47,16 @@ class SettingsMenuItems extends StatelessWidget {
               contentPadding: EdgeInsets.symmetric(
                   horizontal: width * 0.08, vertical: height * 0.01),
               leading: IconButton(
-                  onPressed: () {}, icon: const Icon(IconlyLight.edit)),
+                  onPressed: () {
+
+                     Get.to(() => EditAccount(
+                    name: currentUser.name,
+                    phone: currentUser.phone,
+                    age: currentUser.age,
+                    email: currentUser.email,
+                    imageUrl: currentUser.imageUrl));
+                    
+                  }, icon: const Icon(IconlyLight.edit)),
               trailing: Text(
                 'Edit Profile Information',
                 textAlign: TextAlign.end,
