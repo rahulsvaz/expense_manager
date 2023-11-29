@@ -28,25 +28,20 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
             int reversedIndex = controller.transactionList.length - 1 - index;
             Transactions transaction =
                 controller.transactionList[reversedIndex];
+
             return Padding(
               padding: EdgeInsets.only(
                   left: width * 0.04,
                   right: width * 0.04,
                   bottom: height * 0.01),
-              child:
-
-                  // Dismissible(
-                  //   key: ValueKey(controller.transactionList[reversedIndex]),
-                  //   onDismissed: (direction) async {
-                  //     // controller.deleteTransaction(context, reversedIndex);
-                  //   },
-                  //  child:
-
-                  Slideable(
+              child: Slideable(
                 items: [
                   ActionItems(
                       backgroudColor: Colors.transparent,
-                      icon: const Icon(Icons.delete,color: Pallete.expenseBackGroundColor,),
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Pallete.expenseBackGroundColor,
+                      ),
                       onPress: () {
                         controller.deleteTransaction(context, reversedIndex);
                       })

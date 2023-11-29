@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.0"
+  animated_text_kit:
+    dependency: transitive
+    description:
+      name: animated_text_kit
+      sha256: "37392a5376c9a1a503b02463c38bc0342ef814ddbb8f9977bc90f2a84b22fa92"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.2"
   archive:
     dependency: transitive
     description:
@@ -41,14 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  awesome_dialog:
-    dependency: "direct main"
-    description:
-      name: awesome_dialog
-      sha256: "7da175ea284fa5da0a4d0cbdfe835c5b71d30c7b38c1770c0f27f48272ff5a08"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
   awesome_snackbar_content:
     dependency: "direct main"
     description:
@@ -201,22 +201,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      sha256: d57953e10f9f8327ce64a508a355f0b1ec902193f66288e8cb5070e7c47eeb2d
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.6"
-  custom_alert_dialog_box:
-    dependency: "direct main"
-    description:
-      name: custom_alert_dialog_box
-      sha256: "92fe103643a9fd121af8f10642eb5c055055e8211c30288d77a3d8ff1c2227b7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
   dart_style:
     dependency: transitive
     description:
@@ -332,7 +316,7 @@ packages:
     source: hosted
     version: "2.0.17"
   flutter_svg:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_svg
       sha256: d39e7f95621fc84376bc0f7d504f05c3a41488c562f4a8ad410569127507402c
@@ -581,6 +565,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  lottie:
+    dependency: "direct main"
+    description:
+      name: lottie
+      sha256: a93542cc2d60a7057255405f62252533f8e8956e7e06754955669fd32fb4b216
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.0"
   matcher:
     dependency: transitive
     description:
@@ -638,7 +630,7 @@ packages:
     source: hosted
     version: "2.1.0"
   path:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path
       sha256: "8829d8a55c13fc0e37127c29fedf290c102f4e40ae94ada574091fe0ff96c917"
@@ -773,22 +765,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
-  rive:
-    dependency: transitive
-    description:
-      name: rive
-      sha256: f2117a96a189758bc79bf7933865625c7a44a420ae537d2a8f6c492900136a71
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.11.17"
-  rive_common:
-    dependency: transitive
-    description:
-      name: rive_common
-      sha256: e41f12917cb58e0c9376836490ebaa431e12744da0c67e19dad8d4bee9fedd46
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.7"
   shelf:
     dependency: transitive
     description:
@@ -810,14 +786,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  slide_to_act:
-    dependency: "direct main"
-    description:
-      name: slide_to_act
-      sha256: cd4ea5019754347d5a2b0375e802ad948610a0e233adfe51a9cc5b3a1fc3a43b
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
   slideable:
     dependency: "direct main"
     description:
@@ -826,14 +794,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.2"
-  sliding_switch:
-    dependency: "direct main"
-    description:
-      name: sliding_switch
-      sha256: "049a9582c9bc30913ce4e34eb26063b468acf5fe47a053636bbf950e5b180dc0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   source_gen:
     dependency: transitive
     description:
@@ -906,6 +866,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "23.1.44"
+  tbib_splash_screen:
+    dependency: "direct main"
+    description:
+      name: tbib_splash_screen
+      sha256: "2d4c6e16477d30bcda8e23629536ae4a3e66be870a1df4dc1ac065eaefb4880e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   term_glyph:
     dependency: transitive
     description:

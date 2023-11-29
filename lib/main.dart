@@ -2,9 +2,8 @@ import 'dart:io';
 import 'package:expense_manager/model/repository/budget/budget_model.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
-import 'package:expense_manager/view/NavigationBar/g_nav.dart';
-import 'package:expense_manager/view/onBoarding/on_boarding.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
+import 'package:expense_manager/view/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -44,9 +43,10 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Pallete.white,
         useMaterial3: true,
       ),
-      home: Hive.box<User>('UserBox').isEmpty
-          ? const OnboardingScreen()
-          : const GnavNavigation(),
+      home: const SplashScreen(),
+      // Hive.box<User>('UserBox').isEmpty
+      //     ? const OnboardingScreen()
+      //     : const GnavNavigation(),
     );
   }
 }
