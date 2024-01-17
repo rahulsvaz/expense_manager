@@ -22,7 +22,6 @@ class _SettingsPageState extends State<SettingsPage> {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     final userController = Get.put(UserController());
-    userController.email.value = currentUser.email;
     userController.phone.value = currentUser.phone;
     userController.imagePath.value = currentUser.imageUrl;
 

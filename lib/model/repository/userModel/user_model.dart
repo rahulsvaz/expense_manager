@@ -12,14 +12,11 @@ class User extends HiveObject{
   @HiveField(2)
   String age;
   @HiveField(3)
-  String email;
-  @HiveField(4)
   String imageUrl;
   User({
     required this.name,
     required this.phone,
     required this.age,
-    required this.email,
     required this.imageUrl,
   });
 }

@@ -37,11 +37,10 @@ class SettingsMenuItems extends StatelessWidget {
             // MENU ITEMS
             ListTile(
               onTap: () {
-                Get.to(() => EditAccount(
-                    name: currentUser.name,
+                Get.to(() => EditAccount( name: currentUser.name,
                     phone: currentUser.phone,
                     age: currentUser.age,
-                    email: currentUser.email,
+                    // email: currentUser.email,
                     imageUrl: currentUser.imageUrl));
               },
               contentPadding: EdgeInsets.symmetric(
@@ -53,7 +52,7 @@ class SettingsMenuItems extends StatelessWidget {
                     name: currentUser.name,
                     phone: currentUser.phone,
                     age: currentUser.age,
-                    email: currentUser.email,
+                    // email: currentUser.email,
                     imageUrl: currentUser.imageUrl));
                     
                   }, icon: const Icon(IconlyLight.edit)),

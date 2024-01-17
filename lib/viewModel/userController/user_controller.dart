@@ -16,7 +16,7 @@ class UserController extends GetxController {
   createNewUser(
       String name, String phone, String age, String email, String imageUrl) {
     User newUser = User(
-        name: name, phone: phone, age: age, email: email, imageUrl: imageUrl);
+        name: name, phone: phone, age: age,imageUrl: imageUrl);
 
     userBox.add(newUser).then((value) => Get.offAll(const GnavNavigation()));
   }

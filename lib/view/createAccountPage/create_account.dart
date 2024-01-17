@@ -75,7 +75,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 top: height * 0.28,
                 child: Center(
                   child: Text(
-                    'Create an Account',
+                    'Please Enter Your Details!',
                     style: GoogleFonts.openSans(
                       fontSize: width * .06,
                       fontWeight: FontWeight.bold,
@@ -99,26 +99,26 @@ class _CreateAccountState extends State<CreateAccount> {
                       validator: nameValidator),
                 ),
               ),
+              // Positioned(
+              //   left: 0,
+              //   right: 0,
+              //   top: height * 0.45,
+              //   child: Center(
+              //     child: UserTextfield(
+              //         prefix: const Icon(
+              //           Icons.email,
+              //           color: Pallete.grey,
+              //         ),
+              //         label: 'Email',
+              //         controller: _emailController,
+              //         obscureText: false,
+              //         validator: emailValidator),
+              //   ),
+              // ),
               Positioned(
                 left: 0,
                 right: 0,
                 top: height * 0.45,
-                child: Center(
-                  child: UserTextfield(
-                      prefix: const Icon(
-                        Icons.email,
-                        color: Pallete.grey,
-                      ),
-                      label: 'Email',
-                      controller: _emailController,
-                      obscureText: false,
-                      validator: emailValidator),
-                ),
-              ),
-              Positioned(
-                left: 0,
-                right: 0,
-                top: height * 0.55,
                 child: Center(
                   child: UserTextfield(
                       prefix: const  Icon(
@@ -134,7 +134,7 @@ class _CreateAccountState extends State<CreateAccount> {
               Positioned(
                 left: 0,
                 right: 0,
-                top: height * 0.65,
+                top: height * 0.55,
                 child: Center(
                   child: UserTextfield(
                       prefix: const Icon(
@@ -150,7 +150,7 @@ class _CreateAccountState extends State<CreateAccount> {
               Positioned(
                 left: 0,
                 right: 0,
-                top: height * 0.75,
+                top: height * 0.65,
                 child: Center(
                     child: LoginSignUpButton(
                         onPressed: () {
@@ -164,46 +164,49 @@ class _CreateAccountState extends State<CreateAccount> {
                                 email, userController.imagePath.value);
                           }
                         },
-                        label: 'Create Account',
+                        label: 'Save',
                         buttonTextColor: Pallete.white,
                         backgroundColor: Pallete.purple)),
               ),
               Positioned(
                 left: 0,
                 right: 0,
-                top: height * 0.85,
+                top: height * 0.75,
                 child: Obx(
-                  () => TextButton(
-                    onPressed: () {
-                      Get.defaultDialog(
-                          title: 'Select Image Source',
-                          middleText: '',
-                          confirm: TextButton(
-                            onPressed: () {
-                              userController.pickUserImageWithCamera();
-                              Get.back();
-                            },
-                            child: const Text('Camera'),
-                          ),
-                          cancel: TextButton(
+                  () => Flexible(
+                    child: TextButton(
+                  
+                      onPressed: () {
+                        Get.defaultDialog(
+                            title: 'Select Image Source',
+                            middleText: '',
+                            confirm: TextButton(
                               onPressed: () {
-                                userController.pickUserImage();
+                                userController.pickUserImageWithCamera();
                                 Get.back();
                               },
-                              child: const Text('Gallery')),
-                          onConfirm: () {});
-                    },
-                    child: userController.imagePath.isEmpty
-                        ? const Text(
-                            'add user image??',
-                            style:
-                                TextStyle(color: Pallete.purple, fontSize: 14),
-                          )
-                        : const Text(
-                            'change user image??',
-                            style:
-                                TextStyle(color: Pallete.purple, fontSize: 14),
-                          ),
+                              child: const Text('Camera'),
+                            ),
+                            cancel: TextButton(
+                                onPressed: () {
+                                  userController.pickUserImage();
+                                  Get.back();
+                                },
+                                child: const Text('Gallery')),
+                            onConfirm: () {});
+                      },
+                      child: userController.imagePath.isEmpty
+                          ? const Text(
+                              'Add Profile Picture ?',
+                              style:
+                                  TextStyle(color: Pallete.purple, fontSize: 14),
+                            )
+                          : const Text(
+                              'Change Profile Picture?',
+                              style:
+                                  TextStyle(color: Pallete.purple, fontSize: 14),
+                            ),
+                    ),
                   ),
                 ),
               )

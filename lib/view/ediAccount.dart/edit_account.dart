@@ -16,14 +16,12 @@ class EditAccount extends StatefulWidget {
     required this.name,
     required this.phone,
     required this.age,
-    required this.email,
     required this.imageUrl,
   });
 
   final String name;
   final String phone;
   final String age;
-  final String email;
   final String imageUrl;
 
   @override
@@ -35,7 +33,7 @@ class _EditAccountState extends State<EditAccount> {
 
   final userController = Get.put(UserController());
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
 
@@ -43,7 +41,7 @@ class _EditAccountState extends State<EditAccount> {
   void initState() {
     super.initState();
     _nameController.text = widget.name;
-    _emailController.text = widget.email;
+    // _emailController.text = widget.email;
     _phoneController.text = widget.phone;
     _ageController.text = widget.age;
   }
@@ -53,7 +51,7 @@ class _EditAccountState extends State<EditAccount> {
     _nameController.dispose();
     _ageController.dispose();
     _phoneController.dispose();
-    _emailController.dispose();
+    // _emailController.dispose();
     super.dispose();
   }
 
@@ -116,25 +114,25 @@ class _EditAccountState extends State<EditAccount> {
                   ),
                 ),
               ),
+              // Positioned(
+              //   top: height * 0.45,
+              //   left: 0,
+              //   right: 0,
+              //   child: Center(
+              //     child: UserTextfield(
+              //       prefix: const Icon(
+              //         Icons.email,
+              //         color: Pallete.grey,
+              //       ),
+              //       label: 'Email',
+              //       controller: _emailController,
+              //       obscureText: false,
+              //       validator: emailValidator,
+              //     ),
+              //   ),
+              // ),
               Positioned(
                 top: height * 0.45,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: UserTextfield(
-                    prefix: const Icon(
-                      Icons.email,
-                      color: Pallete.grey,
-                    ),
-                    label: 'Email',
-                    controller: _emailController,
-                    obscureText: false,
-                    validator: emailValidator,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: height * 0.55,
                 left: 0,
                 right: 0,
                 child: Center(
@@ -151,7 +149,7 @@ class _EditAccountState extends State<EditAccount> {
                 ),
               ),
               Positioned(
-                top: height * 0.65,
+                top: height * 0.55,
                 left: 0,
                 right: 0,
                 child: Center(
@@ -168,7 +166,7 @@ class _EditAccountState extends State<EditAccount> {
                 ),
               ),
               Positioned(
-                top: height * 0.75,
+                top: height * 0.65,
                 left: 0,
                 right: 0,
                 child: Center(
@@ -177,14 +175,13 @@ class _EditAccountState extends State<EditAccount> {
                       if (_formKey.currentState!.validate()) {
                         final name = _nameController.text.toString();
                         final phone = _phoneController.text.toString();
-                        final email = _emailController.text.toString();
                         final age = _ageController.text.toString();
 
                         User updated = User(
                             name: name,
                             phone: phone,
                             age: age,
-                            email: email,
+                           
                             imageUrl: userController.imagePath.toString());
                         userController.updateUser(updated);
                       }
@@ -196,7 +193,7 @@ class _EditAccountState extends State<EditAccount> {
                 ),
               ),
               Positioned(
-                top: height * 0.85,
+                top: height * 0.75,
                 left: 0,
                 right: 0,
                 child: Obx(
