@@ -44,9 +44,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const SplashScreen(),
-      // Hive.box<User>('UserBox').isEmpty
-      //     ? const OnboardingScreen()
-      //     : const GnavNavigation(),
+     
     );
   }
 }
