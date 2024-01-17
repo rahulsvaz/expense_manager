@@ -25,6 +25,8 @@ class UserController extends GetxController {
     await userBox.add(newUser);
   }
 
+
+
   pickUserImage() async {
     final ImagePicker imagePicker = ImagePicker();
     pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
