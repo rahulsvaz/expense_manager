@@ -122,7 +122,7 @@ class _SettingsPageState extends State<SettingsPage> {
             top: height * 0.85,
             child: Center(
               child: Text(
-                'Rahul',
+                'Manjima',
                 style: TextStyle(
                     color: Pallete.grey,
                     fontSize: width * 0.04,

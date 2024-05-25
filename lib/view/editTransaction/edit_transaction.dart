@@ -1,7 +1,6 @@
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/viewModel/addTransaction/transaction_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 import 'package:get/get.dart';
 
 class EditTransactionPage extends StatefulWidget {
@@ -137,26 +136,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
             ),
             Positioned(
               top: height * .90,
-              child: SwipeButton.expand(
-                width: width * 0.7,
-                height: height * 0.07,
-                borderRadius: BorderRadius.circular(20),
-                thumb: const Icon(
-                  Icons.double_arrow_rounded,
-                  color: Colors.white,
-                ),
-                activeThumbColor: Pallete.purple,
-                activeTrackColor: Colors.grey.shade300,
-                onSwipe: () {
-                  tController.edit.value = !tController.edit.value;
-                },
-                child: const Text(
-                  "Save Changes",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              child: ElevatedButton(onPressed: (){  tController.edit.value = !tController.edit.value;}, child: Text('Edit'))
             )
           ],
         ),

@@ -6,7 +6,7 @@ import 'package:expense_manager/viewModel/addTransaction/date_controller.dart';
 import 'package:expense_manager/viewModel/addTransaction/transaction_controller.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swipe_button/flutter_swipe_button.dart';
+// import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 import 'package:get/get.dart';
 
 class TransactionDetails extends StatelessWidget {
@@ -102,23 +102,23 @@ class TransactionDetails extends StatelessWidget {
             Positioned(
               top: height * 0.23,
               child: SizedBox(
-                child: 
-                 category == 'Amount Added'
+                child: category == 'Amount Added'
                     ? Text(
-                        category, style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Pallete.white,
-                    fontSize: height * 0.02,
-                  ),):
-                
-                Text(
-                  category.toUpperCase(),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Pallete.white,
-                    fontSize: height * 0.02,
-                  ),
-                ),
+                        category,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Pallete.white,
+                          fontSize: height * 0.02,
+                        ),
+                      )
+                    : Text(
+                        category.toUpperCase(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Pallete.white,
+                          fontSize: height * 0.02,
+                        ),
+                      ),
               ),
             ),
             Positioned(
@@ -131,7 +131,6 @@ class TransactionDetails extends StatelessWidget {
                 ),
               ),
             ),
-           
             Positioned(
               top: height * .45,
               left: width * 0.09,
@@ -157,30 +156,19 @@ class TransactionDetails extends StatelessWidget {
                           child: Image.file(File(imagePath)))),
             ),
             Positioned(
-              top: height * .90,
-              child: SwipeButton.expand(
-                width: width * 0.7,
-                height: height * 0.07,
-                borderRadius: BorderRadius.circular(20),
-                thumb: const Icon(
-                  Icons.double_arrow_rounded,
-                  color: Colors.white,
-                ),
-                activeThumbColor: Pallete.purple,
-                activeTrackColor: Colors.grey.shade300,
-                onSwipe: () {
-                 Get.to(EditScreen(index:index, amount: double.parse(amount), description: description, imageUrl: imagePath,category: category,type: type,));
-
-                  // Get.to(const EditTransactionPage());
-                },
-                child: const Text(
-                  "Edit Transaction", 
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            )
+                top: height * .90,
+                child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(EditScreen(
+                        index: index,
+                        amount: double.parse(amount),
+                        description: description,
+                        imageUrl: imagePath,
+                        category: category,
+                        type: type,
+                      ));
+                    },
+                    child: Text('Edit')))
           ],
         ),
       ),

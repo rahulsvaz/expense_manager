@@ -16,7 +16,6 @@ class OnboardingScreen extends StatelessWidget {
       headerBackgroundColor: Pallete.scaffoldBgColor,
       finishButtonText: 'Create User',
       finishButtonStyle: const FinishButtonStyle(
-        backgroundColor: Pallete.buttonColor,
       ),
       centerBackground: true,
       background: [
