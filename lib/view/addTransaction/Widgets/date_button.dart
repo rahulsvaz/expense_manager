@@ -16,7 +16,7 @@ class DateButton extends StatelessWidget {
       height: height * 0.07,
       decoration: BoxDecoration(
         border: Border.all(color: ColorsClass.lightGrey),
-        borderRadius: BorderRadius.circular(17),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -25,7 +25,7 @@ class DateButton extends StatelessWidget {
             builder: (controller) {
               return Text(
                 controller.formattedDate,
-                style: TextStyle(fontSize: width * 0.03),
+                style: TextStyle(fontSize: width * 0.03,color: ColorsClass.grey),
               );
             },
           ),

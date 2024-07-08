@@ -83,11 +83,13 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                 ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: width * 0.80),
                   child: TextFormField(
+
                     style: const TextStyle(color: ColorsClass.grey),
                     controller: _descriptionController,
                     maxLength: 20,
                     cursorColor: ColorsClass.grey,
                     decoration: InputDecoration(
+                      counterStyle: const TextStyle(color: ColorsClass.grey),
                       hintText: 'Description',
                       hintStyle: const TextStyle(color: ColorsClass.grey),
                       enabledBorder: borderDecoration(),
@@ -154,10 +156,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                   buttonTextColor: ColorsClass.white,
                   backgroundColor: ColorsClass.expenseBackGroundColor,
                 ),
-  
-                // SizedBox(
-                //   height: height * 0.11,
-                // ),
+
               ],
             ),
           ),

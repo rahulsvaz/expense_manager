@@ -1,11 +1,8 @@
-import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
-import 'package:expense_manager/view/settings/widgets/menu_item.dart';
 import 'package:expense_manager/viewModel/userController/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -27,6 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
         body: Stack(
           children: [
 
+            Center(child: Image.asset('assets/animations/thankyou.webp'),),
             Positioned(
               left: 0,
               right: 0,

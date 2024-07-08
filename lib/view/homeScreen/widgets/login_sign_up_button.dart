@@ -21,7 +21,7 @@ class PrimaryButton extends StatelessWidget {
           fixedSize:  Size(Get.width*0.79
         , Get.height*0.07),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(8),
           ),
           backgroundColor: backgroundColor),
       onPressed: onPressed,

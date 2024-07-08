@@ -21,7 +21,7 @@ class AttachmentButton extends StatelessWidget {
       height: height * 0.07,
       decoration: BoxDecoration(
         border: Border.all(color: ColorsClass.lightGrey),
-        borderRadius: BorderRadius.circular(17),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         const Icon(

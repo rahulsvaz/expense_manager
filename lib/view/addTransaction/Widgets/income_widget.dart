@@ -12,6 +12,7 @@ import 'package:expense_manager/view/addTransaction/Widgets/attachment_button.da
 import 'package:expense_manager/view/addTransaction/Widgets/howMuch.dart';
 import 'package:expense_manager/view/homeScreen/widgets/login_sign_up_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class IncomeWidget extends StatefulWidget {
@@ -49,11 +50,10 @@ class _IncomeWidgetState extends State<IncomeWidget> {
           Padding(
             padding: EdgeInsets.only(left: width * 0.17),
             child: TextFormField(
-
               controller: _amountController,
               keyboardType: TextInputType.number,
               style: const TextStyle(
-                  color: ColorsClass.incomeBackGroundColor, fontSize: 80),
+                  color: ColorsClass.incomeBackGroundColor, fontSize: 80,),
               showCursor: true,
               cursorHeight: height * 0.1,
               cursorColor: ColorsClass.grey,
@@ -78,9 +78,12 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                 child: TextFormField(
                   style: const TextStyle(color: ColorsClass.grey),
                   controller: _descriptionController,
-                  maxLength: 20,
+                  maxLength: 50,
+                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
                   cursorColor: ColorsClass.grey,
                   decoration: InputDecoration(
+                    counterStyle: const TextStyle(color: ColorsClass.grey),
+                    //contentPadding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
                     hintText: 'Description',
                     hintStyle: const TextStyle(color: ColorsClass.grey),
                     enabledBorder: borderDecoration(),
@@ -103,18 +106,20 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                 SizedBox(
                   width: width * 0.03,
                 ),
-                const DateButton()
-              ]),
+                const DateButton(),
+              ],),
               SizedBox(height: height * 0.04),
 
-              Obx(() => Container(
-                    child: attachment.imagePath.value.isNotEmpty
-                        ? const Text(
-                            'Attachment Added',
-                            style: TextStyle(color: ColorsClass.grey),
-                          )
-                        : null,
-                  )),
+              Obx(
+                () => Container(
+                  child: attachment.imagePath.value.isNotEmpty
+                      ? const Text(
+                          'Attachment Added',
+                          style: TextStyle(color: ColorsClass.grey),
+                        )
+                      : null,
+                ),
+              ),
               SizedBox(height: height * 0.04),
               PrimaryButton(
                 onPressed: () {
