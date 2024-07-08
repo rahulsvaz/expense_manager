@@ -15,7 +15,7 @@ class DateButton extends StatelessWidget {
       width: width * 0.30,
       height: height * 0.07,
       decoration: BoxDecoration(
-        border: Border.all(color: Pallete.lightGrey),
+        border: Border.all(color: ColorsClass.lightGrey),
         borderRadius: BorderRadius.circular(17),
       ),
       child: Row(
@@ -35,7 +35,7 @@ class DateButton extends StatelessWidget {
             },
             icon: const Icon(
               Icons.calendar_month,
-              color: Pallete.grey,
+              color: ColorsClass.grey,
             ),
           )
         ],

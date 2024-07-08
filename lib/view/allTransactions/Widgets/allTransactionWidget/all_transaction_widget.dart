@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/homeScreen/widgets/transaction_card.dart';
@@ -22,13 +24,17 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
 
     return GetBuilder<HomeScreenControllers>(
       builder: (controller) {
+       if( controller.listLength ==0 ){
+         return Center(child: Text('No Transactions Found'),);
+       }
         return ListView.builder(
+          itemCount: controller.listLength,
           padding: const EdgeInsets.all(0),
           itemBuilder: (context, index) {
+
             int reversedIndex = controller.transactionList.length - 1 - index;
             Transactions transaction =
                 controller.transactionList[reversedIndex];
-
             return Padding(
               padding: EdgeInsets.only(
                   left: width * 0.04,
@@ -40,7 +46,7 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
                       backgroudColor: Colors.transparent,
                       icon: const Icon(
                         Icons.delete,
-                        color: Pallete.expenseBackGroundColor,
+                        color: ColorsClass.expenseBackGroundColor,
                       ),
                       onPress: () {
                         controller.deleteTransaction(context, reversedIndex);
@@ -52,8 +58,8 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
                   dateTime: transaction.dateAndTime,
                   imagePath: transaction.imageUrl.toString(),
                   color: transaction.type == 'expense'
-                      ? Pallete.expenseBackGroundColor
-                      : Pallete.incomeBackGroundColor,
+                      ? ColorsClass.expenseBackGroundColor
+                      : ColorsClass.incomeBackGroundColor,
                   category: transaction.category == 'Amount Added' ||
                           transaction.category.length < 11
                       ? transaction.category
@@ -69,7 +75,7 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
               //     ),
             );
           },
-          itemCount: controller.listLength,
+
         );
       },
     );

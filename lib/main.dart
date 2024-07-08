@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:expense_manager/model/repository/budget/budget_model.dart';
 import 'package:expense_manager/model/repository/transactionsModel/transaction_model.dart';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
+import 'package:expense_manager/view/NavigationBar/g_nav.dart';
 import 'package:expense_manager/view/constant/colors/colors.dart';
 import 'package:expense_manager/view/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +42,9 @@ class MyApp extends StatelessWidget {
       title: 'Expensense',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Pallete.white,
+        scaffoldBackgroundColor: ColorsClass.white,
       ),
-      home: const SplashScreen(),
+      home: const GnavNavigation(),
     );
   }
 }

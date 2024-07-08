@@ -39,8 +39,8 @@ class _OnlyExpenseState extends State<OnlyExpense> {
                 dateTime: transactions.dateAndTime,
                 imagePath: transactions.imageUrl.toString(),
                 color: transactions.type == 'expense'
-                    ? Pallete.expenseBackGroundColor
-                    : Pallete.incomeBackGroundColor,
+                    ? ColorsClass.expenseBackGroundColor
+                    : ColorsClass.incomeBackGroundColor,
                 category:transactions.category.substring(9).toUpperCase(),
                 description: transactions.description.toUpperCase(),
                 amount: transactions.amount.toString(),

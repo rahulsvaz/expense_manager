@@ -49,13 +49,14 @@ class _IncomeWidgetState extends State<IncomeWidget> {
           Padding(
             padding: EdgeInsets.only(left: width * 0.17),
             child: TextFormField(
+
               controller: _amountController,
               keyboardType: TextInputType.number,
               style: const TextStyle(
-                  color: Pallete.incomeBackGroundColor, fontSize: 80),
+                  color: ColorsClass.incomeBackGroundColor, fontSize: 80),
               showCursor: true,
               cursorHeight: height * 0.1,
-              cursorColor: Colors.black,
+              cursorColor: ColorsClass.grey,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: '₹0',
@@ -75,13 +76,13 @@ class _IncomeWidgetState extends State<IncomeWidget> {
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: width * 0.80),
                 child: TextFormField(
-                  style: const TextStyle(color: Pallete.grey),
+                  style: const TextStyle(color: ColorsClass.grey),
                   controller: _descriptionController,
                   maxLength: 20,
-                  cursorColor: Pallete.grey,
+                  cursorColor: ColorsClass.grey,
                   decoration: InputDecoration(
                     hintText: 'Description',
-                    hintStyle: const TextStyle(color: Pallete.grey),
+                    hintStyle: const TextStyle(color: ColorsClass.grey),
                     enabledBorder: borderDecoration(),
                     focusedBorder: borderDecoration(),
                   ),
@@ -110,12 +111,12 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                     child: attachment.imagePath.value.isNotEmpty
                         ? const Text(
                             'Attachment Added',
-                            style: TextStyle(color: Pallete.grey),
+                            style: TextStyle(color: ColorsClass.grey),
                           )
                         : null,
                   )),
               SizedBox(height: height * 0.04),
-              LoginSignUpButton(
+              PrimaryButton(
                 onPressed: () {
                   if (_amountController.text.isEmpty) {
                     ScaffoldMessenger.of(context)
@@ -146,8 +147,8 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                   }
                 },
                 label: 'Add Income',
-                buttonTextColor: Pallete.white,
-                backgroundColor: Pallete.incomeBackGroundColor,
+                buttonTextColor: ColorsClass.white,
+                backgroundColor: ColorsClass.incomeBackGroundColor,
               ),
             ],
           ),

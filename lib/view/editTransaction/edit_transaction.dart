@@ -31,7 +31,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
                 width: width,
                 height: height * 0.4,
                 decoration: BoxDecoration(
-                  color: Pallete.expenseDetails,
+                  color: ColorsClass.expenseDetails,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(width * 0.1),
                     bottomRight: Radius.circular(width * 0.1),
@@ -53,13 +53,13 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
                       },
                       icon: const Icon(
                         Icons.arrow_back,
-                        color: Pallete.white,
+                        color: ColorsClass.white,
                       ),
                     ),
                     Text(
                       'Edit Transaction',
                       style: TextStyle(
-                          color: Pallete.white,
+                          color: ColorsClass.white,
                           fontSize: width * 0.05,
                           fontWeight: FontWeight.bold),
                     ),
@@ -78,16 +78,16 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
                     child: TextFormField(
                       controller: _amountController..text = widget.amount,
                       keyboardType: TextInputType.number,
-                      style: const TextStyle(color: Pallete.white, fontSize: 80),
+                      style: const TextStyle(color: ColorsClass.white, fontSize: 80),
                       showCursor: true,
                       cursorHeight: height * 0.1,
-                      cursorColor: Pallete.white,
+                      cursorColor: ColorsClass.white,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         // prefixText: '₹',
                         hintText: '₹0',
                         hintStyle: TextStyle(
-                            fontSize: height * 0.11, color: Pallete.white),
+                            fontSize: height * 0.11, color: ColorsClass.white),
                       ),
                     ),
                   ),
@@ -98,7 +98,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
               child: Text(
                 'Saturday 4 June 2021 10:10 am',
                 style: TextStyle(
-                  color: Pallete.white,
+                  color: ColorsClass.white,
                   fontSize: height * 0.02,
                 ),
               ),
@@ -108,7 +108,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
               left: width * 0.09,
               child: Text(
                 'Description',
-                style: TextStyle(fontSize: height * 0.023, color: Pallete.grey),
+                style: TextStyle(fontSize: height * 0.023, color: ColorsClass.grey),
               ),
             ),
             Positioned(
@@ -126,7 +126,7 @@ class _EditTransactionPageState extends State<EditTransactionPage> {
               left: width * 0.09,
               child: Text(
                 'Attachment',
-                style: TextStyle(fontSize: height * 0.023, color: Pallete.grey),
+                style: TextStyle(fontSize: height * 0.023, color: ColorsClass.grey),
               ),
             ),
             Positioned(

@@ -27,17 +27,17 @@ class UserTextfield extends StatelessWidget {
         
         controller: controller,
         validator: validator,
-        style: const TextStyle(color: Pallete.grey),
+        style: const TextStyle(color: ColorsClass.grey),
         obscureText: obscureText,
 
         cursorColor: Colors.grey,
         decoration: InputDecoration(
           
-          errorStyle: const TextStyle(color: Pallete.purple),
+          errorStyle: const TextStyle(color: ColorsClass.purple),
           prefixIcon: prefix,
           label: Text(
             label.toString(),
-            style: const TextStyle(color: Pallete.hintTextColor),
+            style: const TextStyle(color: ColorsClass.hintTextColor),
           ),
           focusedErrorBorder: borderDecoration(),
           errorBorder: borderDecoration(),
@@ -53,7 +53,7 @@ class UserTextfield extends StatelessWidget {
       borderRadius: BorderRadius.all(
         Radius.circular(16),
       ),
-      borderSide: BorderSide(width: 1, color: Pallete.textfieldBorderColor),
+      borderSide: BorderSide(width: 1, color: ColorsClass.textfieldBorderColor),
     );
   }
 }

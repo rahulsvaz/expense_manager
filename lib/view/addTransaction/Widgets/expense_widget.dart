@@ -49,7 +49,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
               controller: _amountController,
               keyboardType: TextInputType.number,
               style: const TextStyle(
-                  color: Pallete.expenseBackGroundColor, fontSize: 80),
+                  color: ColorsClass.expenseBackGroundColor, fontSize: 80),
               showCursor: true,
               cursorHeight: height * 0.1,
               cursorColor: Colors.black,
@@ -65,7 +65,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
           ),
           Container(
             decoration: BoxDecoration(
-              color: Pallete.white,
+              color: ColorsClass.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(width * 0.15),
                 topRight: Radius.circular(width * 0.15),
@@ -83,13 +83,13 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                 ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: width * 0.80),
                   child: TextFormField(
-                    style: const TextStyle(color: Pallete.grey),
+                    style: const TextStyle(color: ColorsClass.grey),
                     controller: _descriptionController,
                     maxLength: 20,
-                    cursorColor: Pallete.grey,
+                    cursorColor: ColorsClass.grey,
                     decoration: InputDecoration(
                       hintText: 'Description',
-                      hintStyle: const TextStyle(color: Pallete.grey),
+                      hintStyle: const TextStyle(color: ColorsClass.grey),
                       enabledBorder: borderDecoration(),
                       focusedBorder: borderDecoration(),
                     ),
@@ -113,7 +113,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                   const DateButton()
                 ]),
                 SizedBox(height: height * 0.04),
-                LoginSignUpButton(
+                PrimaryButton(
                   onPressed: () {
 
                     final totalIncome = homeScreenController.getTotalIncome();
@@ -151,8 +151,8 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                    
                   },
                   label: 'Add Expense',
-                  buttonTextColor: Pallete.white,
-                  backgroundColor: Pallete.expenseBackGroundColor,
+                  buttonTextColor: ColorsClass.white,
+                  backgroundColor: ColorsClass.expenseBackGroundColor,
                 ),
   
                 // SizedBox(

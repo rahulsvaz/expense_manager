@@ -39,8 +39,8 @@ class _SortedTransactionsState extends State<SortedTransactions> {
                       ? 'assets/images/expense.png'
                       : 'assets/images/income.png',
                   color: filterd[index].type == 'expense'
-                      ? Pallete.expenseBackGroundColor
-                      : Pallete.incomeBackGroundColor,
+                      ? ColorsClass.expenseBackGroundColor
+                      : ColorsClass.incomeBackGroundColor,
                   category:  filterd[index].category  == 'Amount Added' ||
                          filterd[index].category.length < 11
                       ?filterd[index].category

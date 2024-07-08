@@ -94,7 +94,7 @@ class ClearButton extends StatelessWidget {
           },
           child: const Text(
             'Clear',
-            style: TextStyle(color: Pallete.grey),
+            style: TextStyle(color: ColorsClass.grey),
           ));
     });
   }

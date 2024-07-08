@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Pallete {
+class ColorsClass {
+  static const Color black = Colors.black;
   static const Color scaffoldBgColor = Color.fromRGBO(246, 246, 246, 1);
   static const Color buttonColor = Color(0xFF7E3DFF);
   static const Color white = Colors.white;
@@ -14,6 +15,7 @@ class Pallete {
   static const Color expenseBackGroundColor = Colors.red;
   static const Color lightGrey = Color.fromARGB(255, 226, 224, 224);
   static const Color expenseDetails = Color.fromRGBO(253, 60, 74, 1);
+  static const Color transparent = Colors.transparent;
   static const LinearGradient gradient1 = LinearGradient(colors: [
     Color.fromRGBO(246, 248, 218, 1),
     Color.fromRGBO(248, 237, 216, 0)

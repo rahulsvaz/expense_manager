@@ -27,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final height = MediaQuery.of(context).size.height;
     final userBox = Hive.box<User>('UserBox');
 
-    late User? user = userBox.getAt(0);
 
     return Scaffold(
       body: Column(
@@ -42,51 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: height * 0.06,
                 ),
                 //Top Row
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SizedBox(
-                      child: user!.imageUrl.isEmpty
-                          ? CircleAvatar(
-                              radius: height * 0.02,
-                              backgroundImage: const AssetImage(
-                                  'assets/images/user_logo.jpg'),
 
-                            )
-                          : CircleAvatar(
-                              radius: height * 0.02,
-                              backgroundImage: FileImage(
-                                File(
-                                  user.imageUrl.toString(),
-                                ),
-                              ),
-                            ),
-                    ),
-                    TweenAnimationBuilder(
-                      tween: Tween(begin: 0 ,end :width*0.04),
-                      duration: const Duration(seconds: 1),
-                      builder: (context,object,widget) {
-                        return Text(
-                          'Hello ${user.name}',
-                          style: TextStyle(
-                              fontSize: double.parse(object.toString()),
-                              fontWeight: FontWeight.bold,
-                              color: Pallete.grey),
-                        );
-                      }
-                    ),
-                    Icon(
-                      Icons.graphic_eq,
-                      size: height * 0.04,
-                      color: Pallete.grey,
-                    ),
-                  ],
-                ),
                 //Second Row
                 Text(
                   'Account Balance',
                   style: TextStyle(
-                    color: Pallete.grey,
+                    color: ColorsClass.grey,
                     fontSize: height * 0.02,
                   ),
                 ),
@@ -122,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     GetBuilder<HomeScreenControllers>(builder: (controller) {
                       return IncomeExpenseBox(
                         logo: 'assets/images/income.png',
-                        backGroundColor: Pallete.incomeBackGroundColor,
+                        backGroundColor: ColorsClass.incomeBackGroundColor,
                         label: 'Income',
                         amount: homeController.getTotalIncome().toString(),
                       );
@@ -131,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (controller) {
                         return IncomeExpenseBox(
                           logo: 'assets/images/expense.png',
-                          backGroundColor: Pallete.expenseBackGroundColor,
+                          backGroundColor: ColorsClass.expenseBackGroundColor,
                           label: 'Expense',
                           amount: homeController.getTotalExpense().toString(),
                         );
@@ -160,8 +120,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   chartType: ChartType.disc,
                   dataMap: dataMap,
                   colorList: const [
-                    Pallete.incomeBackGroundColor,
-                    Pallete.expenseBackGroundColor
+                    ColorsClass.incomeBackGroundColor,
+                    ColorsClass.expenseBackGroundColor
                   ],
                 );
               },

@@ -72,7 +72,7 @@ class _EditScreenState extends State<EditScreen> {
                   controller: _amountController..text = widget.amount.toString(),
                   keyboardType: TextInputType.number,
                   style:  TextStyle(
-                      color: widget.type=='income'?Pallete.incomeBackGroundColor:Pallete.expenseBackGroundColor, fontSize: 80),
+                      color: widget.type=='income'?ColorsClass.incomeBackGroundColor:ColorsClass.expenseBackGroundColor, fontSize: 80),
                   showCursor: true,
                   cursorHeight: height * 0.1,
                   cursorColor: Colors.black,
@@ -93,14 +93,14 @@ class _EditScreenState extends State<EditScreen> {
                   ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: width * 0.80),
                     child: TextFormField(
-                      style: const TextStyle(color: Pallete.grey),
+                      style: const TextStyle(color: ColorsClass.grey),
                       controller: _descriptionController
                         ..text = widget.description,
                       maxLength: 20,
-                      cursorColor: Pallete.grey,
+                      cursorColor: ColorsClass.grey,
                       decoration: InputDecoration(
                         hintText: 'Description',
-                        hintStyle: const TextStyle(color: Pallete.grey),
+                        hintStyle: const TextStyle(color: ColorsClass.grey),
                         enabledBorder: borderDecoration(),
                         focusedBorder: borderDecoration(),
                       ),
@@ -132,13 +132,13 @@ class _EditScreenState extends State<EditScreen> {
                       child: attachment.imagePath.value.isNotEmpty
                           ? const Text(
                               'Attachment Added',
-                              style: TextStyle(color: Pallete.grey),
+                              style: TextStyle(color: ColorsClass.grey),
                             )
                           : null,
                     ),
                   ),
                   SizedBox(height: height * 0.04),
-                  LoginSignUpButton(
+                  PrimaryButton(
                     onPressed: () async {
                       if (_amountController.text.isEmpty) {
                         ScaffoldMessenger.of(context)
@@ -165,9 +165,9 @@ class _EditScreenState extends State<EditScreen> {
                       attachment.imagePath.value = '';
                     },
                     label: 'Update',
-                    buttonTextColor: Pallete.white,
+                    buttonTextColor: ColorsClass.white,
 
-                    backgroundColor:widget.type=='income'?Pallete.incomeBackGroundColor:Pallete.expenseBackGroundColor,
+                    backgroundColor:widget.type=='income'?ColorsClass.incomeBackGroundColor:ColorsClass.expenseBackGroundColor,
                   ),
                 ],
               ),

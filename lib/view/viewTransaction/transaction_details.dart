@@ -47,8 +47,8 @@ class TransactionDetails extends StatelessWidget {
                 height: height * 0.4,
                 decoration: BoxDecoration(
                   color: type == 'expense'
-                      ? Pallete.expenseBackGroundColor
-                      : Pallete.incomeBackGroundColor,
+                      ? ColorsClass.expenseBackGroundColor
+                      : ColorsClass.incomeBackGroundColor,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(width * 0.1),
                     bottomRight: Radius.circular(width * 0.1),
@@ -70,12 +70,12 @@ class TransactionDetails extends StatelessWidget {
                         },
                         icon: const Icon(
                           Icons.arrow_back,
-                          color: Pallete.white,
+                          color: ColorsClass.white,
                         )),
                     Text(
                       'Transaction Details',
                       style: TextStyle(
-                          color: Pallete.white,
+                          color: ColorsClass.white,
                           fontSize: width * 0.05,
                           fontWeight: FontWeight.bold),
                     ),
@@ -94,7 +94,7 @@ class TransactionDetails extends StatelessWidget {
               child: Text(
                 amount,
                 style: TextStyle(
-                    color: Pallete.white,
+                    color: ColorsClass.white,
                     fontSize: height * 0.07,
                     fontWeight: FontWeight.bold),
               ),
@@ -107,7 +107,7 @@ class TransactionDetails extends StatelessWidget {
                         category,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Pallete.white,
+                          color: ColorsClass.white,
                           fontSize: height * 0.02,
                         ),
                       )
@@ -115,7 +115,7 @@ class TransactionDetails extends StatelessWidget {
                         category.toUpperCase(),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Pallete.white,
+                          color: ColorsClass.white,
                           fontSize: height * 0.02,
                         ),
                       ),
@@ -126,7 +126,7 @@ class TransactionDetails extends StatelessWidget {
               child: Text(
                 '${dateController.formattedDate}',
                 style: TextStyle(
-                  color: Pallete.white,
+                  color: ColorsClass.white,
                   fontSize: height * 0.02,
                 ),
               ),
@@ -136,7 +136,7 @@ class TransactionDetails extends StatelessWidget {
               left: width * 0.09,
               child: Text(
                 description,
-                style: TextStyle(fontSize: height * 0.023, color: Pallete.grey),
+                style: TextStyle(fontSize: height * 0.023, color: ColorsClass.grey),
               ),
             ),
             Positioned(
@@ -144,7 +144,7 @@ class TransactionDetails extends StatelessWidget {
               child: imagePath.isEmpty
                   ? const Text(
                       'No Attachment Found',
-                      style: TextStyle(color: Pallete.grey),
+                      style: TextStyle(color: ColorsClass.grey),
                     )
                   : SizedBox(
                       height: height * .50,

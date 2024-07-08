@@ -17,13 +17,17 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+elevation: 0,
+          backgroundColor: ColorsClass.transparent,
           centerTitle: true,
           title: const Text('Add Transaction'),
-          bottom: const TabBar(
-            labelColor: Pallete.buttonColor,
-            indicatorColor: Colors.black,
+          bottom:  TabBar(
+dividerHeight: 0,
+            tabAlignment: TabAlignment.center,
+            labelColor: ColorsClass.black,
+            indicatorColor: ColorsClass.black,
             isScrollable: true,
-            indicator: BoxDecoration(),
+
             tabs: [
               Tab(
                 text: 'Add Income',

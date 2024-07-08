@@ -20,7 +20,7 @@ class HowMuchText extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: height * 0.03,
-       color: Pallete.grey
+       color: ColorsClass.grey
               ),
       ),
     );

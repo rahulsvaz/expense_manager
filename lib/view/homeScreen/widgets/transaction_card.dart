@@ -64,7 +64,7 @@ class TransactionCard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: height * 0.018,
                             fontWeight: FontWeight.bold,
-                            color: Pallete.grey),
+                            color: ColorsClass.grey),
                       )
                     : Text(
 
@@ -72,7 +72,7 @@ class TransactionCard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: height * 0.018,
                             fontWeight: FontWeight.bold,
-                            color: Pallete.grey),
+                            color: ColorsClass.grey),
                       ),
               ),
               SizedBox(
@@ -91,9 +91,9 @@ class TransactionCard extends StatelessWidget {
             children: [
               Text(
                 description,
-                style: TextStyle(fontSize: height * 0.016, color: Pallete.grey),
+                style: TextStyle(fontSize: height * 0.016, color: ColorsClass.grey),
               ),
-              Text(dateFormatter.formatDate(dateTime),style:const  TextStyle(color: Pallete.grey),)
+              Text(dateFormatter.formatDate(dateTime),style:const  TextStyle(color: ColorsClass.grey),)
             ],
           ),
         ),

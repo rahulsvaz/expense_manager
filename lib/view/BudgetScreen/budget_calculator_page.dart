@@ -69,9 +69,9 @@ class PiChartOverView extends StatelessWidget {
       initialAngleInDegree: 90,
       ringStrokeWidth: 30,
       colorList: const [
-        Pallete.expenseBackGroundColor,
-        Pallete.incomeBackGroundColor,
-        Pallete.grey,
+        ColorsClass.expenseBackGroundColor,
+        ColorsClass.incomeBackGroundColor,
+        ColorsClass.grey,
       ],
       legendOptions: const LegendOptions(showLegends: true),
       chartType: ChartType.disc,

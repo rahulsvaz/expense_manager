@@ -98,8 +98,8 @@ class _AllTransactionsState extends State<AllTransactions> {
                         'Income',
                         style: TextStyle(
                             color: filterController.income.value
-                                ? Pallete.incomeBackGroundColor
-                                : Pallete.grey),
+                                ? ColorsClass.incomeBackGroundColor
+                                : ColorsClass.grey),
                       ),
                     ),
                   ],
@@ -118,8 +118,8 @@ class _AllTransactionsState extends State<AllTransactions> {
                         'Expense',
                         style: TextStyle(
                             color: filterController.expense.value
-                                ? Pallete.expenseBackGroundColor
-                                : Pallete.grey),
+                                ? ColorsClass.expenseBackGroundColor
+                                : ColorsClass.grey),
                       ),
                     ),
                   ],
@@ -136,7 +136,7 @@ class _AllTransactionsState extends State<AllTransactions> {
                               },
                               child: const Text(
                                 'Clear',
-                                style: TextStyle(color: Pallete.grey),
+                                style: TextStyle(color: ColorsClass.grey),
                               ),
                             )
                           : null),

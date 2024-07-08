@@ -92,7 +92,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       label: 'Name',
                       prefix: const Icon(
                         Icons.abc,
-                        color: Pallete.grey,
+                        color: ColorsClass.grey,
                       ),
                       controller: _nameController,
                       obscureText: false,
@@ -123,7 +123,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   child: UserTextfield(
                       prefix: const  Icon(
                         Icons.numbers_rounded,
-                        color: Pallete.grey,
+                        color: ColorsClass.grey,
                       ),
                       label: 'Age',
                       controller: _ageController,
@@ -139,7 +139,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   child: UserTextfield(
                       prefix: const Icon(
                         Icons.phone,
-                        color: Pallete.grey,
+                        color: ColorsClass.grey,
                       ),
                       label: 'Phone',
                       controller: _phoneController,
@@ -152,7 +152,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 right: 0,
                 top: height * 0.65,
                 child: Center(
-                    child: LoginSignUpButton(
+                    child: PrimaryButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             final name = _nameController.text.toString();
@@ -165,8 +165,8 @@ class _CreateAccountState extends State<CreateAccount> {
                           }
                         },
                         label: 'Save',
-                        buttonTextColor: Pallete.white,
-                        backgroundColor: Pallete.purple)),
+                        buttonTextColor: ColorsClass.white,
+                        backgroundColor: ColorsClass.purple)),
               ),
               Positioned(
                 left: 0,
@@ -199,12 +199,12 @@ class _CreateAccountState extends State<CreateAccount> {
                           ? const Text(
                               'Add Profile Picture ?',
                               style:
-                                  TextStyle(color: Pallete.purple, fontSize: 14),
+                                  TextStyle(color: ColorsClass.purple, fontSize: 14),
                             )
                           : const Text(
                               'Change Profile Picture?',
                               style:
-                                  TextStyle(color: Pallete.purple, fontSize: 14),
+                                  TextStyle(color: ColorsClass.purple, fontSize: 14),
                             ),
                     ),
                   ),

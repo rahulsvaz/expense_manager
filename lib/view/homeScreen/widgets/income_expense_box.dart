@@ -48,7 +48,7 @@ class IncomeExpenseBox extends StatelessWidget {
                   child: Text(
                     label,
                     style: TextStyle(
-                        color: Pallete.white, fontSize: height * 0.012),
+                        color: ColorsClass.white, fontSize: height * 0.012),
                   ),
                 ),
                 Container(
@@ -61,7 +61,7 @@ class IncomeExpenseBox extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          color: Pallete.white,
+                          color: ColorsClass.white,
                           fontSize: width * 0.04,
                           fontWeight: FontWeight.bold),
                     ),

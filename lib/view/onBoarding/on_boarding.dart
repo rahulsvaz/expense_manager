@@ -13,7 +13,7 @@ class OnboardingScreen extends StatelessWidget {
       onFinish: () {
         Get.to(const CreateAccount());
       },
-      headerBackgroundColor: Pallete.scaffoldBgColor,
+      headerBackgroundColor: ColorsClass.scaffoldBgColor,
       finishButtonText: 'Create User',
       finishButtonStyle: const FinishButtonStyle(
       ),

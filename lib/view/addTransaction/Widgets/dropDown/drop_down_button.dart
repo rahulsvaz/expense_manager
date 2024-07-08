@@ -18,7 +18,7 @@ class DropDown extends StatelessWidget {
         width: width * 0.80,
         height: height * 0.07,
         decoration: BoxDecoration(
-          border: Border.all(color: Pallete.lightGrey),
+          border: Border.all(color: ColorsClass.lightGrey),
           borderRadius: BorderRadius.circular(17),
         ),
         child: Obx(
@@ -32,7 +32,7 @@ class DropDown extends StatelessWidget {
                       value: category,
                       child: Text(
                         category.name.toUpperCase(),
-                        style: const TextStyle(color: Pallete.grey),
+                        style: const TextStyle(color: ColorsClass.grey),
                       ),
                     ),
                   )

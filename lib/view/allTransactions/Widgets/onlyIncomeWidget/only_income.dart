@@ -40,7 +40,7 @@ class _OnlyIncomeState extends State<OnlyIncome> {
                   index: index,
                   dateTime: transactions.dateAndTime,
                   iconPath: 'assets/images/income.png',
-                  color: Pallete.incomeBackGroundColor,
+                  color: ColorsClass.incomeBackGroundColor,
                   category: transactions.category,
                   description: transactions.description,
                   amount: transactions.amount.toString(),

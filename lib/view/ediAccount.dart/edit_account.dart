@@ -106,7 +106,7 @@ class _EditAccountState extends State<EditAccount> {
                     label: 'Name',
                     prefix: const Icon(
                       Icons.abc,
-                      color: Pallete.grey,
+                      color: ColorsClass.grey,
                     ),
                     controller: _nameController,
                     obscureText: false,
@@ -139,7 +139,7 @@ class _EditAccountState extends State<EditAccount> {
                   child: UserTextfield(
                     prefix: const Icon(
                       Icons.numbers_rounded,
-                      color: Pallete.grey,
+                      color: ColorsClass.grey,
                     ),
                     label: 'Age',
                     controller: _ageController,
@@ -156,7 +156,7 @@ class _EditAccountState extends State<EditAccount> {
                   child: UserTextfield(
                     prefix: const Icon(
                       Icons.phone,
-                      color: Pallete.grey,
+                      color: ColorsClass.grey,
                     ),
                     label: 'Phone',
                     controller: _phoneController,
@@ -170,7 +170,7 @@ class _EditAccountState extends State<EditAccount> {
                 left: 0,
                 right: 0,
                 child: Center(
-                  child: LoginSignUpButton(
+                  child: PrimaryButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         final name = _nameController.text.toString();
@@ -187,8 +187,8 @@ class _EditAccountState extends State<EditAccount> {
                       }
                     },
                     label: 'Save Changes',
-                    buttonTextColor: Pallete.white,
-                    backgroundColor: Pallete.purple,
+                    buttonTextColor: ColorsClass.white,
+                    backgroundColor: ColorsClass.purple,
                   ),
                 ),
               ),
@@ -224,7 +224,7 @@ class _EditAccountState extends State<EditAccount> {
                           ? 'Change user image??'
                           : 'Change user image??',
                       style:
-                          const TextStyle(color: Pallete.purple, fontSize: 14),
+                          const TextStyle(color: ColorsClass.purple, fontSize: 14),
                     ),
                   ),
                 ),
