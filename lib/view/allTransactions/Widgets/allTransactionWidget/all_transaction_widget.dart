@@ -53,6 +53,7 @@ class _AllTransactionWidgetState extends State<AllTransactionWidget> {
                       })
                 ],
                 child: TransactionCard(
+
                   index: reversedIndex,
                   type: transaction.type,
                   dateTime: transaction.dateAndTime,

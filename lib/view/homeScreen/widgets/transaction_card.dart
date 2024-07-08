@@ -36,7 +36,7 @@ class TransactionCard extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return Card(
-      elevation: 5,
+
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Center(
         child: ListTile(
