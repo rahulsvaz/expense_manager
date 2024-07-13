@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:expense_manager/model/repository/userModel/user_model.dart';
 import 'package:expense_manager/view/allTransactions/Widgets/allTransactionWidget/all_transaction_widget.dart';
 import 'package:expense_manager/viewModel/homeScreenControllers/home_screen_controllers.dart';
@@ -13,7 +12,6 @@ import 'package:pie_chart/pie_chart.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -22,10 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.put(HomeScreenControllers());
-
+    
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    final userBox = Hive.box<User>('UserBox');
+    Hive.box<User>('UserBox');
 
 
     return Scaffold(
@@ -70,8 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.w700,
                             ),
                         );
-                      });
-                }),
+                      },);
+                },),
                 SizedBox(
                   height: height * 0.04,
                 ),
@@ -86,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: 'Income',
                         amount: homeController.getTotalIncome().toString(),
                       );
-                    }),
+                    },),
                     GetBuilder<HomeScreenControllers>(
                       builder: (controller) {
                         return IncomeExpenseBox(
@@ -96,9 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           amount: homeController.getTotalExpense().toString(),
                         );
                       },
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -113,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 double expense = controller.getTotalExpense();
                 Map<String, double> dataMap = {
                   "Income": income,
-                  "Expense": expense
+                  "Expense": expense,
                 };
 
                 return PieChart(
@@ -121,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   dataMap: dataMap,
                   colorList: const [
                     ColorsClass.incomeBackGroundColor,
-                    ColorsClass.expenseBackGroundColor
+                    ColorsClass.expenseBackGroundColor,
                   ],
                 );
               },
